@@ -1,5 +1,8 @@
 import { motion } from 'framer-motion'
+import { useNavigate } from 'react-router-dom'
 import { useGameState } from '../hooks/useGameState.js'
+import { useStore } from '../store.js'
+import PILLARS from '../data/pillars.js'
 
 function ScoreBar({ label, value, max, color }) {
   const pct = Math.round((value / max) * 100)
@@ -26,11 +29,27 @@ function ScoreBar({ label, value, max, color }) {
   )
 }
 
+const DIFF_ORDER = { beginner: 0, intermediate: 1, advanced: 2, expert: 3 }
+
 export function ScorePanel() {
-  const { result } = useGameState()
+  const { result, currentChallenge } = useGameState()
+  const challenges = useStore((s) => s.challenges)
+  const navigate = useNavigate()
+
   if (!result) return null
 
   const { score, breakdown, feedback, is_valid } = result
+
+  // Find next challenge in same subtopic
+  const nextChallenge = (() => {
+    if (!currentChallenge) return null
+    const same = challenges
+      .filter((c) => c.subtopic === currentChallenge.subtopic && c.id !== currentChallenge.id)
+      .sort((a, b) => (DIFF_ORDER[a.difficulty] ?? 99) - (DIFF_ORDER[b.difficulty] ?? 99))
+    // Prefer a challenge harder than or equal to current, else any
+    const currentOrder = DIFF_ORDER[currentChallenge.difficulty] ?? 0
+    return same.find((c) => (DIFF_ORDER[c.difficulty] ?? 0) >= currentOrder) || same[0] || null
+  })()
   const maxScore = 85
   const pct = Math.round((score / maxScore) * 100)
   const scoreColor = pct >= 75 ? 'text-green-600' : pct >= 50 ? 'text-yellow-600' : 'text-red-600'
@@ -121,10 +140,35 @@ export function ScorePanel() {
 
         {/* Encouragement */}
         {feedback?.encouragement && (
-          <div className="text-xs text-gray-500 text-center italic mt-auto pt-2 border-t border-gray-100">
+          <div className="text-xs text-gray-500 text-center italic pt-2 border-t border-gray-100">
             {feedback.encouragement}
           </div>
         )}
+
+        {/* Navigation buttons */}
+        <div className="mt-auto pt-3 border-t border-gray-100 flex flex-col gap-2">
+          {nextChallenge ? (
+            <button
+              onClick={() => navigate(`/lab/${nextChallenge.id}`)}
+              className="w-full py-2 px-4 rounded-lg bg-indigo-600 text-white text-sm font-bold hover:bg-indigo-700 transition-colors"
+            >
+              Next Challenge →
+            </button>
+          ) : (
+            <button
+              onClick={() =>
+                navigate(
+                  currentChallenge?.pillar
+                    ? `/explore?pillar=${currentChallenge.pillar}${currentChallenge.subtopic ? `&subtopic=${currentChallenge.subtopic}` : ''}`
+                    : '/explore'
+                )
+              }
+              className="w-full py-2 px-4 rounded-lg bg-indigo-600 text-white text-sm font-bold hover:bg-indigo-700 transition-colors"
+            >
+              Back to Explore →
+            </button>
+          )}
+        </div>
       </div>
     </aside>
   )

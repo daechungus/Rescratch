@@ -10,7 +10,7 @@ export function Layout() {
   const { gamePhase } = useGameState()
 
   return (
-    <div className="flex flex-col h-screen overflow-hidden">
+    <div className="flex flex-col h-screen overflow-hidden pt-14">
       <ResearchQuestion />
 
       <div className="flex flex-1 overflow-hidden">

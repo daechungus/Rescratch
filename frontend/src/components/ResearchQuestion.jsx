@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom'
 import { useStore } from '../store.js'
 import { useGameState } from '../hooks/useGameState.js'
 
@@ -9,11 +10,21 @@ const DIFFICULTY_STYLES = {
 }
 
 export function ResearchQuestion() {
+  const navigate = useNavigate()
   const currentChallenge = useStore((s) => s.currentChallenge)
   const backToMenu = useStore((s) => s.backToMenu)
   const submitPipeline = useStore((s) => s.submitPipeline)
   const resetCanvas = useStore((s) => s.resetCanvas)
+  const canvasBlocks = useStore((s) => s.canvasBlocks)
   const { gamePhase, isLoading } = useGameState()
+
+  function handleBack() {
+    if (canvasBlocks.length > 0) {
+      if (!window.confirm('Leave this challenge? Your progress will be lost.')) return
+    }
+    backToMenu()
+    navigate('/explore')
+  }
 
   if (!currentChallenge) return null
 
@@ -23,7 +34,7 @@ export function ResearchQuestion() {
     <header className="bg-white border-b border-gray-200 px-6 py-3 flex-shrink-0">
       <div className="flex items-center gap-4">
         <button
-          onClick={backToMenu}
+          onClick={handleBack}
           className="text-gray-400 hover:text-gray-700 text-sm flex-shrink-0 transition-colors"
           title="Back to challenges"
         >
@@ -73,7 +84,7 @@ export function ResearchQuestion() {
               Try Again
             </button>
             <button
-              onClick={backToMenu}
+              onClick={() => { backToMenu(); navigate('/explore') }}
               className="px-5 py-2 text-sm font-bold rounded-lg bg-indigo-600 text-white hover:bg-indigo-700 transition-colors shadow-sm"
             >
               New Challenge →

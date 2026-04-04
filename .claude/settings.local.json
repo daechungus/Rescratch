@@ -29,7 +29,8 @@
       "Bash(python -c \"import json; data=json.load\\(open\\(''C:/Users/daeho/daehoonchung/Rescratch/data/challenges.json''\\)\\); print\\(len\\(data[''challenges'']\\), ''existing challenges''\\); print\\([c[''id''] for c in data[''challenges'']]\\)\")",
       "Bash(python scripts/fetch_arxiv.py --cat cs.LG cs.AI cs.CL cs.CV cs.NE --max 30 --start-level 11 --out data/challenges.json)",
       "Bash(python scripts/fetch_arxiv.py --cat cs.DS cs.CC cs.DM cs.PL cs.SE --max 25 --start-level 41 --out data/challenges.json)",
-      "Bash(python -c \"import json; data=json.load\\(open\\(''C:/Users/daeho/daehoonchung/Rescratch/data/challenges.json''\\)\\); print\\(json.dumps\\(data[''challenges''][0], indent=2\\)\\)\")"
+      "Bash(python -c \"import json; data=json.load\\(open\\(''C:/Users/daeho/daehoonchung/Rescratch/data/challenges.json''\\)\\); print\\(json.dumps\\(data[''challenges''][0], indent=2\\)\\)\")",
+      "Bash(npm run:*)"
     ]
   }
 }
