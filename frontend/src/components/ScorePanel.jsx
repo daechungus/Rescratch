@@ -50,7 +50,7 @@ export function ScorePanel() {
     const currentOrder = DIFF_ORDER[currentChallenge.difficulty] ?? 0
     return same.find((c) => (DIFF_ORDER[c.difficulty] ?? 0) >= currentOrder) || same[0] || null
   })()
-  const maxScore = 85
+  const maxScore = 100
   const pct = Math.round((score / maxScore) * 100)
   const scoreColor = pct >= 75 ? 'text-green-600' : pct >= 50 ? 'text-yellow-600' : 'text-red-600'
   const bgColor = pct >= 75 ? 'bg-green-50 border-green-200' : pct >= 50 ? 'bg-yellow-50 border-yellow-200' : 'bg-red-50 border-red-200'

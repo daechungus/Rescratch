@@ -32,7 +32,15 @@
       "Bash(python -c \"import json; data=json.load\\(open\\(''C:/Users/daeho/daehoonchung/Rescratch/data/challenges.json''\\)\\); print\\(json.dumps\\(data[''challenges''][0], indent=2\\)\\)\")",
       "Bash(npm run:*)",
       "Bash(python scripts/add_handcrafted.py)",
-      "Bash(python scripts/_add_intro_challenges.py)"
+      "Bash(python scripts/_add_intro_challenges.py)",
+      "Read(//c/Users/daeho/.claude/projects/c--Users-daeho-daehoonchung-Rescratch/**)",
+      "Read(//c/Users/daeho/.claude/projects/c--Users-daeho-daehoonchung-Rescratch/memory/**)",
+      "Bash(node -e \"const p = require\\(''./package.json''\\); console.log\\(''react:'', p.dependencies.react\\); console.log\\(''r3f:'', p.dependencies[''@react-three/fiber'']\\); console.log\\(''three:'', p.dependencies.three\\)\")",
+      "Bash(python -c \"import sys,json; p=json.load\\(sys.stdin\\); print\\(''''main:'''', p.get\\(''''main''''\\)\\); print\\(''''module:'''', p.get\\(''''module''''\\)\\); print\\(''''exports:'''', list\\(p.get\\(''''exports'''', {}\\).keys\\(\\)\\)[:5]\\)\")",
+      "Bash(node -e \"const p = require\\(''./package.json''\\); console.log\\(''r3f:'', p.dependencies[''@react-three/fiber'']\\); console.log\\(''drei:'', p.dependencies[''@react-three/drei'']\\)\")"
+    ],
+    "additionalDirectories": [
+      "C:\\Users\\daeho\\.claude\\projects\\c--Users-daeho-daehoonchung-Rescratch"
     ]
   }
 }

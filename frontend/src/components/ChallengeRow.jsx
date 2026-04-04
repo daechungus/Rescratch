@@ -72,7 +72,7 @@ export function ChallengeRow({ challenge, index }) {
 
       {/* Max score */}
       <span className="hidden lg:block font-mono text-xs text-[#9A9A9A] flex-shrink-0 w-12 text-right">
-        85 pts
+        100 pts
       </span>
 
       {/* Start / Debug button */}

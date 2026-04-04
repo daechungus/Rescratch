@@ -7,5 +7,8 @@ export default defineConfig({
     proxy: {
       '/api': 'http://localhost:8002'
     }
-  }
+  },
+  optimizeDeps: {
+    include: ['three', '@react-three/fiber'],
+  },
 })

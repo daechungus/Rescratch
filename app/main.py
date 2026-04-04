@@ -47,7 +47,7 @@ class PipelinePayload(BaseModel):
 @app.get("/api/challenges")
 def list_challenges():
     """Return list of all challenges (summary)."""
-    summary_fields = ["id", "title", "difficulty", "level", "description", "tags"]
+    summary_fields = ["id", "title", "difficulty", "level", "description", "tags", "pillar", "subtopic", "type"]
     result = []
     for c in challenges_by_id.values():
         result.append({k: c[k] for k in summary_fields if k in c})

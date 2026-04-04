@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { ChevronDown } from 'lucide-react'
 import PILLARS from '../data/pillars.js'
 import { PillarCard } from './PillarCard.jsx'
+import { ParticleHero } from './ParticleHero.jsx'
 
 export function HeroPage() {
   const pillarsRef = useRef(null)
@@ -22,44 +23,47 @@ export function HeroPage() {
           background: 'linear-gradient(180deg, #FFF9F0 0%, #FFFFFF 60%)',
         }}
       >
+        {/* Particle canvas — behind everything */}
+        <ParticleHero />
+
         {/* Dot grid overlay */}
         <div
           className="absolute inset-0 pointer-events-none opacity-20"
-          style={{
+          style={{ zIndex: 1,
             backgroundImage: 'radial-gradient(circle, #E5E3DE 1px, transparent 1px)',
             backgroundSize: '32px 32px',
           }}
         />
 
-        <div className="relative z-10 flex flex-col items-center gap-6">
+        <div className="relative z-10 flex flex-col items-center gap-6" style={{ pointerEvents: 'auto' }}>
           {/* Logo treatment */}
           <div className="flex flex-col items-center gap-1">
             <motion.div
-              className="text-8xl md:text-9xl font-black leading-none tracking-tight"
+              className="text-7xl md:text-8xl font-black leading-none tracking-tight"
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
               <span className="text-[#FFB941]"></span>
               <span className="relative inline-block">
-                <span className="text-[#FFB941]">Research</span>
+                {/* <span className="text-[#FFB941]">Research</span> */}
                 {/* Animated strikethrough */}
                 <motion.span
-                  className="absolute left-0 bottom-1/3 h-[10px] bg-[#000000] rounded"
-                  style={{ width: '100%', originX: 0 }}
-                  initial={{ scaleX: 0, opacity: 0 }}
-                  animate={{ scaleX: 1, opacity: 0.5 }}
-                  transition={{ delay: 1, duration: 1, ease: 'easeInOut' }}
+                  // className="absolute left-0 bottom-1/3 h-[10px] bg-[#000000] rounded"
+                  // style={{ width: '100%', originX: 0 }}
+                  // initial={{ scaleX: 0, opacity: 0 }}
+                  // animate={{ scaleX: 1, opacity: 0.5 }}
+                  // transition={{ delay: 1, duration: 1, ease: 'easeInOut' }}
                 />
-              </span>
+              </span> 
             </motion.div>
             <motion.div
               className="text-8xl md:text-9xl font-black leading-none tracking-tight text-[#2EC4B6]"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.0, duration: 0.4 }}
+              transition={{ delay: 1.0, duration: 1.2 }}
             >
-              Rescratch
+              {/* Rescratch */}
             </motion.div>
           </div>
 
@@ -68,9 +72,9 @@ export function HeroPage() {
             className="text-lg md:text-xl text-[#6B6B6B] max-w-md"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 1.4, duration: 0.4 }}
+            transition={{ delay: 1.4, duration: 1.6 }}
           >
-            Learn research methodology by doing.
+            Learn research from scratch.
           </motion.p>
 
           {/* CTA */}
@@ -101,8 +105,8 @@ export function HeroPage() {
       <section ref={pillarsRef} className="py-24 px-6 bg-white">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-14">
-            <h2 className="text-4xl font-bold text-[#1A1A1A] mb-3">Choose Your Field</h2>
-            <p className="text-[#6B6B6B] text-lg">Pick a discipline. Master its methodology.</p>
+            <h2 className="text-4xl font-bold text-[#1A1A1A] mb-3">Learn how to conduct research from scratch</h2>
+            {/* <p className="text-[#6B6B6B] text-lg">Learn how to conduct research from scratch.</p> */}
           </div>
 
           {/* Grid: 3-col desktop, 2-col tablet, 1-col mobile. 2nd row centered. */}
@@ -128,7 +132,7 @@ export function HeroPage() {
               onClick={() => navigate('/explore')}
               className="text-[#2EC4B6] hover:text-[#239E93] font-semibold text-sm transition-colors"
             >
-              Or browse all 110 challenges →
+              Browse challenges →
             </button>
           </div>
         </div>
