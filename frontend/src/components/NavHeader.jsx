@@ -46,7 +46,7 @@ export function NavHeader() {
 
   const bgClass = isHero && !scrolled
     ? 'bg-transparent'
-    : 'bg-gray-900/90 border-b border-white/10'
+    : 'bg-white/95 border-b border-[#E5E3DE]'
 
   return (
     <header
@@ -56,8 +56,8 @@ export function NavHeader() {
       <div className="h-full px-6 flex items-center gap-4">
         {/* Logo */}
         <Link to="/" className="flex-shrink-0 text-xl font-bold tracking-tight">
-          <span className="text-gray-400">Re</span>
-          <span className="text-indigo-400">Scratch</span>
+          <span className="text-[#9A9A9A]">Re</span>
+          <span className="text-[#2EC4B6]">Scratch</span>
         </Link>
 
         {/* Explore tab */}
@@ -65,8 +65,8 @@ export function NavHeader() {
           to="/explore"
           className={`text-sm font-medium transition-colors flex-shrink-0 ${
             isExplore
-              ? 'text-white border-b-2 border-indigo-400 pb-0.5'
-              : 'text-gray-400 hover:text-white'
+              ? 'text-[#1A1A1A] border-b-2 border-[#2EC4B6] pb-0.5'
+              : 'text-[#6B6B6B] hover:text-[#1A1A1A]'
           }`}
         >
           Explore
@@ -81,7 +81,7 @@ export function NavHeader() {
         {/* Search — hidden on lab */}
         {!isLab && (
           <form onSubmit={handleSearchSubmit} className="relative hidden md:block">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 w-4 h-4 pointer-events-none" />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-[#9A9A9A] w-4 h-4 pointer-events-none" />
             <input
               ref={inputRef}
               type="text"
@@ -97,7 +97,7 @@ export function NavHeader() {
                 }
               }}
               placeholder="Search challenges..."
-              className="w-60 pl-9 pr-4 py-1.5 rounded-full bg-gray-800 border border-white/10 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500 transition-colors"
+              className="w-60 pl-9 pr-4 py-1.5 rounded-full bg-[#F7F7F5] border border-[#E5E3DE] text-sm text-[#1A1A1A] placeholder-[#9A9A9A] focus:outline-none focus:border-[#2EC4B6] transition-colors"
             />
           </form>
         )}
@@ -107,12 +107,12 @@ export function NavHeader() {
           <button
             onMouseEnter={() => setShowTooltip(true)}
             onMouseLeave={() => setShowTooltip(false)}
-            className="w-8 h-8 rounded-full bg-gray-700 flex items-center justify-center hover:bg-gray-600 transition-colors"
+            className="w-8 h-8 rounded-full bg-[#F7F7F5] flex items-center justify-center hover:bg-[#EFEFEC] transition-colors"
           >
-            <User className="w-4 h-4 text-gray-400" />
+            <User className="w-4 h-4 text-[#6B6B6B]" />
           </button>
           {showTooltip && (
-            <div className="absolute right-0 top-10 bg-gray-800 text-gray-300 text-xs px-2 py-1 rounded whitespace-nowrap border border-white/10">
+            <div className="absolute right-0 top-10 bg-[#1A1A1A] text-white text-xs px-2 py-1 rounded whitespace-nowrap border border-[#E5E3DE]">
               Coming soon
             </div>
           )}
@@ -133,31 +133,31 @@ function LabBreadcrumb() {
   const subtopicLabel = challenge.subtopic ? getSubtopicLabel(challenge.subtopic) : null
 
   return (
-    <nav className="flex items-center gap-1 text-xs text-gray-500 min-w-0 overflow-hidden">
-      <span className="text-gray-600">/</span>
+    <nav className="flex items-center gap-1 text-xs text-[#9A9A9A] min-w-0 overflow-hidden">
+      <span className="text-[#9A9A9A]">/</span>
       {pillar && (
         <>
           <Link
             to={`/explore?pillar=${pillar.id}`}
-            className="hover:text-gray-300 transition-colors whitespace-nowrap"
+            className="hover:text-[#1A1A1A] transition-colors whitespace-nowrap"
           >
             {pillar.emoji} {pillar.title}
           </Link>
-          <span className="text-gray-600">/</span>
+          <span className="text-[#9A9A9A]">/</span>
         </>
       )}
       {subtopicLabel && (
         <>
           <Link
             to={`/explore?pillar=${challenge.pillar}&subtopic=${challenge.subtopic}`}
-            className="hover:text-gray-300 transition-colors whitespace-nowrap"
+            className="hover:text-[#1A1A1A] transition-colors whitespace-nowrap"
           >
             {subtopicLabel}
           </Link>
-          <span className="text-gray-600">/</span>
+          <span className="text-[#9A9A9A]">/</span>
         </>
       )}
-      <span className="text-gray-400 truncate max-w-[200px]">{challenge.title}</span>
+      <span className="text-[#6B6B6B] truncate max-w-[200px]">{challenge.title}</span>
     </nav>
   )
 }

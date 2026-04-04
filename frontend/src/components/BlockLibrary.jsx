@@ -28,15 +28,15 @@ export function BlockLibrary() {
   }
 
   return (
-    <aside className="w-64 min-w-[16rem] flex flex-col bg-gray-900 text-white overflow-hidden">
+    <aside className="w-64 min-w-[16rem] flex flex-col bg-[#F7F7F5] text-[#1A1A1A] overflow-hidden">
       {/* Header */}
-      <div className="px-4 py-3 border-b border-gray-700 flex-shrink-0">
-        <h2 className="font-bold text-sm text-gray-200 uppercase tracking-wider">Block Library</h2>
-        <p className="text-xs text-gray-500 mt-0.5">Click a block to add it to the canvas</p>
+      <div className="px-4 py-3 border-b border-[#E5E3DE] flex-shrink-0">
+        <h2 className="font-bold text-sm text-[#1A1A1A] uppercase tracking-wider">Block Library</h2>
+        <p className="text-xs text-[#9A9A9A] mt-0.5">Click a block to add it to the canvas</p>
       </div>
 
       {/* Category tab pills */}
-      <div className="px-3 py-2 flex flex-wrap gap-1.5 border-b border-gray-700 flex-shrink-0">
+      <div className="px-3 py-2 flex flex-wrap gap-1.5 border-b border-[#E5E3DE] flex-shrink-0">
         {PIPELINE_ORDER.filter((cat) => availableCategories.includes(cat)).map((cat) => {
           const colors = CATEGORY_COLORS[cat]
           return (
@@ -61,9 +61,9 @@ export function BlockLibrary() {
           return (
             <div key={cat} ref={(el) => (sectionRefs.current[cat] = el)}>
               {/* Category header */}
-              <div className={`px-4 py-2 flex items-center gap-2 sticky top-0 bg-gray-800 border-b border-gray-700`}>
+              <div className={`px-4 py-2 flex items-center gap-2 sticky top-0 bg-[#F7F7F5] border-b border-[#E5E3DE]`}>
                 <span className={`w-3 h-3 rounded-full ${colors.badge} flex-shrink-0`} />
-                <span className="text-xs font-bold text-gray-200 uppercase tracking-wide">
+                <span className="text-xs font-bold text-[#1A1A1A] uppercase tracking-wide">
                   {CATEGORY_ICONS[cat]} {CATEGORY_LABELS[cat]}
                 </span>
               </div>
@@ -94,8 +94,8 @@ function LibraryBlock({ block, colors, onAdd }) {
         <span className={`w-2.5 h-2.5 rounded-full flex-shrink-0 ${colors.badge}`} />
         <span className={`text-xs font-bold ${colors.text} leading-tight`}>{block.label}</span>
       </div>
-      <p className="text-xs text-gray-500 leading-snug line-clamp-2">{block.description}</p>
-      <div className="mt-1 text-xs text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity">
+      <p className="text-xs text-[#6B6B6B] leading-snug line-clamp-2">{block.description}</p>
+      <div className="mt-1 text-xs text-[#9A9A9A] opacity-0 group-hover:opacity-100 transition-opacity">
         + Add to canvas
       </div>
     </button>

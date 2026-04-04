@@ -63,7 +63,7 @@ export function ExplorePage() {
   const activeSubtopicLabel = filters.subtopic ? getSubtopicLabel(filters.subtopic) : null
 
   return (
-    <div className="min-h-screen bg-gray-950 pt-14">
+    <div className="min-h-screen bg-white pt-14">
       <div className="max-w-7xl mx-auto px-6 py-8 flex gap-8">
         {/* Sidebar */}
         <FilterSidebar filters={filters} onFilterChange={onFilterChange} />
@@ -74,21 +74,21 @@ export function ExplorePage() {
           <div className="mb-6">
             {activePillar ? (
               <div>
-                <h1 className="text-2xl font-bold text-white flex items-center gap-2">
+                <h1 className="text-2xl font-bold text-[#1A1A1A] flex items-center gap-2">
                   <span>{activePillar.emoji}</span>
                   <span>{activePillar.title}</span>
                   {activeSubtopicLabel && (
-                    <span className="text-gray-500 font-normal">
+                    <span className="text-[#6B6B6B] font-normal">
                       / {activeSubtopicLabel}
                     </span>
                   )}
                 </h1>
-                <p className="text-sm text-gray-500 mt-1">{activePillar.focus}</p>
+                <p className="text-sm text-[#6B6B6B] mt-1">{activePillar.focus}</p>
               </div>
             ) : (
-              <h1 className="text-2xl font-bold text-white">All Challenges</h1>
+              <h1 className="text-2xl font-bold text-[#1A1A1A]">All Challenges</h1>
             )}
-            <p className="text-sm text-gray-600 mt-2">
+            <p className="text-sm text-[#9A9A9A] mt-2">
               Showing {filtered.length} challenge{filtered.length !== 1 ? 's' : ''}
             </p>
           </div>
@@ -98,7 +98,7 @@ export function ExplorePage() {
             <select
               value={sort}
               onChange={(e) => { setSort(e.target.value); setPage(1) }}
-              className="text-sm bg-gray-800 border border-white/10 text-gray-300 rounded-lg px-3 py-1.5 focus:outline-none focus:border-indigo-500"
+              className="text-sm bg-[#F7F7F5] border border-[#E5E3DE] text-[#1A1A1A] rounded-lg px-3 py-1.5 focus:outline-none focus:border-[#2EC4B6]"
             >
               <option value="easy">Difficulty (Easy First)</option>
               <option value="hard">Difficulty (Hard First)</option>
@@ -109,11 +109,11 @@ export function ExplorePage() {
           {/* Challenge list */}
           {filtered.length === 0 ? (
             <div className="flex flex-col items-center justify-center py-24 text-center gap-4">
-              <SearchX className="w-12 h-12 text-gray-700" />
-              <p className="text-gray-500">No challenges found matching your filters.</p>
+              <SearchX className="w-12 h-12 text-[#D8D6D0]" />
+              <p className="text-[#6B6B6B]">No challenges found matching your filters.</p>
               <button
                 onClick={() => onFilterChange({ pillar: '', subtopic: '', difficulty: '', search: '' })}
-                className="text-sm text-indigo-400 hover:text-indigo-300 transition-colors underline underline-offset-2"
+                className="text-sm text-[#2EC4B6] hover:text-[#239E93] transition-colors underline underline-offset-2"
               >
                 Clear Filters
               </button>
@@ -139,7 +139,7 @@ export function ExplorePage() {
                 <div className="mt-6 text-center">
                   <button
                     onClick={() => setPage((p) => p + 1)}
-                    className="px-6 py-2 rounded-lg border border-white/10 text-gray-400 hover:text-white hover:border-white/30 transition-colors text-sm"
+                    className="px-6 py-2 rounded-lg border border-[#E5E3DE] text-[#6B6B6B] hover:text-[#1A1A1A] hover:border-[#9A9A9A] transition-colors text-sm"
                   >
                     Load More ({filtered.length - visible.length} remaining)
                   </button>

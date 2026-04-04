@@ -32,17 +32,17 @@ export function PillarCard({ pillar, delay = 0 }) {
       viewport={{ once: true }}
       transition={{ duration: 0.4, delay }}
       whileHover={{ y: -4, transition: { duration: 0.2 } }}
-      className="rounded-xl bg-gray-800 border border-white/8 p-6 flex flex-col gap-4 cursor-default"
+      className="rounded-xl bg-white border border-[#E5E3DE] p-6 flex flex-col gap-4 cursor-default w-full h-auto md:h-[350px] md:w-[370px]"
       style={{
         '--pillar-color': pillar.color,
         transition: 'border-color 0.2s, box-shadow 0.2s',
       }}
       onMouseEnter={(e) => {
         e.currentTarget.style.borderColor = pillar.color + '80'
-        e.currentTarget.style.boxShadow = `0 8px 32px ${pillar.color}20`
+        e.currentTarget.style.boxShadow = `0 8px 32px rgba(0,0,0,0.08)`
       }}
       onMouseLeave={(e) => {
-        e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)'
+        e.currentTarget.style.borderColor = '#E5E3DE'
         e.currentTarget.style.boxShadow = 'none'
       }}
     >
@@ -51,17 +51,17 @@ export function PillarCard({ pillar, delay = 0 }) {
         <div className="flex items-center gap-3 mb-1">
           <span className="text-3xl">{pillar.emoji}</span>
           <div>
-            <div className="font-bold text-white text-lg leading-tight">{pillar.title}</div>
-            <div className="text-gray-500 text-xs">{pillar.subtitle}</div>
+            <div className="font-bold text-[#1A1A1A] text-lg leading-tight">{pillar.title}</div>
+            <div className="text-[#6B6B6B] text-xs">{pillar.subtitle}</div>
           </div>
         </div>
-        <p className="text-gray-500 text-sm italic mt-2">{pillar.focus}</p>
+        <p className="text-[#6B6B6B] text-sm italic mt-2">{pillar.focus}</p>
       </div>
 
-      <div className="border-t border-white/5" />
+      <div className="border-t border-[#E5E3DE]" />
 
       {/* Subtopic groups */}
-      <div className="flex flex-col gap-3 flex-1">
+      <div className="flex flex-col gap-3 flex-1 overflow-y-auto pr-2 custom-scrollbar">
         {groupEntries.map(([parent, subtopics]) => {
           const isOpen = !!openGroups[parent]
           return (
@@ -70,11 +70,11 @@ export function PillarCard({ pillar, delay = 0 }) {
                 onClick={() => toggleGroup(parent)}
                 className="flex items-center justify-between w-full text-left mb-1.5 group"
               >
-                <span className="text-xs font-bold text-gray-500 uppercase tracking-widest group-hover:text-gray-400 transition-colors">
+                <span className="text-xs font-bold text-[#9A9A9A] uppercase tracking-widest group-hover:text-[#6B6B6B] transition-colors">
                   {parent}
                 </span>
                 <ChevronDown
-                  className={`w-3 h-3 text-gray-600 transition-transform ${isOpen ? 'rotate-180' : ''}`}
+                  className={`w-3 h-3 text-[#9A9A9A] transition-transform ${isOpen ? 'rotate-180' : ''}`}
                 />
               </button>
               <AnimatePresence initial={false}>
@@ -94,7 +94,7 @@ export function PillarCard({ pillar, delay = 0 }) {
                           animate={{ opacity: 1, scale: 1 }}
                           transition={{ delay: i * 0.03 }}
                           onClick={() => navigate(`/explore?pillar=${pillar.id}&subtopic=${s.id}`)}
-                          className="text-xs px-3 py-1 rounded-full bg-gray-700 text-gray-300 hover:text-white transition-all"
+                          className="text-xs px-3 py-1 rounded-full bg-[#F7F7F5] text-[#1A1A1A] transition-all"
                           style={{ '--pc': pillar.color }}
                           onMouseEnter={(e) => {
                             e.currentTarget.style.backgroundColor = pillar.color + '33'

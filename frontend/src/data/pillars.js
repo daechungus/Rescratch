@@ -4,7 +4,7 @@ const PILLARS = [
     emoji: '🧪',
     title: 'Science',
     subtitle: 'Natural & Life',
-    focus: 'Understanding the physical world and biological systems.',
+    focus: 'Understanding the physical and biological world.',
     color: '#22c55e',
     subtopics: [
       { id: 'biology_molecular', label: 'Molecular & Cellular Biology', description: 'Genetics, Synthetic Biology, CRISPR', parent: 'Biology' },
@@ -39,7 +39,7 @@ const PILLARS = [
     emoji: '🏗',
     title: 'Engineering',
     subtitle: 'Systems & Application',
-    focus: 'Building and optimizing complex physical/digital structures.',
+    focus: 'Building and optimizing complex structures.',
     color: '#f97316',
     subtopics: [
       { id: 'mechanical_aerospace', label: 'Mechanical & Aerospace', description: 'Robotics, Fluid Dynamics, Propulsion Systems', parent: 'Mechanical & Aerospace' },
@@ -68,7 +68,7 @@ const PILLARS = [
     emoji: '🧠',
     title: 'Human & Social Sciences',
     subtitle: 'The Behavioral Bridge',
-    focus: 'Using STEM methods to study human behavior.',
+    focus: 'Understanding human behavior.',
     color: '#ef476f',
     subtopics: [
       { id: 'psychology', label: 'Psychology', description: 'Cognitive Science, Behavioral Neuroscience', parent: 'Psychology' },

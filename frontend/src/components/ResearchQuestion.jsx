@@ -31,11 +31,11 @@ export function ResearchQuestion() {
   const diffStyle = DIFFICULTY_STYLES[currentChallenge.difficulty] || DIFFICULTY_STYLES.beginner
 
   return (
-    <header className="bg-white border-b border-gray-200 px-6 py-3 flex-shrink-0">
+    <header className="bg-white border-b border-[#E5E3DE] px-6 py-3 flex-shrink-0">
       <div className="flex items-center gap-4">
         <button
           onClick={handleBack}
-          className="text-gray-400 hover:text-gray-700 text-sm flex-shrink-0 transition-colors"
+          className="text-[#9A9A9A] hover:text-[#1A1A1A] text-sm flex-shrink-0 transition-colors"
           title="Back to challenges"
         >
           ← Back
@@ -47,12 +47,12 @@ export function ResearchQuestion() {
               {currentChallenge.difficulty}
             </span>
             {(currentChallenge.tags || []).map((tag) => (
-              <span key={tag} className="text-xs text-gray-400 bg-gray-100 px-2 py-0.5 rounded-full">
+              <span key={tag} className="text-xs text-[#9A9A9A] bg-[#F0EFEB] px-2 py-0.5 rounded-full">
                 {tag}
               </span>
             ))}
           </div>
-          <h1 className="text-base font-bold text-gray-900 leading-snug truncate">
+          <h1 className="text-base font-bold text-[#1A1A1A] leading-snug truncate">
             🔬 {currentChallenge.title}
           </h1>
         </div>
@@ -61,14 +61,14 @@ export function ResearchQuestion() {
           <div className="flex items-center gap-2 flex-shrink-0">
             <button
               onClick={resetCanvas}
-              className="px-4 py-2 text-sm rounded-lg border border-gray-300 text-gray-600 hover:bg-gray-50 transition-colors"
+              className="px-4 py-2 text-sm rounded-lg border border-[#E5E3DE] text-[#6B6B6B] hover:bg-[#F7F7F5] transition-colors"
             >
               Reset
             </button>
             <button
               onClick={submitPipeline}
               disabled={isLoading}
-              className="px-5 py-2 text-sm font-bold rounded-lg bg-green-600 text-white hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors shadow-sm"
+              className="px-5 py-2 text-sm font-bold rounded-lg bg-[#2EC4B6] text-white hover:bg-[#239E93] disabled:opacity-50 disabled:cursor-not-allowed transition-colors shadow-sm"
             >
               {isLoading ? 'Running…' : '▶ Run Experiment'}
             </button>
@@ -79,13 +79,13 @@ export function ResearchQuestion() {
           <div className="flex items-center gap-2 flex-shrink-0">
             <button
               onClick={resetCanvas}
-              className="px-4 py-2 text-sm rounded-lg border border-gray-300 text-gray-600 hover:bg-gray-50 transition-colors"
+              className="px-4 py-2 text-sm rounded-lg border border-[#E5E3DE] text-[#6B6B6B] hover:bg-[#F7F7F5] transition-colors"
             >
               Try Again
             </button>
             <button
               onClick={() => { backToMenu(); navigate('/explore') }}
-              className="px-5 py-2 text-sm font-bold rounded-lg bg-indigo-600 text-white hover:bg-indigo-700 transition-colors shadow-sm"
+              className="px-5 py-2 text-sm font-bold rounded-lg bg-[#2EC4B6] text-white hover:bg-[#239E93] transition-colors shadow-sm"
             >
               New Challenge →
             </button>

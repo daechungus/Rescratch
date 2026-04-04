@@ -40,7 +40,7 @@ export function FreeCanvas() {
 
   return (
     <div
-      className="flex-1 overflow-auto bg-gray-100 relative"
+      className="flex-1 overflow-auto bg-[#F0EFEB] relative"
       style={{ cursor: connectingFrom ? 'crosshair' : 'default' }}
     >
       {/* Broken Lab banner */}
@@ -53,7 +53,7 @@ export function FreeCanvas() {
       {/* Empty state */}
       {canvasBlocks.length === 0 && (
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
-          <div className="text-center text-gray-400">
+          <div className="text-center text-[#9A9A9A]">
             <div className="text-5xl mb-3">🧪</div>
             <div className="text-lg font-semibold">Your lab bench is empty</div>
             <div className="text-sm mt-1">Click blocks in the library on the left to add them here</div>
@@ -69,7 +69,7 @@ export function FreeCanvas() {
           position: 'relative',
           width: CANVAS_W,
           height: CANVAS_H,
-          backgroundImage: 'radial-gradient(circle, #d1d5db 1px, transparent 1px)',
+          backgroundImage: 'radial-gradient(circle, #D8D6D0 1px, transparent 1px)',
           backgroundSize: '28px 28px',
         }}
       >

@@ -16,7 +16,7 @@ function AppInner() {
   }, [])
 
   return (
-    <div className="flex flex-col min-h-screen bg-gray-950 text-white">
+    <div className="flex flex-col min-h-screen bg-white text-[#1A1A1A]">
       <NavHeader />
       <Routes>
         <Route path="/" element={<HeroPage />} />

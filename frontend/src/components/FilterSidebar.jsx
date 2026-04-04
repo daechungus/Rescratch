@@ -1,11 +1,11 @@
 import PILLARS from '../data/pillars.js'
 
 const DIFFICULTY_OPTIONS = [
-  { value: '', label: 'All', color: 'bg-gray-700 text-gray-300' },
-  { value: 'beginner', label: 'Beginner', color: 'bg-green-900/60 text-green-400' },
-  { value: 'intermediate', label: 'Intermediate', color: 'bg-yellow-900/60 text-yellow-400' },
-  { value: 'advanced', label: 'Advanced', color: 'bg-orange-900/60 text-orange-400' },
-  { value: 'expert', label: 'Expert', color: 'bg-red-900/60 text-red-400' },
+  { value: '', label: 'All', color: 'bg-[#F7F7F5] text-[#6B6B6B]' },
+  { value: 'beginner', label: 'Beginner', color: 'bg-green-50 text-green-600' },
+  { value: 'intermediate', label: 'Intermediate', color: 'bg-[#FFF3DC] text-[#FFB941]' },
+  { value: 'advanced', label: 'Advanced', color: 'bg-orange-50 text-orange-600' },
+  { value: 'expert', label: 'Expert', color: 'bg-purple-50 text-purple-700' },
 ]
 
 export function FilterSidebar({ filters, onFilterChange }) {
@@ -14,10 +14,10 @@ export function FilterSidebar({ filters, onFilterChange }) {
   const activePillar = filters.pillar ? PILLARS.find((p) => p.id === filters.pillar) : null
 
   return (
-    <aside className="w-64 flex-shrink-0 flex flex-col gap-6 py-6 pr-4">
+    <aside className="w-64 flex-shrink-0 flex flex-col gap-6 py-6 pr-4 sticky top-16 self-start max-h-[calc(100vh-4rem)] overflow-y-auto bg-[#F7F7F5] rounded-xl p-4">
       {/* Discipline */}
       <div>
-        <div className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-3">
+        <div className="text-xs font-bold text-[#9A9A9A] uppercase tracking-widest mb-3">
           Discipline
         </div>
         <div className="flex flex-col gap-1">
@@ -25,8 +25,8 @@ export function FilterSidebar({ filters, onFilterChange }) {
             onClick={() => onFilterChange({ pillar: '', subtopic: '' })}
             className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm transition-colors text-left border-l-2 ${
               !filters.pillar
-                ? 'bg-gray-800 text-white border-indigo-500'
-                : 'text-gray-400 hover:text-white hover:bg-gray-800/50 border-transparent'
+                ? 'bg-white text-[#1A1A1A] border-[#2EC4B6]'
+                : 'text-[#6B6B6B] hover:text-[#1A1A1A] hover:bg-[#EFEFEC] border-transparent'
             }`}
           >
             All Disciplines
@@ -41,8 +41,8 @@ export function FilterSidebar({ filters, onFilterChange }) {
                 }
                 className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm transition-all text-left border-l-2 ${
                   isActive
-                    ? 'bg-gray-800 text-white'
-                    : 'text-gray-400 hover:text-white hover:bg-gray-800/50'
+                    ? 'bg-white text-[#1A1A1A]'
+                    : 'text-[#6B6B6B] hover:text-[#1A1A1A] hover:bg-[#EFEFEC]'
                 }`}
                 style={{ borderLeftColor: isActive ? pillar.color : 'transparent' }}
                 onMouseEnter={(e) => { if (!isActive) e.currentTarget.style.borderLeftColor = pillar.color + '60' }}
@@ -59,18 +59,18 @@ export function FilterSidebar({ filters, onFilterChange }) {
       {/* Subtopic — only when pillar selected */}
       {activePillar && (
         <div>
-          <div className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-3">
+          <div className="text-xs font-bold text-[#9A9A9A] uppercase tracking-widest mb-3">
             Topic
           </div>
           <div className="flex flex-col gap-1">
             <button
               onClick={() => onFilterChange({ subtopic: '' })}
               className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm transition-colors text-left ${
-                !filters.subtopic ? 'text-white' : 'text-gray-500 hover:text-gray-300'
+                !filters.subtopic ? 'text-[#1A1A1A]' : 'text-[#9A9A9A] hover:text-[#6B6B6B]'
               }`}
             >
               <span
-                className={`w-2 h-2 rounded-full flex-shrink-0 ${!filters.subtopic ? 'bg-indigo-400' : 'bg-gray-700'}`}
+                className={`w-2 h-2 rounded-full flex-shrink-0 ${!filters.subtopic ? 'bg-[#2EC4B6]' : 'bg-[#E5E3DE]'}`}
               />
               All Topics
             </button>
@@ -81,12 +81,12 @@ export function FilterSidebar({ filters, onFilterChange }) {
                   key={s.id}
                   onClick={() => onFilterChange({ subtopic: isActive ? '' : s.id })}
                   className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm transition-colors text-left ${
-                    isActive ? 'text-white' : 'text-gray-500 hover:text-gray-300'
+                    isActive ? 'text-[#1A1A1A]' : 'text-[#9A9A9A] hover:text-[#6B6B6B]'
                   }`}
                 >
                   <span
                     className="w-2 h-2 rounded-full flex-shrink-0"
-                    style={{ backgroundColor: isActive ? activePillar.color : '#374151' }}
+                    style={{ backgroundColor: isActive ? activePillar.color : '#E5E3DE' }}
                   />
                   {s.label}
                 </button>
@@ -98,7 +98,7 @@ export function FilterSidebar({ filters, onFilterChange }) {
 
       {/* Difficulty */}
       <div>
-        <div className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-3">
+        <div className="text-xs font-bold text-[#9A9A9A] uppercase tracking-widest mb-3">
           Difficulty
         </div>
         <div className="flex flex-wrap gap-1.5">
@@ -108,7 +108,7 @@ export function FilterSidebar({ filters, onFilterChange }) {
               onClick={() => onFilterChange({ difficulty: opt.value })}
               className={`text-xs font-semibold px-3 py-1 rounded-full transition-all ${opt.color} ${
                 filters.difficulty === opt.value
-                  ? 'ring-2 ring-white/30 scale-105'
+                  ? 'ring-2 ring-[#2EC4B6]/30 scale-105'
                   : 'opacity-60 hover:opacity-100'
               }`}
             >
@@ -120,7 +120,7 @@ export function FilterSidebar({ filters, onFilterChange }) {
 
       {/* Status (placeholder) */}
       <div>
-        <div className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-3">
+        <div className="text-xs font-bold text-[#9A9A9A] uppercase tracking-widest mb-3">
           Status
         </div>
         <div className="flex flex-col gap-1">
@@ -128,12 +128,12 @@ export function FilterSidebar({ filters, onFilterChange }) {
             <button
               key={s}
               className={`text-left px-3 py-1.5 rounded-lg text-sm transition-colors ${
-                i === 0 ? 'text-white' : 'text-gray-600 cursor-not-allowed'
+                i === 0 ? 'text-[#1A1A1A]' : 'text-[#9A9A9A] cursor-not-allowed'
               }`}
               disabled={i > 0}
               title={i > 0 ? 'Coming soon — no persistence yet' : undefined}
             >
-              <span className={`inline-block w-2 h-2 rounded-full mr-2 ${i === 0 ? 'bg-indigo-400' : 'bg-gray-700'}`} />
+              <span className={`inline-block w-2 h-2 rounded-full mr-2 ${i === 0 ? 'bg-[#2EC4B6]' : 'bg-[#E5E3DE]'}`} />
               {s}
             </button>
           ))}
@@ -144,7 +144,7 @@ export function FilterSidebar({ filters, onFilterChange }) {
       {hasAnyFilter && (
         <button
           onClick={() => onFilterChange({ pillar: '', subtopic: '', difficulty: '' })}
-          className="text-xs text-gray-500 hover:text-gray-300 transition-colors text-left underline underline-offset-2"
+          className="text-xs text-[#9A9A9A] hover:text-[#6B6B6B] transition-colors text-left underline underline-offset-2"
         >
           Clear All Filters
         </button>
