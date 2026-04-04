@@ -4,10 +4,7 @@ import { useStore } from '../store.js'
 import { useGameState } from '../hooks/useGameState.js'
 
 export function Toolbar() {
-  const { gamePhase, currentChallenge, hintIndex, isLoading } = useGameState()
-  const submitPipeline = useStore((s) => s.submitPipeline)
-  const resetPipeline = useStore((s) => s.resetCanvas)
-  const backToMenu = useStore((s) => s.backToMenu)
+  const { gamePhase, currentChallenge, hintIndex } = useGameState()
   const advanceHint = useStore((s) => s.advanceHint)
 
   const [showHint, setShowHint] = useState(false)
@@ -51,42 +48,7 @@ export function Toolbar() {
           )}
         </AnimatePresence>
 
-        <div className="flex items-center gap-2">
-          {gamePhase === 'building' && (
-            <>
-              <button
-                onClick={resetPipeline}
-                className="px-4 py-2 text-sm rounded-lg border border-gray-300 text-gray-600 hover:bg-gray-50 transition-colors"
-              >
-                Reset
-              </button>
-              <button
-                onClick={submitPipeline}
-                disabled={isLoading}
-                className="px-6 py-2 text-sm font-bold rounded-lg bg-indigo-600 text-white hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors shadow-sm"
-              >
-                {isLoading ? 'Running…' : '▶ Run Experiment'}
-              </button>
-            </>
-          )}
-
-          {gamePhase === 'submitted' && (
-            <>
-              <button
-                onClick={resetPipeline}
-                className="px-4 py-2 text-sm rounded-lg border border-gray-300 text-gray-600 hover:bg-gray-50 transition-colors"
-              >
-                Try Again
-              </button>
-              <button
-                onClick={backToMenu}
-                className="px-6 py-2 text-sm font-bold rounded-lg bg-indigo-600 text-white hover:bg-indigo-700 transition-colors shadow-sm"
-              >
-                New Challenge →
-              </button>
-            </>
-          )}
-        </div>
+        <div />
       </div>
     </footer>
   )

@@ -75,7 +75,6 @@ export function LevelSelect() {
                     >
                       <div className="flex items-start justify-between mb-3">
                         <div className="flex items-center gap-2">
-                          <span className="text-xs font-bold text-gray-400">Level {challenge.level}</span>
                           <span className={`text-xs font-semibold px-2 py-0.5 rounded-full capitalize ${style.badge}`}>
                             {challenge.difficulty}
                           </span>

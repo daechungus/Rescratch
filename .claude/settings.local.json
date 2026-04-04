@@ -7,7 +7,29 @@
       "Bash(python -c \"import json; d=json.load\\(open\\(''data/challenges.json''\\)\\); [print\\(f\"\"L{c[''level'']} [{c[''difficulty'']:12}] {c[''title'']}\"\"\\) for c in d[''challenges'']]\")",
       "Bash(python scripts/fetch_arxiv.py --max 3)",
       "Bash(python -c \"import json; d=json.load\\(open\\(''data/challenges.json''\\)\\); print\\(f''{len\\(d[\"\"challenges\"\"]\\)} challenges''\\); [print\\(f''  L{c[\"\"level\"\"]} [{c[\"\"difficulty\"\"]:12}] {c[\"\"title\"\"][:60]}''\\) for c in d[''challenges'']]\")",
-      "Bash(grep -r \"resetPipeline\\\\|addBlockToZone\\\\|removeBlockFromZone\\\\|from ''./Canvas\\\\|from ''./BlockPalette\\\\|from ''./Block.jsx''\\\\|useDragAndDrop\\\\|DndContext\\\\|DragOverlay\" c:/Users/daeho/daehoonchung/Rescratch/frontend/src/)"
+      "Bash(grep -r \"resetPipeline\\\\|addBlockToZone\\\\|removeBlockFromZone\\\\|from ''./Canvas\\\\|from ''./BlockPalette\\\\|from ''./Block.jsx''\\\\|useDragAndDrop\\\\|DndContext\\\\|DragOverlay\" c:/Users/daeho/daehoonchung/Rescratch/frontend/src/)",
+      "Bash(npm install:*)",
+      "Bash(npx vite:*)",
+      "Bash(pip install:*)",
+      "Bash(uvicorn app.main:app --reload --port 8000)",
+      "Bash(curl -s http://localhost:8000/api/challenges)",
+      "Bash(netstat -ano)",
+      "Bash(findstr :8000)",
+      "Bash(taskkill /PID 12764 /F)",
+      "Bash(taskkill /PID 64032 /F)",
+      "Bash(cmd /c \"taskkill /PID 12764 /F\")",
+      "Bash(cmd /c \"taskkill /PID 64032 /F\")",
+      "Bash(cmd /c \"netstat -ano | findstr :8000\")",
+      "Bash(uvicorn app.main:app --port 8000)",
+      "Read(//tmp/**)",
+      "Read(//c/Users/daeho/AppData/Local/Temp/**)",
+      "Bash(python -c \"import uvicorn; import sys; sys.path.insert\\(0, ''C:/Users/daeho/daehoonchung/Rescratch''\\); print\\(''ok''\\)\")",
+      "Bash(python -c \":*)",
+      "Bash(curl -s http://localhost:8001/api/challenges)",
+      "Bash(python -c \"import json; data=json.load\\(open\\(''C:/Users/daeho/daehoonchung/Rescratch/data/challenges.json''\\)\\); print\\(len\\(data[''challenges'']\\), ''existing challenges''\\); print\\([c[''id''] for c in data[''challenges'']]\\)\")",
+      "Bash(python scripts/fetch_arxiv.py --cat cs.LG cs.AI cs.CL cs.CV cs.NE --max 30 --start-level 11 --out data/challenges.json)",
+      "Bash(python scripts/fetch_arxiv.py --cat cs.DS cs.CC cs.DM cs.PL cs.SE --max 25 --start-level 41 --out data/challenges.json)",
+      "Bash(python -c \"import json; data=json.load\\(open\\(''C:/Users/daeho/daehoonchung/Rescratch/data/challenges.json''\\)\\); print\\(json.dumps\\(data[''challenges''][0], indent=2\\)\\)\")"
     ]
   }
 }

@@ -6,13 +6,28 @@
       "difficulty": "beginner",
       "level": 1,
       "description": "You want to test whether applying standard data augmentation (random flips, crops, colour jitter) during training increases the test accuracy of a CNN image classifier on a fixed dataset.",
-      "available_categories": ["HYPOTHESIS", "VARIABLE", "METHOD", "SAMPLE", "DATA_COLLECTION", "ANALYSIS", "CONCLUSION"],
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
       "hints": [
         "You are turning augmentation on vs off — you control that directly. What method does that imply?",
         "Test accuracy (%) is a number you measure. What data collection tool fits a numerical measurement?",
         "Control for: model architecture, optimizer, learning rate, number of epochs, and random seed."
       ],
-      "tags": ["experiment", "quantitative", "deep-learning", "CV"]
+      "tags": [
+        "experiment",
+        "quantitative",
+        "deep-learning",
+        "CV"
+      ],
+      "pillar": "technology",
+      "subtopic": "computer_vision"
     },
     {
       "id": "learning_rate_convergence",
@@ -20,13 +35,28 @@
       "difficulty": "beginner",
       "level": 2,
       "description": "You hypothesise that a higher learning rate causes a neural network to converge faster but with lower final accuracy. Design a study to test this across a range of learning rate values.",
-      "available_categories": ["HYPOTHESIS", "VARIABLE", "METHOD", "SAMPLE", "DATA_COLLECTION", "ANALYSIS", "CONCLUSION"],
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
       "hints": [
         "You set the learning rate — you are directly manipulating it. Lab experiment.",
         "Epochs-to-convergence and final validation loss are numerical measurements.",
         "Control for: network architecture, dataset, batch size, weight initialisation, and random seed."
       ],
-      "tags": ["experiment", "quantitative", "deep-learning", "optimisation"]
+      "tags": [
+        "experiment",
+        "quantitative",
+        "deep-learning",
+        "optimisation"
+      ],
+      "pillar": "technology",
+      "subtopic": "machine_learning"
     },
     {
       "id": "batch_size_generalisation",
@@ -34,13 +64,28 @@
       "difficulty": "intermediate",
       "level": 3,
       "description": "There is evidence that large-batch training produces models that generalise worse than small-batch training (the 'sharp minima' hypothesis). Design a study to rigorously test this across multiple architectures.",
-      "available_categories": ["HYPOTHESIS", "VARIABLE", "METHOD", "SAMPLE", "DATA_COLLECTION", "ANALYSIS", "CONCLUSION"],
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
       "hints": [
         "You manipulate batch size across multiple controlled runs — what method is this?",
         "Measure both train/test accuracy gap and sharpness metrics — all quantitative.",
         "Control for: total compute budget (not epochs), learning rate scaling rule, architecture, and dataset."
       ],
-      "tags": ["experiment", "quantitative", "deep-learning", "generalisation"]
+      "tags": [
+        "experiment",
+        "quantitative",
+        "deep-learning",
+        "generalisation"
+      ],
+      "pillar": "technology",
+      "subtopic": "machine_learning"
     },
     {
       "id": "quantization_accuracy_tradeoff",
@@ -48,13 +93,29 @@
       "difficulty": "intermediate",
       "level": 4,
       "description": "You want to measure how different quantization schemes (INT8, INT4, GPTQ, AWQ) affect the downstream task accuracy of a large language model relative to its full-precision baseline.",
-      "available_categories": ["HYPOTHESIS", "VARIABLE", "METHOD", "SAMPLE", "DATA_COLLECTION", "ANALYSIS", "CONCLUSION"],
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
       "hints": [
         "You apply different quantization schemes to the same base model — lab experiment with multiple conditions.",
         "Benchmark scores (MMLU %, HellaSwag %, etc.) are quantitative measurements.",
         "Control for: base model weights, evaluation prompts, temperature (set to 0), and hardware."
       ],
-      "tags": ["experiment", "quantitative", "LLM", "quantization", "efficiency"]
+      "tags": [
+        "experiment",
+        "quantitative",
+        "LLM",
+        "quantization",
+        "efficiency"
+      ],
+      "pillar": "technology",
+      "subtopic": "machine_learning"
     },
     {
       "id": "feature_selection_data_mining",
@@ -62,13 +123,29 @@
       "difficulty": "intermediate",
       "level": 5,
       "description": "You are comparing three feature selection approaches (mutual information, LASSO regularisation, and PCA) on their ability to improve the F1 score of an anomaly detector trained on high-dimensional network traffic logs.",
-      "available_categories": ["HYPOTHESIS", "VARIABLE", "METHOD", "SAMPLE", "DATA_COLLECTION", "ANALYSIS", "CONCLUSION"],
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
       "hints": [
         "You are comparing THREE feature selection methods — which statistical test compares more than two group means?",
         "F1 score per method is a numerical measurement. Run each method on identical train/test splits.",
         "Control for: base classifier, dataset, train/test split seed, and class imbalance handling."
       ],
-      "tags": ["experiment", "quantitative", "data-mining", "anomaly-detection", "anova"]
+      "tags": [
+        "experiment",
+        "quantitative",
+        "data-mining",
+        "anomaly-detection",
+        "anova"
+      ],
+      "pillar": "technology",
+      "subtopic": "machine_learning"
     },
     {
       "id": "rl_reward_shaping",
@@ -76,13 +153,28 @@
       "difficulty": "advanced",
       "level": 6,
       "description": "You want to understand how different reward shaping strategies (sparse, dense, potential-based) affect how quickly a reinforcement learning agent reaches a target performance threshold in a continuous control task.",
-      "available_categories": ["HYPOTHESIS", "VARIABLE", "METHOD", "SAMPLE", "DATA_COLLECTION", "ANALYSIS", "CONCLUSION"],
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
       "hints": [
         "You control the reward function — manipulating it across conditions is a lab experiment.",
         "Steps-to-threshold and final episodic return are quantitative. Average over many seeds.",
         "Control for: policy architecture, optimiser, environment dynamics, episode length, and entropy coefficient."
       ],
-      "tags": ["experiment", "quantitative", "reinforcement-learning", "sample-efficiency"]
+      "tags": [
+        "experiment",
+        "quantitative",
+        "reinforcement-learning",
+        "sample-efficiency"
+      ],
+      "pillar": "technology",
+      "subtopic": "reinforcement_learning"
     },
     {
       "id": "finetuning_catastrophic_forgetting",
@@ -90,13 +182,30 @@
       "difficulty": "advanced",
       "level": 7,
       "description": "You want to model the relationship between LoRA adapter rank and the degree of forgetting on general-purpose benchmarks after fine-tuning a foundation model on a domain-specific task.",
-      "available_categories": ["HYPOTHESIS", "VARIABLE", "METHOD", "SAMPLE", "DATA_COLLECTION", "ANALYSIS", "CONCLUSION"],
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
       "hints": [
         "You want to PREDICT forgetting from LoRA rank — which analysis method models a continuous predictor and outcome?",
         "Measure forgetting as the delta in benchmark score (pre minus post fine-tuning) — quantitative.",
         "Control for: base model, fine-tuning dataset, number of training steps, learning rate, and target modules."
       ],
-      "tags": ["experiment", "quantitative", "fine-tuning", "LLM", "regression", "LoRA"]
+      "tags": [
+        "experiment",
+        "quantitative",
+        "fine-tuning",
+        "LLM",
+        "regression",
+        "LoRA"
+      ],
+      "pillar": "technology",
+      "subtopic": "machine_learning"
     },
     {
       "id": "rlhf_alignment_quality",
@@ -104,15 +213,31 @@
       "difficulty": "expert",
       "level": 8,
       "description": "You want to identify which preference data properties (annotator agreement rate, dataset size, domain diversity) and training design choices (KL penalty coefficient, reward model capacity) predict alignment quality — measured via both automated benchmarks and human preference studies. This requires quantitative modelling and qualitative error analysis of failure modes.",
-      "available_categories": ["HYPOTHESIS", "VARIABLE", "METHOD", "SAMPLE", "DATA_COLLECTION", "ANALYSIS", "CONCLUSION"],
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
       "hints": [
         "This complex question needs mixed methods: automated benchmark scores for scale, human annotation for understanding failure modes.",
         "Use stratified sampling across model scales, annotation sources, and preference dataset sizes.",
         "Regression can model alignment score predictors; content analysis can systematically categorise reward hacking and sycophancy failure types."
       ],
-      "tags": ["mixed", "quantitative", "qualitative", "RLHF", "alignment", "LLM"]
-    }
-  ,
+      "tags": [
+        "mixed",
+        "quantitative",
+        "qualitative",
+        "RLHF",
+        "alignment",
+        "LLM"
+      ],
+      "pillar": "technology",
+      "subtopic": "reinforcement_learning"
+    },
     {
       "id": "broken_lab_ttest_qualitative",
       "type": "broken_lab",
@@ -120,34 +245,118 @@
       "difficulty": "advanced",
       "level": 9,
       "description": "A grad student designed a study to evaluate RLHF fine-tuning quality using open-ended interviews — but then tried to run a t-test on the responses. Find and fix every methodological error.",
-      "available_categories": ["HYPOTHESIS", "VARIABLE", "METHOD", "SAMPLE", "DATA_COLLECTION", "ANALYSIS", "CONCLUSION"],
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
       "hints": [
         "Look at the analysis block. What data type does a t-test require?",
         "The method is a survey — does the data collection match?",
         "Is there a control variable? Does the method require one?"
       ],
-      "tags": ["broken-lab", "qualitative", "NLP", "fix-the-bug"],
+      "tags": [
+        "broken-lab",
+        "qualitative",
+        "NLP",
+        "fix-the-bug"
+      ],
       "broken_canvas": {
         "blocks": [
-          { "instanceId": "bl_h1", "blockDefId": "hypothesis_directional", "x": 60, "y": 80 },
-          { "instanceId": "bl_v1", "blockDefId": "independent_variable", "x": 340, "y": 60 },
-          { "instanceId": "bl_v2", "blockDefId": "dependent_variable", "x": 340, "y": 160 },
-          { "instanceId": "bl_m1", "blockDefId": "method_survey", "x": 620, "y": 80 },
-          { "instanceId": "bl_s1", "blockDefId": "sample_small", "x": 620, "y": 220 },
-          { "instanceId": "bl_s2", "blockDefId": "sampling_convenience", "x": 620, "y": 320 },
-          { "instanceId": "bl_d1", "blockDefId": "data_interview", "x": 900, "y": 80 },
-          { "instanceId": "bl_a1", "blockDefId": "analysis_t_test", "x": 1180, "y": 80 },
-          { "instanceId": "bl_c1", "blockDefId": "conclusion_supports", "x": 1460, "y": 80 }
+          {
+            "instanceId": "bl_h1",
+            "blockDefId": "hypothesis_directional",
+            "x": 60,
+            "y": 80
+          },
+          {
+            "instanceId": "bl_v1",
+            "blockDefId": "independent_variable",
+            "x": 340,
+            "y": 60
+          },
+          {
+            "instanceId": "bl_v2",
+            "blockDefId": "dependent_variable",
+            "x": 340,
+            "y": 160
+          },
+          {
+            "instanceId": "bl_m1",
+            "blockDefId": "method_survey",
+            "x": 620,
+            "y": 80
+          },
+          {
+            "instanceId": "bl_s1",
+            "blockDefId": "sample_small",
+            "x": 620,
+            "y": 220
+          },
+          {
+            "instanceId": "bl_s2",
+            "blockDefId": "sampling_convenience",
+            "x": 620,
+            "y": 320
+          },
+          {
+            "instanceId": "bl_d1",
+            "blockDefId": "data_interview",
+            "x": 900,
+            "y": 80
+          },
+          {
+            "instanceId": "bl_a1",
+            "blockDefId": "analysis_t_test",
+            "x": 1180,
+            "y": 80
+          },
+          {
+            "instanceId": "bl_c1",
+            "blockDefId": "conclusion_supports",
+            "x": 1460,
+            "y": 80
+          }
         ],
         "connections": [
-          { "id": "bc1", "fromInstanceId": "bl_h1", "toInstanceId": "bl_v1" },
-          { "id": "bc2", "fromInstanceId": "bl_h1", "toInstanceId": "bl_v2" },
-          { "id": "bc3", "fromInstanceId": "bl_v1", "toInstanceId": "bl_m1" },
-          { "id": "bc4", "fromInstanceId": "bl_m1", "toInstanceId": "bl_s1" },
-          { "id": "bc5", "fromInstanceId": "bl_d1", "toInstanceId": "bl_a1" },
-          { "id": "bc6", "fromInstanceId": "bl_a1", "toInstanceId": "bl_c1" }
+          {
+            "id": "bc1",
+            "fromInstanceId": "bl_h1",
+            "toInstanceId": "bl_v1"
+          },
+          {
+            "id": "bc2",
+            "fromInstanceId": "bl_h1",
+            "toInstanceId": "bl_v2"
+          },
+          {
+            "id": "bc3",
+            "fromInstanceId": "bl_v1",
+            "toInstanceId": "bl_m1"
+          },
+          {
+            "id": "bc4",
+            "fromInstanceId": "bl_m1",
+            "toInstanceId": "bl_s1"
+          },
+          {
+            "id": "bc5",
+            "fromInstanceId": "bl_d1",
+            "toInstanceId": "bl_a1"
+          },
+          {
+            "id": "bc6",
+            "fromInstanceId": "bl_a1",
+            "toInstanceId": "bl_c1"
+          }
         ]
-      }
+      },
+      "pillar": "technology",
+      "subtopic": "nlp"
     },
     {
       "id": "broken_lab_experiment_no_control",
@@ -156,34 +365,2948 @@
       "difficulty": "expert",
       "level": 10,
       "description": "A researcher benchmarked INT4 quantization on LLM accuracy using a lab experiment — but forgot the control variable, picked a tiny convenience sample, and drew an unsupported conclusion. Debug the pipeline.",
-      "available_categories": ["HYPOTHESIS", "VARIABLE", "METHOD", "SAMPLE", "DATA_COLLECTION", "ANALYSIS", "CONCLUSION"],
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
       "hints": [
         "Lab experiments always need a control variable. What's missing?",
         "The sample size is n<30 and convenience-sampled. Are those appropriate for a rigorous benchmark?",
         "The conclusion 'supports' the hypothesis — but is that warranted with these methodological flaws?"
       ],
-      "tags": ["broken-lab", "experiment", "LLM", "quantization", "fix-the-bug"],
+      "tags": [
+        "broken-lab",
+        "experiment",
+        "LLM",
+        "quantization",
+        "fix-the-bug"
+      ],
       "broken_canvas": {
         "blocks": [
-          { "instanceId": "bl2_h1", "blockDefId": "hypothesis_directional", "x": 60, "y": 120 },
-          { "instanceId": "bl2_v1", "blockDefId": "independent_variable", "x": 340, "y": 80 },
-          { "instanceId": "bl2_v2", "blockDefId": "dependent_variable", "x": 340, "y": 200 },
-          { "instanceId": "bl2_m1", "blockDefId": "method_experiment_lab", "x": 620, "y": 120 },
-          { "instanceId": "bl2_s1", "blockDefId": "sample_small", "x": 620, "y": 260 },
-          { "instanceId": "bl2_s2", "blockDefId": "sampling_convenience", "x": 620, "y": 360 },
-          { "instanceId": "bl2_d1", "blockDefId": "data_measurement", "x": 900, "y": 120 },
-          { "instanceId": "bl2_a1", "blockDefId": "analysis_t_test", "x": 1180, "y": 120 },
-          { "instanceId": "bl2_c1", "blockDefId": "conclusion_supports", "x": 1460, "y": 120 }
+          {
+            "instanceId": "bl2_h1",
+            "blockDefId": "hypothesis_directional",
+            "x": 60,
+            "y": 120
+          },
+          {
+            "instanceId": "bl2_v1",
+            "blockDefId": "independent_variable",
+            "x": 340,
+            "y": 80
+          },
+          {
+            "instanceId": "bl2_v2",
+            "blockDefId": "dependent_variable",
+            "x": 340,
+            "y": 200
+          },
+          {
+            "instanceId": "bl2_m1",
+            "blockDefId": "method_experiment_lab",
+            "x": 620,
+            "y": 120
+          },
+          {
+            "instanceId": "bl2_s1",
+            "blockDefId": "sample_small",
+            "x": 620,
+            "y": 260
+          },
+          {
+            "instanceId": "bl2_s2",
+            "blockDefId": "sampling_convenience",
+            "x": 620,
+            "y": 360
+          },
+          {
+            "instanceId": "bl2_d1",
+            "blockDefId": "data_measurement",
+            "x": 900,
+            "y": 120
+          },
+          {
+            "instanceId": "bl2_a1",
+            "blockDefId": "analysis_t_test",
+            "x": 1180,
+            "y": 120
+          },
+          {
+            "instanceId": "bl2_c1",
+            "blockDefId": "conclusion_supports",
+            "x": 1460,
+            "y": 120
+          }
         ],
         "connections": [
-          { "id": "bc2_1", "fromInstanceId": "bl2_h1", "toInstanceId": "bl2_v1" },
-          { "id": "bc2_2", "fromInstanceId": "bl2_h1", "toInstanceId": "bl2_v2" },
-          { "id": "bc2_3", "fromInstanceId": "bl2_v1", "toInstanceId": "bl2_m1" },
-          { "id": "bc2_4", "fromInstanceId": "bl2_m1", "toInstanceId": "bl2_s1" },
-          { "id": "bc2_5", "fromInstanceId": "bl2_d1", "toInstanceId": "bl2_a1" },
-          { "id": "bc2_6", "fromInstanceId": "bl2_a1", "toInstanceId": "bl2_c1" }
+          {
+            "id": "bc2_1",
+            "fromInstanceId": "bl2_h1",
+            "toInstanceId": "bl2_v1"
+          },
+          {
+            "id": "bc2_2",
+            "fromInstanceId": "bl2_h1",
+            "toInstanceId": "bl2_v2"
+          },
+          {
+            "id": "bc2_3",
+            "fromInstanceId": "bl2_v1",
+            "toInstanceId": "bl2_m1"
+          },
+          {
+            "id": "bc2_4",
+            "fromInstanceId": "bl2_m1",
+            "toInstanceId": "bl2_s1"
+          },
+          {
+            "id": "bc2_5",
+            "fromInstanceId": "bl2_d1",
+            "toInstanceId": "bl2_a1"
+          },
+          {
+            "id": "bc2_6",
+            "fromInstanceId": "bl2_a1",
+            "toInstanceId": "bl2_c1"
+          }
         ]
-      }
+      },
+      "pillar": "technology",
+      "subtopic": "machine_learning"
+    },
+    {
+      "id": "arxiv_2604_02331",
+      "arxiv_id": "2604.02331",
+      "title": "EventHub: Data Factory for Generalizable Event-Based Stereo Networks without Active Sensors",
+      "difficulty": "expert",
+      "level": 11,
+      "description": "We propose EventHub, a novel framework for training deep-event stereo networks without ground truth annotations from costly active sensors, relying instead on standard color images. From these images, we derive either proxy annotations and proxy events through state-of-the-art…",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "TODO: Add hint 1 here",
+        "TODO: Add hint 2 here"
+      ],
+      "tags": [
+        "CS",
+        "computer-vision",
+        "deep-learning"
+      ],
+      "_source": "arxiv",
+      "pillar": "technology",
+      "subtopic": "computer_vision"
+    },
+    {
+      "id": "arxiv_2604_02330",
+      "arxiv_id": "2604.02330",
+      "title": "ActionParty: Multi-Subject Action Binding in Generative Video Games",
+      "difficulty": "expert",
+      "level": 12,
+      "description": "Recent advances in video diffusion have enabled the development of \"world models\" capable of simulating interactive environments. However, these models are largely restricted to single-agent settings, failing to control multiple agents simultaneously in a scene. In this work, …",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "TODO: Add hint 1 here",
+        "TODO: Add hint 2 here"
+      ],
+      "tags": [
+        "AI",
+        "CS",
+        "computer-vision",
+        "deep-learning",
+        "machine-learning"
+      ],
+      "_source": "arxiv",
+      "pillar": "technology",
+      "subtopic": "computer_vision"
+    },
+    {
+      "id": "arxiv_2604_02329",
+      "arxiv_id": "2604.02329",
+      "title": "Generative World Renderer",
+      "difficulty": "expert",
+      "level": 13,
+      "description": "Scaling generative inverse and forward rendering to real-world scenarios is bottlenecked by the limited realism and temporal coherence of existing synthetic datasets. To bridge this persistent domain gap, we introduce a large-scale, dynamic dataset curated from visually comple…",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "TODO: Add hint 1 here",
+        "TODO: Add hint 2 here"
+      ],
+      "tags": [
+        "CS",
+        "computer-vision",
+        "deep-learning"
+      ],
+      "_source": "arxiv",
+      "pillar": "technology",
+      "subtopic": "computer_vision"
+    },
+    {
+      "id": "arxiv_2604_02328",
+      "arxiv_id": "2604.02328",
+      "title": "Modulate-and-Map: Crossmodal Feature Mapping with Cross-View Modulation for 3D Anomaly Detection",
+      "difficulty": "expert",
+      "level": 14,
+      "description": "We present ModMap, a natively multiview and multimodal framework for 3D anomaly detection and segmentation. Unlike existing methods that process views independently, our method draws inspiration from the crossmodal feature mapping paradigm to learn to map features across both …",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "TODO: Add hint 1 here",
+        "TODO: Add hint 2 here"
+      ],
+      "tags": [
+        "CS",
+        "computer-vision",
+        "deep-learning"
+      ],
+      "_source": "arxiv",
+      "pillar": "technology",
+      "subtopic": "computer_vision"
+    },
+    {
+      "id": "arxiv_2604_02327",
+      "arxiv_id": "2604.02327",
+      "title": "Steerable Visual Representations",
+      "difficulty": "expert",
+      "level": 15,
+      "description": "Pretrained Vision Transformers (ViTs) such as DINOv2 and MAE provide generic image features that can be applied to a variety of downstream tasks such as retrieval, classification, and segmentation. However, such representations tend to focus on the most salient visual cues in …",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "TODO: Add hint 1 here",
+        "TODO: Add hint 2 here"
+      ],
+      "tags": [
+        "AI",
+        "CS",
+        "computer-vision",
+        "deep-learning"
+      ],
+      "_source": "arxiv",
+      "pillar": "technology",
+      "subtopic": "computer_vision"
+    },
+    {
+      "id": "arxiv_2604_02324",
+      "arxiv_id": "2604.02324",
+      "title": "Grounded Token Initialization for New Vocabulary in LMs for Generative Recommendation",
+      "difficulty": "expert",
+      "level": 16,
+      "description": "Language models (LMs) are increasingly extended with new learnable vocabulary tokens for domain-specific tasks, such as Semantic-ID tokens in generative recommendation. The standard practice initializes these new tokens as the mean of existing vocabulary embeddings, then relie…",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "TODO: Add hint 1 here",
+        "TODO: Add hint 2 here"
+      ],
+      "tags": [
+        "AI",
+        "CS",
+        "LLM",
+        "NLP",
+        "machine-learning"
+      ],
+      "_source": "arxiv",
+      "pillar": "technology",
+      "subtopic": "nlp"
+    },
+    {
+      "id": "arxiv_2604_02323",
+      "arxiv_id": "2604.02323",
+      "title": "Beyond Referring Expressions: Scenario Comprehension Visual Grounding",
+      "difficulty": "expert",
+      "level": 17,
+      "description": "Existing visual grounding benchmarks primarily evaluate alignment between image regions and literal referring expressions, where models can often succeed by matching a prominent named category. We explore a complementary and more challenging setting of scenario-based visual gr…",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "TODO: Add hint 1 here",
+        "TODO: Add hint 2 here"
+      ],
+      "tags": [
+        "CS",
+        "computer-vision",
+        "deep-learning"
+      ],
+      "_source": "arxiv",
+      "pillar": "technology",
+      "subtopic": "computer_vision"
+    },
+    {
+      "id": "arxiv_2604_02322",
+      "arxiv_id": "2604.02322",
+      "title": "Batched Contextual Reinforcement: A Task-Scaling Law for Efficient Reasoning",
+      "difficulty": "expert",
+      "level": 18,
+      "description": "Large Language Models employing Chain-of-Thought reasoning achieve strong performance but suffer from excessive token consumption that inflates inference costs. Existing efficiency methods such as explicit length penalties, difficulty estimators, or multi-stage curricula eithe…",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "TODO: Add hint 1 here",
+        "TODO: Add hint 2 here"
+      ],
+      "tags": [
+        "AI",
+        "CS",
+        "LLM",
+        "NLP",
+        "machine-learning"
+      ],
+      "_source": "arxiv",
+      "pillar": "technology",
+      "subtopic": "nlp"
+    },
+    {
+      "id": "arxiv_2604_02320",
+      "arxiv_id": "2604.02320",
+      "title": "Large-scale Codec Avatars: The Unreasonable Effectiveness of Large-scale Avatar Pretraining",
+      "difficulty": "expert",
+      "level": 19,
+      "description": "High-quality 3D avatar modeling faces a critical trade-off between fidelity and generalization. On the one hand, multi-view studio data enables high-fidelity modeling of humans with precise control over expressions and poses, but it struggles to generalize to real-world data d…",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "TODO: Add hint 1 here",
+        "TODO: Add hint 2 here"
+      ],
+      "tags": [
+        "CS",
+        "computer-vision",
+        "deep-learning"
+      ],
+      "_source": "arxiv",
+      "pillar": "technology",
+      "subtopic": "computer_vision"
+    },
+    {
+      "id": "arxiv_2604_02319",
+      "arxiv_id": "2604.02319",
+      "title": "No Single Best Model for Diversity: Learning a Router for Sample Diversity",
+      "difficulty": "expert",
+      "level": 20,
+      "description": "When posed with prompts that permit a large number of valid answers, comprehensively generating them is the first step towards satisfying a wide range of users. In this paper, we study methods to elicit a comprehensive set of valid responses. To evaluate this, we introduce \\te…",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "TODO: Add hint 1 here",
+        "TODO: Add hint 2 here"
+      ],
+      "tags": [
+        "CS",
+        "LLM",
+        "NLP"
+      ],
+      "_source": "arxiv",
+      "pillar": "technology",
+      "subtopic": "nlp"
+    },
+    {
+      "id": "arxiv_2604_02318",
+      "arxiv_id": "2604.02318",
+      "title": "Stop Wandering: Efficient Vision-Language Navigation via Metacognitive Reasoning",
+      "difficulty": "expert",
+      "level": 21,
+      "description": "Training-free Vision-Language Navigation (VLN) agents powered by foundation models can follow instructions and explore 3D environments. However, existing approaches rely on greedy frontier selection and passive spatial memory, leading to inefficient behaviors such as local osc…",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "TODO: Add hint 1 here",
+        "TODO: Add hint 2 here"
+      ],
+      "tags": [
+        "CS",
+        "computer-vision",
+        "deep-learning"
+      ],
+      "_source": "arxiv",
+      "pillar": "technology",
+      "subtopic": "computer_vision"
+    },
+    {
+      "id": "arxiv_2604_02317",
+      "arxiv_id": "2604.02317",
+      "title": "A Simple Baseline for Streaming Video Understanding",
+      "difficulty": "expert",
+      "level": 22,
+      "description": "Recent streaming video understanding methods increasingly rely on complex memory mechanisms to handle long video streams. We challenge this trend with a simple finding: a sliding-window baseline that feeds only the most recent N frames to an off-the-shelf VLM already matches o…",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "TODO: Add hint 1 here",
+        "TODO: Add hint 2 here"
+      ],
+      "tags": [
+        "CS",
+        "computer-vision",
+        "deep-learning"
+      ],
+      "_source": "arxiv",
+      "pillar": "technology",
+      "subtopic": "computer_vision"
+    },
+    {
+      "id": "arxiv_2604_02315",
+      "arxiv_id": "2604.02315",
+      "title": "Beyond the Assistant Turn: User Turn Generation as a Probe of Interaction Awareness in Language Models",
+      "difficulty": "expert",
+      "level": 23,
+      "description": "Standard LLM benchmarks evaluate the assistant turn: the model generates a response to an input, a verifier scores correctness, and the analysis ends. This paradigm leaves unmeasured whether the LLM encodes any awareness of what follows the assistant response. We propose user-…",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "TODO: Add hint 1 here",
+        "TODO: Add hint 2 here"
+      ],
+      "tags": [
+        "AI",
+        "CS"
+      ],
+      "_source": "arxiv",
+      "pillar": "technology",
+      "subtopic": "machine_learning"
+    },
+    {
+      "id": "arxiv_2604_02313",
+      "arxiv_id": "2604.02313",
+      "title": "Topological Effects in Neural Network Field Theory",
+      "difficulty": "expert",
+      "level": 24,
+      "description": "Neural network field theory formulates field theory as a statistical ensemble of fields defined by a network architecture and a density on its parameters. We extend the construction to topological settings via the inclusion of discrete parameters that label the topological qua…",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "TODO: Add hint 1 here",
+        "TODO: Add hint 2 here"
+      ],
+      "tags": [
+        "CS",
+        "machine-learning"
+      ],
+      "_source": "arxiv",
+      "pillar": "technology",
+      "subtopic": "machine_learning"
+    },
+    {
+      "id": "arxiv_2604_02309",
+      "arxiv_id": "2604.02309",
+      "title": "go-$m$HC: Direct Parameterization of Manifold-Constrained Hyper-Connections via Generalized Orthostochastic Matrices",
+      "difficulty": "expert",
+      "level": 25,
+      "description": "Doubly stochastic matrices enable learned mixing across residual streams, but parameterizing the set of doubly stochastic matrices (the Birkhoff polytope) exactly and efficiently remains an open challenge. Existing exact methods scale factorially with the number of streams ($d…",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "TODO: Add hint 1 here",
+        "TODO: Add hint 2 here"
+      ],
+      "tags": [
+        "CS",
+        "LLM",
+        "NLP",
+        "machine-learning"
+      ],
+      "_source": "arxiv",
+      "pillar": "technology",
+      "subtopic": "nlp"
+    },
+    {
+      "id": "arxiv_2604_02296",
+      "arxiv_id": "2604.02296",
+      "title": "VOID: Video Object and Interaction Deletion",
+      "difficulty": "expert",
+      "level": 26,
+      "description": "Existing video object removal methods excel at inpainting content \"behind\" the object and correcting appearance-level artifacts such as shadows and reflections. However, when the removed object has more significant interactions, such as collisions with other objects, current m…",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "TODO: Add hint 1 here",
+        "TODO: Add hint 2 here"
+      ],
+      "tags": [
+        "AI",
+        "CS",
+        "computer-vision",
+        "deep-learning"
+      ],
+      "_source": "arxiv",
+      "pillar": "technology",
+      "subtopic": "computer_vision"
+    },
+    {
+      "id": "arxiv_2604_02292",
+      "arxiv_id": "2604.02292",
+      "title": "Taming the Exponential: A Fast Softmax Surrogate for Integer-Native Edge Inference",
+      "difficulty": "expert",
+      "level": 27,
+      "description": "Softmax can become a computational bottleneck in the Transformer model's Multi-Head Attention (MHA) block, particularly in small models under low-precision inference, where exponentiation and normalization incur significant overhead. As such, we suggest using Head-Calibrated C…",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "TODO: Add hint 1 here",
+        "TODO: Add hint 2 here"
+      ],
+      "tags": [
+        "CS",
+        "machine-learning"
+      ],
+      "_source": "arxiv",
+      "pillar": "technology",
+      "subtopic": "machine_learning"
+    },
+    {
+      "id": "arxiv_2604_02290",
+      "arxiv_id": "2604.02290",
+      "title": "AdamFlow: Adam-based Wasserstein Gradient Flows for Surface Registration in Medical Imaging",
+      "difficulty": "expert",
+      "level": 28,
+      "description": "Surface registration plays an important role for anatomical shape analysis in medical imaging. Existing surface registration methods often face a trade-off between efficiency and robustness. Local point matching methods are computationally efficient, but vulnerable to noise an…",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "TODO: Add hint 1 here",
+        "TODO: Add hint 2 here"
+      ],
+      "tags": [
+        "CS",
+        "computer-vision",
+        "deep-learning"
+      ],
+      "_source": "arxiv",
+      "pillar": "technology",
+      "subtopic": "computer_vision"
+    },
+    {
+      "id": "arxiv_2604_02289",
+      "arxiv_id": "2604.02289",
+      "title": "Omni123: Exploring 3D Native Foundation Models with Limited 3D Data by Unifying Text to 2D and 3D Generation",
+      "difficulty": "expert",
+      "level": 29,
+      "description": "Recent multimodal large language models have achieved strong performance in unified text and image understanding and generation, yet extending such native capability to 3D remains challenging due to limited data. Compared to abundant 2D imagery, high-quality 3D assets are scar…",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "TODO: Add hint 1 here",
+        "TODO: Add hint 2 here"
+      ],
+      "tags": [
+        "AI",
+        "CS",
+        "computer-vision",
+        "deep-learning"
+      ],
+      "_source": "arxiv",
+      "pillar": "technology",
+      "subtopic": "computer_vision"
+    },
+    {
+      "id": "arxiv_2604_02288",
+      "arxiv_id": "2604.02288",
+      "title": "Unifying Group-Relative and Self-Distillation Policy Optimization via Sample Routing",
+      "difficulty": "expert",
+      "level": 30,
+      "description": "Reinforcement learning with verifiable rewards (RLVR) has become a standard paradigm for post-training large language models. While Group Relative Policy Optimization (GRPO) is widely adopted, its coarse credit assignment uniformly penalizes failed rollouts, lacking the token-…",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "TODO: Add hint 1 here",
+        "TODO: Add hint 2 here"
+      ],
+      "tags": [
+        "AI",
+        "CS",
+        "machine-learning"
+      ],
+      "_source": "arxiv",
+      "pillar": "technology",
+      "subtopic": "machine_learning"
+    },
+    {
+      "id": "arxiv_2604_02282",
+      "arxiv_id": "2604.02282",
+      "title": "Deep Neural Network Based Roadwork Detection for Autonomous Driving",
+      "difficulty": "expert",
+      "level": 31,
+      "description": "Road construction sites create major challenges for both autonomous vehicles and human drivers due to their highly dynamic and heterogeneous nature. This paper presents a real-time system that detects and localizes roadworks by combining a YOLO neural network with LiDAR data. …",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "TODO: Add hint 1 here",
+        "TODO: Add hint 2 here"
+      ],
+      "tags": [
+        "CS",
+        "computer-vision",
+        "deep-learning"
+      ],
+      "_source": "arxiv",
+      "pillar": "technology",
+      "subtopic": "computer_vision"
+    },
+    {
+      "id": "arxiv_2604_02280",
+      "arxiv_id": "2604.02280",
+      "title": "Novel Memory Forgetting Techniques for Autonomous AI Agents: Balancing Relevance and Efficiency",
+      "difficulty": "expert",
+      "level": 32,
+      "description": "Long-horizon conversational agents require persistent memory for coherent reasoning, yet uncontrolled accumulation causes temporal decay and false memory propagation. Benchmarks such as LOCOMO and LOCCO report performance degradation from 0.455 to 0.05 across stages, while Mul…",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "TODO: Add hint 1 here",
+        "TODO: Add hint 2 here"
+      ],
+      "tags": [
+        "AI",
+        "CS",
+        "computer-vision",
+        "deep-learning"
+      ],
+      "_source": "arxiv",
+      "pillar": "technology",
+      "subtopic": "computer_vision"
+    },
+    {
+      "id": "arxiv_2604_02279",
+      "arxiv_id": "2604.02279",
+      "title": "The Self Driving Portfolio: Agentic Architecture for Institutional Asset Management",
+      "difficulty": "expert",
+      "level": 33,
+      "description": "Agentic AI shifts the investor's role from analytical execution to oversight. We present an agentic strategic asset allocation pipeline in which approximately 50 specialized agents produce capital market assumptions, construct portfolios using over 20 competing methods, and cr…",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "TODO: Add hint 1 here",
+        "TODO: Add hint 2 here"
+      ],
+      "tags": [
+        "AI",
+        "CS"
+      ],
+      "_source": "arxiv",
+      "pillar": "technology",
+      "subtopic": "machine_learning"
+    },
+    {
+      "id": "arxiv_2604_02276",
+      "arxiv_id": "2604.02276",
+      "title": "De Jure: Iterative LLM Self-Refinement for Structured Extraction of Regulatory Rules",
+      "difficulty": "expert",
+      "level": 34,
+      "description": "Regulatory documents encode legally binding obligations that LLM-based systems must respect. Yet converting dense, hierarchically structured legal text into machine-readable rules remains a costly, expert-intensive process. We present De Jure, a fully automated, domain-agnosti…",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "TODO: Add hint 1 here",
+        "TODO: Add hint 2 here"
+      ],
+      "tags": [
+        "AI",
+        "CS",
+        "LLM",
+        "NLP",
+        "machine-learning"
+      ],
+      "_source": "arxiv",
+      "pillar": "technology",
+      "subtopic": "nlp"
+    },
+    {
+      "id": "arxiv_2604_02270",
+      "arxiv_id": "2604.02270",
+      "title": "Crystalite: A Lightweight Transformer for Efficient Crystal Modeling",
+      "difficulty": "expert",
+      "level": 35,
+      "description": "Generative models for crystalline materials often rely on equivariant graph neural networks, which capture geometric structure well but are costly to train and slow to sample. We present Crystalite, a lightweight diffusion Transformer for crystal modeling built around two simp…",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "TODO: Add hint 1 here",
+        "TODO: Add hint 2 here"
+      ],
+      "tags": [
+        "AI",
+        "CS",
+        "machine-learning"
+      ],
+      "_source": "arxiv",
+      "pillar": "technology",
+      "subtopic": "machine_learning"
+    },
+    {
+      "id": "arxiv_2604_02268",
+      "arxiv_id": "2604.02268",
+      "title": "SKILL0: In-Context Agentic Reinforcement Learning for Skill Internalization",
+      "difficulty": "expert",
+      "level": 36,
+      "description": "Agent skills, structured packages of procedural knowledge and executable resources that agents dynamically load at inference time, have become a reliable mechanism for augmenting LLM agents. Yet inference-time skill augmentation is fundamentally limited: retrieval noise introd…",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "TODO: Add hint 1 here",
+        "TODO: Add hint 2 here"
+      ],
+      "tags": [
+        "CS",
+        "machine-learning"
+      ],
+      "_source": "arxiv",
+      "pillar": "technology",
+      "subtopic": "machine_learning"
+    },
+    {
+      "id": "arxiv_2604_02265",
+      "arxiv_id": "2604.02265",
+      "title": "Modular Energy Steering for Safe Text-to-Image Generation with Foundation Models",
+      "difficulty": "expert",
+      "level": 37,
+      "description": "Controlling the behavior of text-to-image generative models is critical for safe and practical deployment. Existing safety approaches typically rely on model fine-tuning or curated datasets, which can degrade generation quality or limit scalability. We propose an inference-tim…",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "TODO: Add hint 1 here",
+        "TODO: Add hint 2 here"
+      ],
+      "tags": [
+        "CS",
+        "computer-vision",
+        "deep-learning"
+      ],
+      "_source": "arxiv",
+      "pillar": "technology",
+      "subtopic": "computer_vision"
+    },
+    {
+      "id": "arxiv_2604_02260",
+      "arxiv_id": "2604.02260",
+      "title": "Model-Based Reinforcement Learning for Control under Time-Varying Dynamics",
+      "difficulty": "expert",
+      "level": 38,
+      "description": "Learning-based control methods typically assume stationary system dynamics, an assumption often violated in real-world systems due to drift, wear, or changing operating conditions. We study reinforcement learning for control under time-varying dynamics. We consider a continual…",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "TODO: Add hint 1 here",
+        "TODO: Add hint 2 here"
+      ],
+      "tags": [
+        "CS",
+        "machine-learning"
+      ],
+      "_source": "arxiv",
+      "pillar": "technology",
+      "subtopic": "machine_learning"
+    },
+    {
+      "id": "arxiv_2604_02259",
+      "arxiv_id": "2604.02259",
+      "title": "Retrieval-Augmented Question Answering over Scientific Literature for the Electron-Ion Collider",
+      "difficulty": "expert",
+      "level": 39,
+      "description": "To harness the power of Language Models in answering domain specific specialized technical questions, Retrieval Augmented Generation (RAG) is been used widely. In this work, we have developed a Q\\&A application inspired by the Retrieval Augmented Generation (RAG), which is com…",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "TODO: Add hint 1 here",
+        "TODO: Add hint 2 here"
+      ],
+      "tags": [
+        "AI",
+        "CS"
+      ],
+      "_source": "arxiv",
+      "pillar": "technology",
+      "subtopic": "machine_learning"
+    },
+    {
+      "id": "arxiv_2604_02255",
+      "arxiv_id": "2604.02255",
+      "title": "Best-Arm Identification with Noisy Actuation",
+      "difficulty": "expert",
+      "level": 40,
+      "description": "In this paper, we consider a multi-armed bandit (MAB) instance and study how to identify the best arm when arm commands are conveyed from a central learner to a distributed agent over a discrete memoryless channel (DMC). Depending on the agent capabilities, we provide communic…",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "TODO: Add hint 1 here",
+        "TODO: Add hint 2 here"
+      ],
+      "tags": [
+        "CS",
+        "machine-learning"
+      ],
+      "_source": "arxiv",
+      "pillar": "technology",
+      "subtopic": "machine_learning"
+    },
+    {
+      "id": "arxiv_2604_02303",
+      "arxiv_id": "2604.02303",
+      "title": "Trapping and commutative Boolean networks",
+      "difficulty": "advanced",
+      "level": 41,
+      "description": "A Boolean network (BN) is a transformation of the set of Boolean configurations of a given length. A trapspace of a BN is a subcube invariant by the BN; a principal trapspace is the smallest trapspace containing a given configuration; a minimal trapspace is one that does not c...",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "Consider what variable is being manipulated vs measured.",
+        "What analysis method fits the data type?"
+      ],
+      "tags": [
+        "CS"
+      ],
+      "_source": "arxiv",
+      "pillar": "technology",
+      "subtopic": "machine_learning"
+    },
+    {
+      "id": "arxiv_2604_02285",
+      "arxiv_id": "2604.02285",
+      "title": "The Computational Complexity of Avoiding Strict Saddle Points in Constrained Optimization",
+      "difficulty": "advanced",
+      "level": 42,
+      "description": "While first-order stationary points (FOSPs) are the traditional targets of non-convex optimization, they often correspond to undesirable strict saddle points. To circumvent this, attention has shifted towards second-order stationary points (SOSPs). In unconstrained settings, f...",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "Consider what variable is being manipulated vs measured.",
+        "What analysis method fits the data type?"
+      ],
+      "tags": [
+        "algorithms",
+        "theory"
+      ],
+      "_source": "arxiv",
+      "pillar": "mathematics",
+      "subtopic": "pure_math"
+    },
+    {
+      "id": "arxiv_2604_02278",
+      "arxiv_id": "2604.02278",
+      "title": "LLMs as Idiomatic Decompilers: Recovering High-Level Code from x86-64 Assembly for Dart",
+      "difficulty": "advanced",
+      "level": 43,
+      "description": "Translating machine code into human-readable high-level languages is an open research problem in reverse engineering. Despite recent advancements in LLM-based decompilation to C, modern languages like Dart and Swift are unexplored. In this paper, we study the use of small spec...",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "Consider what variable is being manipulated vs measured.",
+        "What analysis method fits the data type?"
+      ],
+      "tags": [
+        "software-engineering"
+      ],
+      "_source": "arxiv",
+      "pillar": "engineering",
+      "subtopic": "electrical_computer"
+    },
+    {
+      "id": "arxiv_2604_02235",
+      "arxiv_id": "2604.02235",
+      "title": "Subquadratic Counting via Perfect Marginal Sampling",
+      "difficulty": "advanced",
+      "level": 44,
+      "description": "We study the computational complexity of approximately computing the partition function of a spin system. Techniques based on standard counting-to-sampling reductions yield $\\tilde{O}(n^2)$-time algorithms, where $n$ is the size of the input graph. We present new counting algo...",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "Consider what variable is being manipulated vs measured.",
+        "What analysis method fits the data type?"
+      ],
+      "tags": [
+        "algorithms"
+      ],
+      "_source": "arxiv",
+      "pillar": "mathematics",
+      "subtopic": "pure_math"
+    },
+    {
+      "id": "arxiv_2604_02223",
+      "arxiv_id": "2604.02223",
+      "title": "Probabilistic AVL Trees (p-AVL): Relaxing Deterministic Balancing",
+      "difficulty": "advanced",
+      "level": 45,
+      "description": "This paper studies the empirical behaviour of the p-AVL tree, a probabilistic variant of the AVL tree in which each imbalance is repaired with probability $p$. This gives an exact continuous interpolation from $p = 0$, which recovers the BST endpoint, to $p = 1$, which recover...",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "Consider what variable is being manipulated vs measured.",
+        "What analysis method fits the data type?"
+      ],
+      "tags": [
+        "algorithms"
+      ],
+      "_source": "arxiv",
+      "pillar": "mathematics",
+      "subtopic": "pure_math"
+    },
+    {
+      "id": "arxiv_2604_02205",
+      "arxiv_id": "2604.02205",
+      "title": "Evaluation of gNB Monostatic Sensing for UAV Use Case",
+      "difficulty": "advanced",
+      "level": 46,
+      "description": "3GPP Release 19 has initiated the standardization of integrated sensing and communications (ISAC), including a channel model for monostatic sensing, evaluation scenarios, and performance assessment methodologies. These common assumptions provide an important basis for ISAC eva...",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "Consider what variable is being manipulated vs measured.",
+        "What analysis method fits the data type?"
+      ],
+      "tags": [
+        "software-engineering"
+      ],
+      "_source": "arxiv",
+      "pillar": "engineering",
+      "subtopic": "electrical_computer"
+    },
+    {
+      "id": "arxiv_2604_02134",
+      "arxiv_id": "2604.02134",
+      "title": "Semantic Evolution over Populations for LLM-Guided Automated Program Repair",
+      "difficulty": "advanced",
+      "level": 47,
+      "description": "Large language models (LLMs) have recently shown strong potential for automated program repair (APR), particularly through iterative refinement that generates and improves candidate patches. However, state-of-the-art iterative refinement LLM-based APR approaches cannot fully a...",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "Consider what variable is being manipulated vs measured.",
+        "What analysis method fits the data type?"
+      ],
+      "tags": [
+        "software-engineering"
+      ],
+      "_source": "arxiv",
+      "pillar": "engineering",
+      "subtopic": "electrical_computer"
+    },
+    {
+      "id": "arxiv_2604_02106",
+      "arxiv_id": "2604.02106",
+      "title": "A Case For Host Code Guided GPU Data Race Detector",
+      "difficulty": "advanced",
+      "level": 48,
+      "description": "Data races in GPU programs pose a threat to the reliability of GPU-accelerated software stacks. Prior works proposed various dynamic (runtime) and static (compile-time) techniques to detect races in GPU programs. However, dynamic techniques often miss critical races, as they r...",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "Consider what variable is being manipulated vs measured.",
+        "What analysis method fits the data type?"
+      ],
+      "tags": [
+        "software-engineering"
+      ],
+      "_source": "arxiv",
+      "pillar": "engineering",
+      "subtopic": "electrical_computer"
+    },
+    {
+      "id": "arxiv_2604_02079",
+      "arxiv_id": "2604.02079",
+      "title": "Automated Functional Testing for Malleable Mobile Application Driven from User Intent",
+      "difficulty": "advanced",
+      "level": 49,
+      "description": "Software malleability allows applications to be easily changed, configured, and adapted even after deployment. While prior work has explored configurable systems, adaptive recommender systems, and malleable GUIs, these approaches are often tailored to specific software and lac...",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "Consider what variable is being manipulated vs measured.",
+        "What analysis method fits the data type?"
+      ],
+      "tags": [
+        "software-engineering"
+      ],
+      "_source": "arxiv",
+      "pillar": "engineering",
+      "subtopic": "electrical_computer"
+    },
+    {
+      "id": "arxiv_2604_02077",
+      "arxiv_id": "2604.02077",
+      "title": "A Model-Driven Digital Twin for the Systematic Improvement of DevOps Pipelines",
+      "difficulty": "advanced",
+      "level": 50,
+      "description": "CI/CD pipelines are central to DevOps practices, yet their growing complexity makes them increasingly difficult to interpret, analyze, and systematically evolve. Existing tooling primarily offers execution logs and static graph representations, providing limited support for st...",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "Consider what variable is being manipulated vs measured.",
+        "What analysis method fits the data type?"
+      ],
+      "tags": [
+        "software-engineering"
+      ],
+      "_source": "arxiv",
+      "pillar": "engineering",
+      "subtopic": "electrical_computer"
+    },
+    {
+      "id": "arxiv_2604_02039",
+      "arxiv_id": "2604.02039",
+      "title": "APITestGenie: Generating Web API Tests from Requirements and API Specifications with LLMs",
+      "difficulty": "advanced",
+      "level": 51,
+      "description": "Modern software systems rely heavily on Web APIs, yet creating meaningful and executable test scripts remains a largely manual, time-consuming, and error-prone task. In this paper, we present APITestGenie, a novel tool that leverages Large Language Models (LLMs), Retrieval-Aug...",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "Consider what variable is being manipulated vs measured.",
+        "What analysis method fits the data type?"
+      ],
+      "tags": [
+        "software-engineering"
+      ],
+      "_source": "arxiv",
+      "pillar": "engineering",
+      "subtopic": "electrical_computer"
+    },
+    {
+      "id": "arxiv_2604_01977",
+      "arxiv_id": "2604.01977",
+      "title": "RuleForge: Automated Generation and Validation for Web Vulnerability Detection at Scale",
+      "difficulty": "advanced",
+      "level": 52,
+      "description": "Security teams face a challenge: the volume of newly disclosed Common Vulnerabilities and Exposures (CVEs) far exceeds the capacity to manually develop detection mechanisms. In 2025, the National Vulnerability Database published over 48,000 new vulnerabilities, motivating the ...",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "Consider what variable is being manipulated vs measured.",
+        "What analysis method fits the data type?"
+      ],
+      "tags": [
+        "AI",
+        "LLM",
+        "NLP",
+        "cryptography",
+        "machine-learning",
+        "security",
+        "software-engineering"
+      ],
+      "_source": "arxiv",
+      "pillar": "technology",
+      "subtopic": "nlp"
+    },
+    {
+      "id": "arxiv_2604_01960",
+      "arxiv_id": "2604.01960",
+      "title": "BBC: Improving Large-k Approximate Nearest Neighbor Search with a Bucket-based Result Collector",
+      "difficulty": "advanced",
+      "level": 53,
+      "description": "Although Approximate Nearest Neighbor (ANN) search has been extensively studied, large-k ANN queries that aim to retrieve a large number of nearest neighbors remain underexplored, despite their numerous real-world applications. Existing ANN methods face significant performance...",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "Consider what variable is being manipulated vs measured.",
+        "What analysis method fits the data type?"
+      ],
+      "tags": [
+        "algorithms"
+      ],
+      "_source": "arxiv",
+      "pillar": "mathematics",
+      "subtopic": "pure_math"
+    },
+    {
+      "id": "arxiv_2604_01935",
+      "arxiv_id": "2604.01935",
+      "title": "King Chasing Problem in Chinese Chess is NP-hard",
+      "difficulty": "advanced",
+      "level": 54,
+      "description": "We prove that king chasing problem in Chinese Chess is NP-hard when generalized to $n\\times n$ boards. `King chasing' is a frequently-used strategy in Chinese Chess, which means that the player has to continuously check the opponent in every move until finally checkmating the ...",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "Consider what variable is being manipulated vs measured.",
+        "What analysis method fits the data type?"
+      ],
+      "tags": [
+        "combinatorics",
+        "mathematics",
+        "theory"
+      ],
+      "_source": "arxiv",
+      "pillar": "mathematics",
+      "subtopic": "pure_math"
+    },
+    {
+      "id": "arxiv_2604_01905",
+      "arxiv_id": "2604.01905",
+      "title": "From Component Manipulation to System Compromise: Understanding and Detecting Malicious MCP Servers",
+      "difficulty": "advanced",
+      "level": 55,
+      "description": "The model context protocol (MCP) standardizes how LLMs connect to external tools and data sources, enabling faster integration but introducing new attack vectors. Despite the growing adoption of MCP, existing MCP security studies classify attacks by their observable effects, o...",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "Consider what variable is being manipulated vs measured.",
+        "What analysis method fits the data type?"
+      ],
+      "tags": [
+        "cryptography",
+        "security",
+        "software-engineering"
+      ],
+      "_source": "arxiv",
+      "pillar": "technology",
+      "subtopic": "cybersecurity_crypto"
+    },
+    {
+      "id": "arxiv_2604_01851",
+      "arxiv_id": "2604.01851",
+      "title": "Can Large Language Models Model Programs Formally?",
+      "difficulty": "advanced",
+      "level": 56,
+      "description": "In the digital age, ensuring the correctness, safety, and reliability of software through formal verification is paramount, particularly as software increasingly underpins critical infrastructure. Formal verification, split into theorem proving and model checking, provides a f...",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "Consider what variable is being manipulated vs measured.",
+        "What analysis method fits the data type?"
+      ],
+      "tags": [
+        "software-engineering"
+      ],
+      "_source": "arxiv",
+      "pillar": "engineering",
+      "subtopic": "electrical_computer"
+    },
+    {
+      "id": "arxiv_2604_01829",
+      "arxiv_id": "2604.01829",
+      "title": "A Constant-Approximation Distance Labeling Scheme under Polynomially Many Edge Failures",
+      "difficulty": "advanced",
+      "level": 57,
+      "description": "A fault-tolerant distance labeling scheme assigns a label to each vertex and edge of an undirected weighted graph $G$ with $n$ vertices so that, for any edge set $F$ of size $|F| \\leq f$, one can approximate the distance between $p$ and $q$ in $G \\setminus F$ by reading only t...",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "Consider what variable is being manipulated vs measured.",
+        "What analysis method fits the data type?"
+      ],
+      "tags": [
+        "algorithms"
+      ],
+      "_source": "arxiv",
+      "pillar": "mathematics",
+      "subtopic": "pure_math"
+    },
+    {
+      "id": "arxiv_2604_01816",
+      "arxiv_id": "2604.01816",
+      "title": "(Even hole, triangle)-free graphs revisited",
+      "difficulty": "advanced",
+      "level": 58,
+      "description": "We revisit a classical paper about (even hole, triangle)-free graphs [Conforti, Cornuéjols, Kapoor and Vu\\v sković, Triangle-free graphs that are signable without even holes, Journal of Graph Theory, 34(3), 204--220, 2000]. In fact, the previous study describes a more general ...",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "Consider what variable is being manipulated vs measured.",
+        "What analysis method fits the data type?"
+      ],
+      "tags": [
+        "combinatorics",
+        "mathematics"
+      ],
+      "_source": "arxiv",
+      "pillar": "mathematics",
+      "subtopic": "pure_math"
+    },
+    {
+      "id": "arxiv_2604_01811",
+      "arxiv_id": "2604.01811",
+      "title": "GPU-RMQ: Accelerating Range Minimum Queries on Modern GPUs",
+      "difficulty": "advanced",
+      "level": 59,
+      "description": "Range minimum queries are frequently used in string processing and database applications including biological sequence analysis, document retrieval, and web search. Hence, various data structures have been proposed for improving their efficiency on both CPUs and GPUs.Recent wo...",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "Consider what variable is being manipulated vs measured.",
+        "What analysis method fits the data type?"
+      ],
+      "tags": [
+        "algorithms",
+        "distributed-systems"
+      ],
+      "_source": "arxiv",
+      "pillar": "engineering",
+      "subtopic": "electrical_computer"
+    },
+    {
+      "id": "arxiv_2604_01799",
+      "arxiv_id": "2604.01799",
+      "title": "TestDecision: Sequential Test Suite Generation via Greedy Optimization and Reinforcement Learning",
+      "difficulty": "advanced",
+      "level": 60,
+      "description": "With the rapid evolution of LLMs, automated software testing is witnessing a paradigm shift. While proprietary models like GPT-4o demonstrate impressive capabilities, their high deployment costs and data privacy concerns make open-source LLMs the practical imperative for many ...",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "Consider what variable is being manipulated vs measured.",
+        "What analysis method fits the data type?"
+      ],
+      "tags": [
+        "software-engineering"
+      ],
+      "_source": "arxiv",
+      "pillar": "engineering",
+      "subtopic": "electrical_computer"
+    },
+    {
+      "id": "arxiv_2604_02316",
+      "arxiv_id": "2604.02316",
+      "title": "A construction of 2-arc-transitive non-solvable covers of complete graphs",
+      "difficulty": "expert",
+      "level": 61,
+      "description": "We construct connected $2$-arc-transitive covers of complete graphs with non-abelian characteristically simple transformation groups. This solves the existence problem for non-solvable $2$-arc-transitive covers of complete graphs.",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "Consider what variable is being manipulated vs measured.",
+        "What analysis method fits the data type?"
+      ],
+      "tags": [
+        "combinatorics",
+        "mathematics"
+      ],
+      "_source": "arxiv",
+      "pillar": "mathematics",
+      "subtopic": "pure_math"
+    },
+    {
+      "id": "arxiv_2604_02312",
+      "arxiv_id": "2604.02312",
+      "title": "A weak transport approach to the Schrödinger-Bass bridge",
+      "difficulty": "expert",
+      "level": 62,
+      "description": "We study the Schrödinger-Bass problem, a one-parameter family of semimartingale optimal transport problems indexed by $β>0$, whose limiting regimes interpolate between the classical Schrödinger bridge, the Brenier-Strassen problem, and, after rescaling, the martingale Benamou-...",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "Consider what variable is being manipulated vs measured.",
+        "What analysis method fits the data type?"
+      ],
+      "tags": [
+        "mathematics",
+        "optimization"
+      ],
+      "_source": "arxiv",
+      "pillar": "mathematics",
+      "subtopic": "applied_math_finance"
+    },
+    {
+      "id": "arxiv_2604_02308",
+      "arxiv_id": "2604.02308",
+      "title": "A Positivity-Preserving Relaxation Algorithm",
+      "difficulty": "expert",
+      "level": 63,
+      "description": "We combine Patankar-type methods with suitable relaxation procedures that are capable of ensuring correct dissipation or conservation of functionals such as entropy or energy while producing unconditionally positive and conservative approximations. To that end, we adapt the re...",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "Consider what variable is being manipulated vs measured.",
+        "What analysis method fits the data type?"
+      ],
+      "tags": [
+        "mathematics",
+        "numerical-analysis"
+      ],
+      "_source": "arxiv",
+      "pillar": "mathematics",
+      "subtopic": "applied_math_finance"
+    },
+    {
+      "id": "arxiv_2604_02295",
+      "arxiv_id": "2604.02295",
+      "title": "Flexibility allocation in random bipartite matching markets: exact matching rates and dominance regimes",
+      "difficulty": "expert",
+      "level": 64,
+      "description": "This paper studies how a fixed flexibility budget should be allocated across the two sides of a balanced bipartite matching market. We model compatibilities via a sparse bipartite stochastic block model in which flexible agents are more likely to connect with agents on the opp...",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "Consider what variable is being manipulated vs measured.",
+        "What analysis method fits the data type?"
+      ],
+      "tags": [
+        "mathematics",
+        "optimization"
+      ],
+      "_source": "arxiv",
+      "pillar": "mathematics",
+      "subtopic": "applied_math_finance"
+    },
+    {
+      "id": "arxiv_2604_02267",
+      "arxiv_id": "2604.02267",
+      "title": "S-packing chromatic critical paths and cycles",
+      "difficulty": "expert",
+      "level": 65,
+      "description": "Let $S=(s_1,s_2,\\ldots)$ be a non-decreasing sequence of positive integers. For a graph $G$ with vertex set $V(G)$, a labeling $φ\\colon V(G)\\to \\{1,\\ldots,k\\}$ is an $S$-packing $k$-coloring if, whenever two distinct vertices $u,v\\in V(G)$ are assigned the same color $i$, thei...",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "Consider what variable is being manipulated vs measured.",
+        "What analysis method fits the data type?"
+      ],
+      "tags": [
+        "combinatorics",
+        "mathematics"
+      ],
+      "_source": "arxiv",
+      "pillar": "mathematics",
+      "subtopic": "pure_math"
+    },
+    {
+      "id": "arxiv_2604_02264",
+      "arxiv_id": "2604.02264",
+      "title": "Random Turán Problems for Graphs with a Vertex Complete to One Part",
+      "difficulty": "expert",
+      "level": 66,
+      "description": "Given a graph $F$, the random Turán problem asks to determine the maximum number of edges in an $F$-free subgraph of $G_{n,p}$. Prior to this work, the only bipartite graphs $F$ with known tight bounds included certain classes of complete bipartite graphs and theta graphs. We ...",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "Consider what variable is being manipulated vs measured.",
+        "What analysis method fits the data type?"
+      ],
+      "tags": [
+        "combinatorics",
+        "mathematics"
+      ],
+      "_source": "arxiv",
+      "pillar": "mathematics",
+      "subtopic": "pure_math"
+    },
+    {
+      "id": "arxiv_2604_02256",
+      "arxiv_id": "2604.02256",
+      "title": "A virtual-variable-length method for robust inverse kinematics of multi-segment continuum robots",
+      "difficulty": "expert",
+      "level": 67,
+      "description": "This paper proposes a new, robust method to solve the inverse kinematics (IK) of multi-segment continuum manipulators. Conventional Jacobian-based solvers, especially when initialized from neutral/rest configurations, often exhibit slow convergence and, in certain conditions, ...",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "Consider what variable is being manipulated vs measured.",
+        "What analysis method fits the data type?"
+      ],
+      "tags": [
+        "mathematics",
+        "numerical-analysis",
+        "robotics"
+      ],
+      "_source": "arxiv",
+      "pillar": "engineering",
+      "subtopic": "mechanical_aerospace"
+    },
+    {
+      "id": "arxiv_2604_02254",
+      "arxiv_id": "2604.02254",
+      "title": "Sufficient conditions for Hamiltonianity in terms of the Zeroth-order General Randić Index",
+      "difficulty": "expert",
+      "level": 68,
+      "description": "For a (molecular) graph $G$ and any real number $α\\ne 0$ , the zero-order general Randić index , denote by $^0R_α$, is defined by the following equation: \\begin{align*}   {^0R_α} (G) =\\sum_{v\\in G}d_G (v) ^α (α\\in \\mathbb{R}-\\left\\{0\\right\\}) . \\end{align*}   In this paper, we...",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "Consider what variable is being manipulated vs measured.",
+        "What analysis method fits the data type?"
+      ],
+      "tags": [
+        "combinatorics",
+        "mathematics"
+      ],
+      "_source": "arxiv",
+      "pillar": "mathematics",
+      "subtopic": "pure_math"
+    },
+    {
+      "id": "arxiv_2604_02253",
+      "arxiv_id": "2604.02253",
+      "title": "Hyper-differential sensitivity analysis with respect to model discrepancy: Sequential optimal experimental design",
+      "difficulty": "expert",
+      "level": 69,
+      "description": "Large-scale optimization problems are ubiquitous in the physical sciences; yet, high-fidelity models can often be complex and computationally prohibitive for optimization. A practical alternative is to use a low-fidelity model to facilitate optimization. However, the discrepan...",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "Consider what variable is being manipulated vs measured.",
+        "What analysis method fits the data type?"
+      ],
+      "tags": [
+        "mathematics",
+        "numerical-analysis"
+      ],
+      "_source": "arxiv",
+      "pillar": "mathematics",
+      "subtopic": "applied_math_finance"
+    },
+    {
+      "id": "arxiv_2604_02249",
+      "arxiv_id": "2604.02249",
+      "title": "Analytic Optimal Control for a Class of Driftless x-Flat Systems",
+      "difficulty": "expert",
+      "level": 70,
+      "description": "This paper studies optimal trajectory-tracking for driftless, x-flat nonlinear systems with three states and two inputs. The tracking problem is formulated in Bolza form with a quadratic cost of the tracking error and its derivative. Applying Pontryagin's maximum principle yie...",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "Consider what variable is being manipulated vs measured.",
+        "What analysis method fits the data type?"
+      ],
+      "tags": [
+        "mathematics",
+        "optimization"
+      ],
+      "_source": "arxiv",
+      "pillar": "mathematics",
+      "subtopic": "applied_math_finance"
+    },
+    {
+      "id": "arxiv_2604_02247",
+      "arxiv_id": "2604.02247",
+      "title": "Incorporating circular economy policies into product supply chains using bilevel optimization -- A case study on coffee packaging",
+      "difficulty": "expert",
+      "level": 71,
+      "description": "Transitioning to a Circular Economy requires policies to drive sustainable practices. This study proposes a bilevel optimization framework to evaluate the combined use of carbon taxes and subsidies in promoting circular supply chains under varying budget levels. A case study o...",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "Consider what variable is being manipulated vs measured.",
+        "What analysis method fits the data type?"
+      ],
+      "tags": [
+        "mathematics",
+        "optimization"
+      ],
+      "_source": "arxiv",
+      "pillar": "mathematics",
+      "subtopic": "applied_math_finance"
+    },
+    {
+      "id": "arxiv_2604_02239",
+      "arxiv_id": "2604.02239",
+      "title": "On congruence conjectures of Andrews and Bachraoui",
+      "difficulty": "expert",
+      "level": 72,
+      "description": "Andrews and the third author recently studied congruences for certain restricted two-color partitions. They made two conjectures for Ramanujan-type congruences and a vanishing identity for the limiting sequence. In this paper, we settle these conjectures by relating the corres...",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "Consider what variable is being manipulated vs measured.",
+        "What analysis method fits the data type?"
+      ],
+      "tags": [
+        "combinatorics",
+        "mathematics"
+      ],
+      "_source": "arxiv",
+      "pillar": "mathematics",
+      "subtopic": "pure_math"
+    },
+    {
+      "id": "arxiv_2604_02231",
+      "arxiv_id": "2604.02231",
+      "title": "On the Convexity of the Solution Set of Linear Complementarity Problem over Tensor Spaces",
+      "difficulty": "expert",
+      "level": 73,
+      "description": "This paper investigates the convexity of the solution set of the linear complementarity problems over tensor spaces (TLCPs). We introduce the notion of a $T$-column sufficient tensor and study its properties and relationships with several structured tensors. An equivalent cond...",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "Consider what variable is being manipulated vs measured.",
+        "What analysis method fits the data type?"
+      ],
+      "tags": [
+        "mathematics",
+        "optimization"
+      ],
+      "_source": "arxiv",
+      "pillar": "mathematics",
+      "subtopic": "applied_math_finance"
+    },
+    {
+      "id": "arxiv_2604_02227",
+      "arxiv_id": "2604.02227",
+      "title": "Sensitivity analysis for stopping criteria with application to organ transplantations",
+      "difficulty": "expert",
+      "level": 74,
+      "description": "We consider a stopping problem and its application to the decision-making process regarding the optimal timing of organ transplantation for individual patients. At each decision period, the patient state is inspected and a decision is made whether to transplant. If the organ i...",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "Consider what variable is being manipulated vs measured.",
+        "What analysis method fits the data type?"
+      ],
+      "tags": [
+        "mathematics",
+        "optimization"
+      ],
+      "_source": "arxiv",
+      "pillar": "mathematics",
+      "subtopic": "applied_math_finance"
+    },
+    {
+      "id": "arxiv_2604_02202",
+      "arxiv_id": "2604.02202",
+      "title": "Random-Subspace Sequential Quadratic Programming for Constrained Zeroth-Order Optimization",
+      "difficulty": "expert",
+      "level": 75,
+      "description": "We study nonlinear constrained optimization problems in which only function evaluations of the objective and constraints are available. Existing zeroth-order methods rely on noisy gradient and Jacobian surrogates in high dimensions, making it difficult to simultaneously achiev...",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "Consider what variable is being manipulated vs measured.",
+        "What analysis method fits the data type?"
+      ],
+      "tags": [
+        "mathematics",
+        "optimization"
+      ],
+      "_source": "arxiv",
+      "pillar": "mathematics",
+      "subtopic": "applied_math_finance"
+    },
+    {
+      "id": "arxiv_2604_02177",
+      "arxiv_id": "2604.02177",
+      "title": "Explicit Distributed MPC: Reducing Computation and Communication Load by Exploiting Facet Properties",
+      "difficulty": "expert",
+      "level": 76,
+      "description": "Classical Distributed Model Predictive Control (DiMPC) requires multiple iterations to achieve convergence, leading to high computational and communication burdens. This work focuses on the improvement of an iteration-free distributed MPC methodology that minimizes computation...",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "Consider what variable is being manipulated vs measured.",
+        "What analysis method fits the data type?"
+      ],
+      "tags": [
+        "mathematics",
+        "optimization"
+      ],
+      "_source": "arxiv",
+      "pillar": "mathematics",
+      "subtopic": "applied_math_finance"
+    },
+    {
+      "id": "arxiv_2604_02165",
+      "arxiv_id": "2604.02165",
+      "title": "One can almost never hear the shape of a digraph",
+      "difficulty": "expert",
+      "level": 77,
+      "description": "Kac raised the question `Can one hear the shape of a drum?' The answer is negative. On the other hand, one can hear the shape of a drum in the generic case. Haemers conjectured that almost all graphs are determined by their spectra, which can be regarded as a discrete version ...",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "Consider what variable is being manipulated vs measured.",
+        "What analysis method fits the data type?"
+      ],
+      "tags": [
+        "combinatorics",
+        "mathematics"
+      ],
+      "_source": "arxiv",
+      "pillar": "mathematics",
+      "subtopic": "pure_math"
+    },
+    {
+      "id": "arxiv_2604_02159",
+      "arxiv_id": "2604.02159",
+      "title": "Data-Driven Tube-Based Zonotopic Predictive Control With Nonconvex Layered Terminal Sets",
+      "difficulty": "expert",
+      "level": 78,
+      "description": "This paper presents a data-driven tube-based zonotopic predictive control (DTZPC) framework with nonconvex layered terminal sets. Existing DTZPC schemes with closed-loop guarantees typically rely on a single ellipsoidal terminal set, which can be conservative and thereby limit...",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "Consider what variable is being manipulated vs measured.",
+        "What analysis method fits the data type?"
+      ],
+      "tags": [
+        "mathematics",
+        "optimization"
+      ],
+      "_source": "arxiv",
+      "pillar": "mathematics",
+      "subtopic": "applied_math_finance"
+    },
+    {
+      "id": "arxiv_2604_02153",
+      "arxiv_id": "2604.02153",
+      "title": "Conservative flux reconstruction for an elliptic interface problem using CutFEM",
+      "difficulty": "expert",
+      "level": 79,
+      "description": "This paper deals with the local recovery of conservative fluxes for an elliptic interface problem with discontinuous coefficients. The transmission conditions on the interface are imposed weakly and the discretisation is achieved by using conforming finite elements on unfitted...",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "Consider what variable is being manipulated vs measured.",
+        "What analysis method fits the data type?"
+      ],
+      "tags": [
+        "mathematics",
+        "numerical-analysis"
+      ],
+      "_source": "arxiv",
+      "pillar": "mathematics",
+      "subtopic": "applied_math_finance"
+    },
+    {
+      "id": "arxiv_2604_02299",
+      "arxiv_id": "2604.02299",
+      "title": "PARD-SSM: Probabilistic Cyber-Attack Regime Detection via Variational Switching State-Space Models",
+      "difficulty": "expert",
+      "level": 80,
+      "description": "Modern adversarial campaigns unfold as sequences of behavioural phases - Reconnaissance, Lateral Movement, Intrusion, and Exfiltration - each often indistinguishable from legitimate traffic when viewed in isolation. Existing intrusion detection systems (IDS) fail to capture th...",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "Consider what variable is being manipulated vs measured.",
+        "What analysis method fits the data type?"
+      ],
+      "tags": [
+        "cryptography",
+        "security"
+      ],
+      "_source": "arxiv",
+      "pillar": "technology",
+      "subtopic": "cybersecurity_crypto"
+    },
+    {
+      "id": "arxiv_2604_02257",
+      "arxiv_id": "2604.02257",
+      "title": "Dark Patterns in Indian Quick Commerce Apps: A Student Perspective",
+      "difficulty": "expert",
+      "level": 81,
+      "description": "As quick commerce (Q-Commerce) platforms in India redefine urban consumption, the use of deceptive design dark patterns to inflate order values has become a systemic concern. This paper investigates the 'Awareness-Action Gap' among Indian university students, a demographic cha...",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "Consider what variable is being manipulated vs measured.",
+        "What analysis method fits the data type?"
+      ],
+      "tags": [
+        "CS"
+      ],
+      "_source": "arxiv",
+      "pillar": "technology",
+      "subtopic": "machine_learning"
+    },
+    {
+      "id": "arxiv_2604_02241",
+      "arxiv_id": "2604.02241",
+      "title": "UAV-Track VLA: Embodied Aerial Tracking via Vision-Language-Action Models",
+      "difficulty": "expert",
+      "level": 82,
+      "description": "Embodied visual tracking is crucial for Unmanned Aerial Vehicles (UAVs) executing complex real-world tasks. In dynamic urban scenarios with complex semantic requirements, Vision-Language-Action (VLA) models show great promise due to their cross-modal fusion and continuous acti...",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "Consider what variable is being manipulated vs measured.",
+        "What analysis method fits the data type?"
+      ],
+      "tags": [
+        "computer-vision",
+        "deep-learning",
+        "robotics"
+      ],
+      "_source": "arxiv",
+      "pillar": "technology",
+      "subtopic": "computer_vision"
+    },
+    {
+      "id": "arxiv_2604_02221",
+      "arxiv_id": "2604.02221",
+      "title": "Impact of Multimodal and Conversational AI on Learning Outcomes and Experience",
+      "difficulty": "expert",
+      "level": 83,
+      "description": "Multimodal Large Language Models (MLLMs) offer an opportunity to support multimedia learning through conversational systems grounded in educational content. However, while conversational AI is known to boost engagement, its impact on learning in visually-rich STEM domains rema...",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "Consider what variable is being manipulated vs measured.",
+        "What analysis method fits the data type?"
+      ],
+      "tags": [
+        "AI"
+      ],
+      "_source": "arxiv",
+      "pillar": "technology",
+      "subtopic": "machine_learning"
+    },
+    {
+      "id": "arxiv_2604_02220",
+      "arxiv_id": "2604.02220",
+      "title": "Visual Decoding Operators: Towards a Compositional Theory of Visualization Perception",
+      "difficulty": "expert",
+      "level": 84,
+      "description": "Prior work on perceptual effectiveness has decomposed visualizations into smaller common units (e.g., channels such as angle, position, and length) to establish rankings. While useful, these decompositions lack the computational structure to predict performance for new visuali...",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "Consider what variable is being manipulated vs measured.",
+        "What analysis method fits the data type?"
+      ],
+      "tags": [
+        "CS"
+      ],
+      "_source": "arxiv",
+      "pillar": "technology",
+      "subtopic": "machine_learning"
+    },
+    {
+      "id": "arxiv_2604_02211",
+      "arxiv_id": "2604.02211",
+      "title": "Multi-Agent Video Recommenders: Evolution, Patterns, and Open Challenges",
+      "difficulty": "expert",
+      "level": 85,
+      "description": "Video recommender systems are among the most popular and impactful applications of AI, shaping content consumption and influencing culture for billions of users. Traditional single-model recommenders, which optimize static engagement metrics, are increasingly limited in addres...",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "Consider what variable is being manipulated vs measured.",
+        "What analysis method fits the data type?"
+      ],
+      "tags": [
+        "AI",
+        "information-retrieval"
+      ],
+      "_source": "arxiv",
+      "pillar": "technology",
+      "subtopic": "machine_learning"
+    },
+    {
+      "id": "arxiv_2604_02192",
+      "arxiv_id": "2604.02192",
+      "title": "What can be computed in average anonymous networks?",
+      "difficulty": "expert",
+      "level": 86,
+      "description": "We study what deterministic distributed algorithms can compute on random input graphs in extremely weak models of distributed computing: all nodes are anonymous, and in each communication round, nodes broadcast a message to all their neighbors, receive a (multi)set of messages...",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "Consider what variable is being manipulated vs measured.",
+        "What analysis method fits the data type?"
+      ],
+      "tags": [
+        "distributed-systems"
+      ],
+      "_source": "arxiv",
+      "pillar": "engineering",
+      "subtopic": "electrical_computer"
+    },
+    {
+      "id": "arxiv_2604_02190",
+      "arxiv_id": "2604.02190",
+      "title": "UniDriveVLA: Unifying Understanding, Perception, and Action Planning for Autonomous Driving",
+      "difficulty": "expert",
+      "level": 87,
+      "description": "Vision-Language-Action (VLA) models have recently emerged in autonomous driving, with the promise of leveraging rich world knowledge to improve the cognitive capabilities of driving systems. However, adapting such models for driving tasks currently faces a critical dilemma bet...",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "Consider what variable is being manipulated vs measured.",
+        "What analysis method fits the data type?"
+      ],
+      "tags": [
+        "computer-vision",
+        "deep-learning",
+        "robotics"
+      ],
+      "_source": "arxiv",
+      "pillar": "technology",
+      "subtopic": "computer_vision"
+    },
+    {
+      "id": "arxiv_2604_02182",
+      "arxiv_id": "2604.02182",
+      "title": "ViT-Explainer: An Interactive Walkthrough of the Vision Transformer Pipeline",
+      "difficulty": "expert",
+      "level": 88,
+      "description": "Transformer-based architectures have become the shared backbone of natural language processing and computer vision. However, understanding how these models operate remains challenging, particularly in vision settings, where images are processed as sequences of patch tokens. Ex...",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "Consider what variable is being manipulated vs measured.",
+        "What analysis method fits the data type?"
+      ],
+      "tags": [
+        "computer-vision",
+        "deep-learning"
+      ],
+      "_source": "arxiv",
+      "pillar": "technology",
+      "subtopic": "computer_vision"
+    },
+    {
+      "id": "arxiv_2604_02158",
+      "arxiv_id": "2604.02158",
+      "title": "A Practical Two-Stage Framework for GPU Resource and Power Prediction in Heterogeneous HPC Systems",
+      "difficulty": "expert",
+      "level": 89,
+      "description": "Efficient utilization of GPU resources and power has become critical with the growing demand for GPUs in high-performance computing (HPC). In this paper, we analyze GPU utilization and GPU memory utilization, as well as the power consumption of the Vienna ab initio Simulation ...",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "Consider what variable is being manipulated vs measured.",
+        "What analysis method fits the data type?"
+      ],
+      "tags": [
+        "distributed-systems",
+        "machine-learning"
+      ],
+      "_source": "arxiv",
+      "pillar": "technology",
+      "subtopic": "machine_learning"
+    },
+    {
+      "id": "arxiv_2604_02156",
+      "arxiv_id": "2604.02156",
+      "title": "AstroConcepts: A Large-Scale Multi-Label Classification Corpus for Astrophysics",
+      "difficulty": "expert",
+      "level": 90,
+      "description": "Scientific multi-label text classification suffers from extreme class imbalance, where specialized terminology exhibits severe power-law distributions that challenge standard classification approaches. Existing scientific corpora lack comprehensive controlled vocabularies, foc...",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "Consider what variable is being manipulated vs measured.",
+        "What analysis method fits the data type?"
+      ],
+      "tags": [
+        "LLM",
+        "NLP",
+        "information-retrieval",
+        "machine-learning"
+      ],
+      "_source": "arxiv",
+      "pillar": "technology",
+      "subtopic": "nlp"
+    },
+    {
+      "id": "arxiv_2604_02154",
+      "arxiv_id": "2604.02154",
+      "title": "Designing Transformational Games to Support Socio-ethical Reasoning about Generative AI",
+      "difficulty": "expert",
+      "level": 91,
+      "description": "There is an increasing need for young people to become critically AI literate, understanding not only how AI works but also its limitations and ethical nuances. Yet, designing learning experiences that make such complex, serious topics engaging remains a challenge. This paper ...",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "Consider what variable is being manipulated vs measured.",
+        "What analysis method fits the data type?"
+      ],
+      "tags": [
+        "CS"
+      ],
+      "_source": "arxiv",
+      "pillar": "technology",
+      "subtopic": "machine_learning"
+    },
+    {
+      "id": "arxiv_2604_02149",
+      "arxiv_id": "2604.02149",
+      "title": "AEGIS: Adversarial Entropy-Guided Immune System -- Thermodynamic State Space Models for Zero-Day Network Evasion Detection",
+      "difficulty": "expert",
+      "level": 92,
+      "description": "As TLS 1.3 encryption limits traditional Deep Packet Inspection (DPI), the security community has pivoted to Euclidean Transformer-based classifiers (e.g., ET-BERT) for encrypted traffic analysis. However, these models remain vulnerable to byte-level adversarial morphing -- re...",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "Consider what variable is being manipulated vs measured.",
+        "What analysis method fits the data type?"
+      ],
+      "tags": [
+        "cryptography",
+        "machine-learning",
+        "security"
+      ],
+      "_source": "arxiv",
+      "pillar": "technology",
+      "subtopic": "machine_learning"
+    },
+    {
+      "id": "arxiv_2604_02142",
+      "arxiv_id": "2604.02142",
+      "title": "PRO-SPECT: Probabilistically Safe Scalable Planning for Energy-Aware Coordinated UAV-UGV Teams in Stochastic Environments",
+      "difficulty": "expert",
+      "level": 93,
+      "description": "We consider energy-aware planning for an unmanned aerial vehicle (UAV) and unmanned ground vehicle (UGV) team operating in a stochastic environment. The UAV must visit a set of air points in minimum time while respecting energy constraints, relying on the UGV as a mobile charg...",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "Consider what variable is being manipulated vs measured.",
+        "What analysis method fits the data type?"
+      ],
+      "tags": [
+        "robotics"
+      ],
+      "_source": "arxiv",
+      "pillar": "engineering",
+      "subtopic": "mechanical_aerospace"
+    },
+    {
+      "id": "arxiv_2604_02131",
+      "arxiv_id": "2604.02131",
+      "title": "Intelligent Cloud Orchestration: A Hybrid Predictive and Heuristic Framework for Cost Optimization",
+      "difficulty": "expert",
+      "level": 94,
+      "description": "Cloud computing allows scalable resource provisioning, but dynamic workload changes often lead to higher costs due to over-provisioning. Machine learning (ML) approaches, such as Long Short-Term Memory (LSTM) networks, are effective for predicting workload patterns at a higher...",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "Consider what variable is being manipulated vs measured.",
+        "What analysis method fits the data type?"
+      ],
+      "tags": [
+        "AI",
+        "distributed-systems",
+        "machine-learning"
+      ],
+      "_source": "arxiv",
+      "pillar": "technology",
+      "subtopic": "machine_learning"
+    },
+    {
+      "id": "arxiv_2604_02109",
+      "arxiv_id": "2604.02109",
+      "title": "ROS 2-Based LiDAR Perception Framework for Mobile Robots in Dynamic Production Environments, Utilizing Synthetic Data Generation, Transformation-Equivariant 3D Detection and Multi-Object Tracking",
+      "difficulty": "expert",
+      "level": 95,
+      "description": "Adaptive robots in dynamic production environments require robust perception capabilities, including 6D pose estimation and multi-object tracking. To address limitations in real-world data dependency, noise robustness, and spatiotemporal consistency, a LiDAR framework based on...",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "Consider what variable is being manipulated vs measured.",
+        "What analysis method fits the data type?"
+      ],
+      "tags": [
+        "robotics"
+      ],
+      "_source": "arxiv",
+      "pillar": "engineering",
+      "subtopic": "mechanical_aerospace"
+    },
+    {
+      "id": "arxiv_2604_02286",
+      "arxiv_id": "2604.02286",
+      "title": "Bayesian covariance regression for differential network analysis of zero-inflated microbiome data",
+      "difficulty": "expert",
+      "level": 96,
+      "description": "Microbial interaction networks can rewire in response to host and environmental factors, yet most existing methods for network estimation treat the covariance structure as static across samples. We propose TRECOR, a Bayesian covariance regression framework for inferring covari...",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "Consider what variable is being manipulated vs measured.",
+        "What analysis method fits the data type?"
+      ],
+      "tags": [
+        "CS"
+      ],
+      "_source": "arxiv",
+      "pillar": "technology",
+      "subtopic": "machine_learning"
+    },
+    {
+      "id": "arxiv_2604_02250",
+      "arxiv_id": "2604.02250",
+      "title": "Smoothing the Landscape: Causal Structure Learning via Diffusion Denoising Objectives",
+      "difficulty": "expert",
+      "level": 97,
+      "description": "Understanding causal dependencies in observational data is critical for informing decision-making. These relationships are often modeled as Bayesian Networks (BNs) and Directed Acyclic Graphs (DAGs). Existing methods, such as NOTEARS and DAG-GNN, often face issues with scalabi...",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "Consider what variable is being manipulated vs measured.",
+        "What analysis method fits the data type?"
+      ],
+      "tags": [
+        "machine-learning",
+        "statistics"
+      ],
+      "_source": "arxiv",
+      "pillar": "technology",
+      "subtopic": "machine_learning"
+    },
+    {
+      "id": "arxiv_2604_02248",
+      "arxiv_id": "2604.02248",
+      "title": "BVFLMSP : Bayesian Vertical Federated Learning for Multimodal Survival with Privacy",
+      "difficulty": "expert",
+      "level": 98,
+      "description": "Multimodal time-to-event prediction often requires integrating sensitive data distributed across multiple parties, making centralized model training impractical due to privacy constraints. At the same time, most existing multimodal survival models produce single deterministic ...",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "Consider what variable is being manipulated vs measured.",
+        "What analysis method fits the data type?"
+      ],
+      "tags": [
+        "machine-learning",
+        "statistics"
+      ],
+      "_source": "arxiv",
+      "pillar": "technology",
+      "subtopic": "machine_learning"
+    },
+    {
+      "id": "arxiv_2604_02238",
+      "arxiv_id": "2604.02238",
+      "title": "Generative AI Spotlights the Human Core of Data Science: Implications for Education",
+      "difficulty": "expert",
+      "level": 99,
+      "description": "Generative AI (GAI) reveals an irreducible human core at the center of data science: advances in GAI should sharpen, rather than diminish, the focus on human reasoning in data science education. GAI can now execute many routine data science workflows, including cleaning, summa...",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "Consider what variable is being manipulated vs measured.",
+        "What analysis method fits the data type?"
+      ],
+      "tags": [
+        "AI"
+      ],
+      "_source": "arxiv",
+      "pillar": "technology",
+      "subtopic": "machine_learning"
+    },
+    {
+      "id": "arxiv_2604_02187",
+      "arxiv_id": "2604.02187",
+      "title": "Possible, Yes; Ignorant, Perhaps: A Scorecard for Possibilistic Forecasts",
+      "difficulty": "expert",
+      "level": 100,
+      "description": "Probabilistic forecasts must sum to unity and cannot express ``I don't know.'' Possibility theory relaxes this constraint: a subnormal distribution explicitly measures how much of the plausibility budget remains unassigned, ignorance signal that probability cannot represent. T...",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "Consider what variable is being manipulated vs measured.",
+        "What analysis method fits the data type?"
+      ],
+      "tags": [
+        "CS"
+      ],
+      "_source": "arxiv",
+      "pillar": "technology",
+      "subtopic": "machine_learning"
+    },
+    {
+      "id": "arxiv_2604_02150",
+      "arxiv_id": "2604.02150",
+      "title": "Samplet limits and multiwavelets",
+      "difficulty": "expert",
+      "level": 101,
+      "description": "Samplets are data adapted multiresolution analyses of localized discrete signed measures. They can be constructed on scattered data sites in arbitrary dimension and such that they exhibit vanishing moments with respect to any prescribed set of primitives. We consider the sampl...",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "Consider what variable is being manipulated vs measured.",
+        "What analysis method fits the data type?"
+      ],
+      "tags": [
+        "machine-learning",
+        "mathematics",
+        "numerical-analysis",
+        "statistics"
+      ],
+      "_source": "arxiv",
+      "pillar": "technology",
+      "subtopic": "machine_learning"
+    },
+    {
+      "id": "arxiv_2604_02074",
+      "arxiv_id": "2604.02074",
+      "title": "Country-wide, high-resolution monitoring of forest browning with Sentinel-2",
+      "difficulty": "expert",
+      "level": 102,
+      "description": "Natural and anthropogenic disturbances are impacting the health of forests worldwide. Monitoring forest disturbances at scale is important to inform conservation efforts. Here, we present a scalable approach for country-wide mapping of forest greenness anomalies at the 10 m re...",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "Consider what variable is being manipulated vs measured.",
+        "What analysis method fits the data type?"
+      ],
+      "tags": [
+        "computer-vision",
+        "deep-learning"
+      ],
+      "_source": "arxiv",
+      "pillar": "technology",
+      "subtopic": "computer_vision"
+    },
+    {
+      "id": "arxiv_2604_02017",
+      "arxiv_id": "2604.02017",
+      "title": "Demographic Parity Tails for Regression",
+      "difficulty": "expert",
+      "level": 103,
+      "description": "Demographic parity (DP) is a widely studied fairness criterion in regression, enforcing independence between the predictions and sensitive attributes. However, constraining the entire distribution can degrade predictive accuracy and may be unnecessary for many applications, wh...",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "Consider what variable is being manipulated vs measured.",
+        "What analysis method fits the data type?"
+      ],
+      "tags": [
+        "machine-learning",
+        "statistics"
+      ],
+      "_source": "arxiv",
+      "pillar": "technology",
+      "subtopic": "machine_learning"
+    },
+    {
+      "id": "arxiv_2604_01978",
+      "arxiv_id": "2604.01978",
+      "title": "Homogenized Transformers",
+      "difficulty": "expert",
+      "level": 104,
+      "description": "We study a random model of deep multi-head self-attention in which the weights are resampled independently across layers and heads, as at initialization of training. Viewing depth as a time variable, the residual stream defines a discrete-time interacting particle system on th...",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "Consider what variable is being manipulated vs measured.",
+        "What analysis method fits the data type?"
+      ],
+      "tags": [
+        "machine-learning",
+        "statistics"
+      ],
+      "_source": "arxiv",
+      "pillar": "technology",
+      "subtopic": "machine_learning"
+    },
+    {
+      "id": "arxiv_2604_01946",
+      "arxiv_id": "2604.01946",
+      "title": "PAC-Bayesian Reward-Certified Outcome Weighted Learning",
+      "difficulty": "expert",
+      "level": 105,
+      "description": "Estimating optimal individualized treatment rules (ITRs) via outcome weighted learning (OWL) often relies on observed rewards that are noisy or optimistic proxies for the true latent utility. Ignoring this reward uncertainty leads to the selection of policies with inflated app...",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "Consider what variable is being manipulated vs measured.",
+        "What analysis method fits the data type?"
+      ],
+      "tags": [
+        "machine-learning",
+        "statistics"
+      ],
+      "_source": "arxiv",
+      "pillar": "technology",
+      "subtopic": "machine_learning"
+    },
+    {
+      "id": "arxiv_2604_01943",
+      "arxiv_id": "2604.01943",
+      "title": "A Novel Theoretical Analysis for Clustering Heteroscedastic Gaussian Data without Knowledge of the Number of Clusters",
+      "difficulty": "expert",
+      "level": 106,
+      "description": "This paper addresses the problem of clustering measurement vectors that are heteroscedastic in that they can have different covariance matrices. From the assumption that the measurement vectors within a given cluster are Gaussian distributed with possibly different and unknown...",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "Consider what variable is being manipulated vs measured.",
+        "What analysis method fits the data type?"
+      ],
+      "tags": [
+        "machine-learning",
+        "statistics"
+      ],
+      "_source": "arxiv",
+      "pillar": "technology",
+      "subtopic": "machine_learning"
+    },
+    {
+      "id": "arxiv_2604_01880",
+      "arxiv_id": "2604.01880",
+      "title": "DDCL-INCRT: A Self-Organising Transformer with Hierarchical Prototype Structure (Theoretical Foundations)",
+      "difficulty": "expert",
+      "level": 107,
+      "description": "Modern neural networks of the transformer family require the practitioner to decide, before training begins, how many attention heads to use, how deep the network should be, and how wide each component should be. These decisions are made without knowledge of the task, producin...",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "Consider what variable is being manipulated vs measured.",
+        "What analysis method fits the data type?"
+      ],
+      "tags": [
+        "machine-learning",
+        "neural-networks",
+        "statistics"
+      ],
+      "_source": "arxiv",
+      "pillar": "technology",
+      "subtopic": "machine_learning"
+    },
+    {
+      "id": "arxiv_2604_01789",
+      "arxiv_id": "2604.01789",
+      "title": "Learning in Prophet Inequalities with Noisy Observations",
+      "difficulty": "expert",
+      "level": 108,
+      "description": "We study the prophet inequality, a fundamental problem in online decision-making and optimal stopping, in a practical setting where rewards are observed only through noisy realizations and reward distributions are unknown. At each stage, the decision-maker receives a noisy rew...",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "Consider what variable is being manipulated vs measured.",
+        "What analysis method fits the data type?"
+      ],
+      "tags": [
+        "machine-learning",
+        "statistics"
+      ],
+      "_source": "arxiv",
+      "pillar": "technology",
+      "subtopic": "machine_learning"
+    },
+    {
+      "id": "arxiv_2604_01735",
+      "arxiv_id": "2604.01735",
+      "title": "Correlation analysis of the dispersion of SARS-CoV-2 in Mexico",
+      "difficulty": "expert",
+      "level": 109,
+      "description": "In this paper, we propose a method to analyze correlations in pandemic-related data across different geographical regions, relying on the analysis of correlations for non-stationary time series, which are typical of pandemic data. Unlike traditional epidemiological approaches ...",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "Consider what variable is being manipulated vs measured.",
+        "What analysis method fits the data type?"
+      ],
+      "tags": [
+        "CS"
+      ],
+      "_source": "arxiv",
+      "pillar": "technology",
+      "subtopic": "machine_learning"
+    },
+    {
+      "id": "arxiv_2604_01606",
+      "arxiv_id": "2604.01606",
+      "title": "Random Coordinate Descent on the Wasserstein Space of Probability Measures",
+      "difficulty": "expert",
+      "level": 110,
+      "description": "Optimization over the space of probability measures endowed with the Wasserstein-2 geometry is central to modern machine learning and mean-field modeling. However, traditional methods relying on full Wasserstein gradients often suffer from high computational overhead in high-d...",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "Consider what variable is being manipulated vs measured.",
+        "What analysis method fits the data type?"
+      ],
+      "tags": [
+        "machine-learning",
+        "mathematics",
+        "optimization",
+        "statistics"
+      ],
+      "_source": "arxiv",
+      "pillar": "technology",
+      "subtopic": "machine_learning"
     }
   ]
 }
