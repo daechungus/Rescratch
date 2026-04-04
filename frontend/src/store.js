@@ -91,6 +91,8 @@ export const useStore = create((set, get) => ({
     })
   },
 
+  retrySubmit: () => set({ result: null, gamePhase: 'building' }),
+
   // ── Canvas: blocks ────────────────────────────────────────────────────────
   addBlockToCanvas: (blockDef) => {
     const pos = nextSpawnPos()
@@ -105,6 +107,16 @@ export const useStore = create((set, get) => ({
     set((state) => ({
       canvasBlocks: state.canvasBlocks.map((b) =>
         b.instanceId === instanceId ? { ...b, x: b.x + dx, y: b.y + dy } : b
+      ),
+    }))
+  },
+
+  updateBlockHeight: (instanceId, height) => {
+    const block = get().canvasBlocks.find((b) => b.instanceId === instanceId)
+    if (!block || block.height === height) return
+    set((state) => ({
+      canvasBlocks: state.canvasBlocks.map((b) =>
+        b.instanceId === instanceId ? { ...b, height } : b
       ),
     }))
   },

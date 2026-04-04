@@ -8,7 +8,7 @@ import { LiveConnectionLine } from './LiveConnectionLine.jsx'
 const CANVAS_W = 2400
 const CANVAS_H = 1400
 const BLOCK_WIDTH = 200
-const BLOCK_HALF_H = 44   // approx half of (header + body) height
+const FALLBACK_HALF_H = 44
 
 export function FreeCanvas() {
   const canvasBlocks = useStore((s) => s.canvasBlocks)
@@ -95,7 +95,10 @@ export function FreeCanvas() {
           const to = canvasBlocks.find((b) => b.instanceId === conn.toInstanceId)
           if (!from || !to) return null
           const mx = (from.x + BLOCK_WIDTH + to.x) / 2
-          const my = (from.y + BLOCK_HALF_H + to.y + BLOCK_HALF_H) / 2
+          const my = (
+            from.y + (from.height != null ? from.height / 2 : FALLBACK_HALF_H) +
+            to.y + (to.height != null ? to.height / 2 : FALLBACK_HALF_H)
+          ) / 2
           return (
             <button
               key={`del_${conn.id}`}

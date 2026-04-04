@@ -3599,6 +3599,587 @@
       ],
       "pillar": "science",
       "subtopic": "biology_organismal"
+    },
+    {
+      "id": "enzyme_ph_activity",
+      "title": "Does pH affect the activity of amylase on starch?",
+      "difficulty": "beginner",
+      "level": 111,
+      "description": "You will test how changing the pH (4, 6, 7, 8, 10) affects the rate at which salivary amylase breaks down starch, measured by how quickly the blue-black iodine colour disappears.",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "You prepare each pH buffer yourself. What method does that imply?",
+        "Time for the iodine colour to disappear is a continuous numerical measurement.",
+        "Control for: enzyme concentration, starch concentration, temperature, and reaction volume."
+      ],
+      "tags": [
+        "experiment",
+        "quantitative",
+        "chemistry",
+        "enzymes",
+        "biology"
+      ],
+      "pillar": "science",
+      "subtopic": "chemistry_organic",
+      "suggested_variables": {
+        "independent": [
+          "pH level of the buffer solution (4, 6, 7, 8, 10)"
+        ],
+        "dependent": [
+          "Time for iodine colour to disappear (seconds)"
+        ],
+        "control": [
+          "Amylase concentration",
+          "Starch concentration",
+          "Temperature (37 C)",
+          "Reaction volume"
+        ],
+        "confounding": [
+          "Variation in enzyme concentration between saliva sources",
+          "Ambient temperature fluctuations"
+        ]
+      }
+    },
+    {
+      "id": "plant_light_growth",
+      "title": "Does light colour affect plant shoot growth rate?",
+      "difficulty": "beginner",
+      "level": 112,
+      "description": "You grow identical bean seedlings under red, blue, green, and white LEDs for 14 days and measure shoot height daily. You predict that blue and red light produce the most growth.",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "You assign each seedling to a specific light colour. What method does that imply?",
+        "Shoot height in mm each day is a continuous numerical measurement.",
+        "Control for: light intensity (lumens), photoperiod (12h on/off), soil type, watering volume, and temperature."
+      ],
+      "tags": [
+        "experiment",
+        "quantitative",
+        "biology",
+        "plants",
+        "photosynthesis"
+      ],
+      "pillar": "science",
+      "subtopic": "biology_organismal",
+      "suggested_variables": {
+        "independent": [
+          "Light colour (red, blue, green, white LED)"
+        ],
+        "dependent": [
+          "Shoot height (mm) after 14 days",
+          "Daily growth rate (mm/day)"
+        ],
+        "control": [
+          "Light intensity",
+          "Photoperiod (12h on / 12h off)",
+          "Soil composition",
+          "Watering volume",
+          "Temperature"
+        ],
+        "confounding": [
+          "Genetic variation between seedlings",
+          "Uneven light distribution within the growth chamber"
+        ]
+      }
+    },
+    {
+      "id": "osmosis_potato_salt",
+      "title": "Does salt concentration affect osmosis in potato tissue?",
+      "difficulty": "beginner",
+      "level": 113,
+      "description": "You cut identical cylinders of potato and submerge them in NaCl solutions of varying concentration (0%, 0.2%, 0.4%, 0.6%, 0.8%, 1.0%) for 30 minutes, then measure the percentage change in mass.",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "You prepare each salt concentration yourself. What method does that imply?",
+        "Percentage change in mass of each potato cylinder is your numerical outcome.",
+        "Control for: potato variety, initial cylinder dimensions, surface drying method, immersion time, and temperature."
+      ],
+      "tags": [
+        "experiment",
+        "quantitative",
+        "biology",
+        "osmosis",
+        "cells"
+      ],
+      "pillar": "science",
+      "subtopic": "biology_molecular",
+      "suggested_variables": {
+        "independent": [
+          "NaCl solution concentration (0% to 1.0%)"
+        ],
+        "dependent": [
+          "Percentage change in potato cylinder mass (%)"
+        ],
+        "control": [
+          "Potato variety",
+          "Cylinder diameter and length",
+          "Immersion time (30 min)",
+          "Temperature",
+          "Surface drying technique"
+        ],
+        "confounding": [
+          "Natural water content variation within the potato",
+          "Uneven cutting of cylinders"
+        ]
+      }
+    },
+    {
+      "id": "pendulum_period_length",
+      "title": "Does the length of a pendulum affect its period of oscillation?",
+      "difficulty": "beginner",
+      "level": 114,
+      "description": "You test pendulums of five lengths (20, 40, 60, 80, 100 cm) and time 10 complete oscillations for each, predicting that longer pendulums have longer periods according to the equation T = 2pi * sqrt(L/g).",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "You set each string length directly. What method does that imply?",
+        "Time for 10 oscillations divided by 10 gives the period in seconds.",
+        "Control for: bob mass, amplitude of swing (keep under 15 degrees), and the pivot attachment point."
+      ],
+      "tags": [
+        "experiment",
+        "quantitative",
+        "physics",
+        "mechanics"
+      ],
+      "pillar": "science",
+      "subtopic": "physics_applied",
+      "suggested_variables": {
+        "independent": [
+          "String length (20, 40, 60, 80, 100 cm)"
+        ],
+        "dependent": [
+          "Period of oscillation (seconds)"
+        ],
+        "control": [
+          "Bob mass",
+          "Amplitude (release angle <15 degrees)",
+          "Pivot rigidity",
+          "Indoor setting"
+        ],
+        "confounding": [
+          "Human reaction time in timing",
+          "Slight variation in release angle between trials"
+        ]
+      }
+    },
+    {
+      "id": "antibiotic_disk_diffusion",
+      "title": "Do different antibiotics vary in effectiveness against E. coli?",
+      "difficulty": "intermediate",
+      "level": 115,
+      "description": "Using a disk diffusion (Kirby-Bauer) assay, you place antibiotic-impregnated paper disks on E. coli lawns on agar plates and measure the inhibition zone diameter for four antibiotics after 24 hours of incubation.",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "You apply each antibiotic disk to an identical bacterial lawn in a controlled lab setting.",
+        "Inhibition zone diameter (mm) is a continuous numerical measurement.",
+        "Control for: bacterial strain, inoculum density (McFarland 0.5), agar type, incubation temperature (37 C), and disk concentration."
+      ],
+      "tags": [
+        "experiment",
+        "quantitative",
+        "microbiology",
+        "antibiotics",
+        "biology"
+      ],
+      "pillar": "science",
+      "subtopic": "biology_molecular",
+      "suggested_variables": {
+        "independent": [
+          "Antibiotic type (ampicillin, tetracycline, chloramphenicol, streptomycin)"
+        ],
+        "dependent": [
+          "Inhibition zone diameter (mm)"
+        ],
+        "control": [
+          "Bacterial strain (E. coli K-12)",
+          "Inoculum density (0.5 McFarland)",
+          "Agar type (Mueller-Hinton)",
+          "Incubation temperature",
+          "Disk antibiotic concentration"
+        ],
+        "confounding": [
+          "Spontaneous antibiotic resistance mutations",
+          "Uneven spreading of bacterial lawn"
+        ]
+      }
+    },
+    {
+      "id": "music_memory_recall",
+      "title": "Does background music affect short-term word recall?",
+      "difficulty": "beginner",
+      "level": 116,
+      "description": "Participants study a 20-word list under one of three conditions: silence, classical music, or lyrical pop music. After 2 minutes they attempt free recall. You predict silence produces the highest recall.",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "You assign each participant to a specific audio condition. What method does that imply?",
+        "The number of correctly recalled words (0-20) is a count measurement.",
+        "Control for: word list, study duration, music volume (65 dB), room environment, and participant age."
+      ],
+      "tags": [
+        "experiment",
+        "quantitative",
+        "psychology",
+        "memory",
+        "music"
+      ],
+      "pillar": "human_social",
+      "subtopic": "psychology",
+      "suggested_variables": {
+        "independent": [
+          "Audio condition (silence, classical music, lyrical pop)"
+        ],
+        "dependent": [
+          "Number of words correctly recalled (out of 20)"
+        ],
+        "control": [
+          "Word list",
+          "Study duration (2 min)",
+          "Music volume (65 dB)",
+          "Room environment"
+        ],
+        "confounding": [
+          "Pre-existing musical training",
+          "Individual differences in working memory capacity"
+        ]
+      }
+    },
+    {
+      "id": "colour_purchase_decision",
+      "title": "Does product packaging colour influence consumer purchase intent?",
+      "difficulty": "beginner",
+      "level": 117,
+      "description": "Participants view identical product packaging in one of four colours (red, blue, green, neutral grey) and rate their purchase intent on a 7-point Likert scale. You hypothesise red will produce the highest intent.",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "You assign each participant to one colour variant. What method does that imply?",
+        "Purchase intent rating (1-7) is a numerical Likert scale — which data collection block fits?",
+        "Control for: product type, price shown, brand logo presence, and viewing time (15 seconds)."
+      ],
+      "tags": [
+        "experiment",
+        "quantitative",
+        "psychology",
+        "consumer-behaviour",
+        "colour"
+      ],
+      "pillar": "human_social",
+      "subtopic": "psychology",
+      "suggested_variables": {
+        "independent": [
+          "Packaging colour (red, blue, green, grey)"
+        ],
+        "dependent": [
+          "Purchase intent rating (1-7 Likert scale)"
+        ],
+        "control": [
+          "Product type",
+          "Displayed price",
+          "Viewing time (15 seconds)",
+          "Brand logo (absent)"
+        ],
+        "confounding": [
+          "Cultural colour associations varying by participant background",
+          "Prior brand exposure"
+        ]
+      }
+    },
+    {
+      "id": "sleep_academic_performance",
+      "title": "Does sleep duration correlate with GPA in university students?",
+      "difficulty": "beginner",
+      "level": 118,
+      "description": "You survey 150 university students about their average nightly sleep duration over the past semester and compare it to their self-reported GPA, predicting that more sleep is associated with higher GPA.",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "Students self-report their own habits — you do not control sleep duration. What method applies?",
+        "Both sleep hours and GPA are continuous numerical variables collected via questionnaire.",
+        "Control for: academic year, course load (credits), and part-time employment hours."
+      ],
+      "tags": [
+        "survey",
+        "quantitative",
+        "psychology",
+        "sleep",
+        "education"
+      ],
+      "pillar": "human_social",
+      "subtopic": "psychology",
+      "suggested_variables": {
+        "independent": [
+          "Average nightly sleep duration (hours)"
+        ],
+        "dependent": [
+          "Semester GPA (0.0-4.0)"
+        ],
+        "control": [
+          "Academic year",
+          "Course load (credits)",
+          "Part-time employment hours"
+        ],
+        "confounding": [
+          "Socioeconomic stress",
+          "Undiagnosed sleep disorders",
+          "Study habits and discipline"
+        ]
+      }
+    },
+    {
+      "id": "exercise_anxiety_reduction",
+      "title": "Does a 6-week aerobic exercise program reduce anxiety scores?",
+      "difficulty": "intermediate",
+      "level": 119,
+      "description": "Participants with mild anxiety (GAD-7 score 5-9) are randomly assigned to a 6-week aerobic exercise program (30 min, 3x/week) or a waitlist control. GAD-7 is measured at baseline and week 6.",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "Participants are randomly assigned to exercise or waitlist — you control that assignment.",
+        "GAD-7 is a validated Likert-type rating scale — which data collection block fits best?",
+        "Control for: baseline GAD-7 score, psychiatric medication use, prior exercise habits, and sleep quality."
+      ],
+      "tags": [
+        "experiment",
+        "quantitative",
+        "psychology",
+        "exercise",
+        "mental-health"
+      ],
+      "pillar": "human_social",
+      "subtopic": "psychology",
+      "suggested_variables": {
+        "independent": [
+          "Exercise condition (aerobic program vs. waitlist control)"
+        ],
+        "dependent": [
+          "GAD-7 anxiety score at week 6",
+          "Change in GAD-7 score from baseline"
+        ],
+        "control": [
+          "Baseline GAD-7 score",
+          "Psychiatric medication use",
+          "Sleep quality",
+          "Prior exercise frequency"
+        ],
+        "confounding": [
+          "Life stressor events during the study period",
+          "Expectation/placebo effects"
+        ]
+      }
+    },
+    {
+      "id": "price_elasticity_bread",
+      "title": "How does a price increase affect demand for a staple grocery item?",
+      "difficulty": "intermediate",
+      "level": 120,
+      "description": "Using weekly retail sales data across 5 cities, you examine how a 10% price increase in bread affects quantity purchased per household over an 8-week window compared to an equal period before the increase.",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "You observe a naturally occurring price change — you did not assign it. What method applies?",
+        "Quantity purchased per household per week is a continuous numerical measure.",
+        "Control for: household income bracket, promotional discounts, competitor pricing, and seasonal demand shifts."
+      ],
+      "tags": [
+        "observational",
+        "quantitative",
+        "economics",
+        "consumer-behaviour",
+        "elasticity"
+      ],
+      "pillar": "human_social",
+      "subtopic": "economics",
+      "suggested_variables": {
+        "independent": [
+          "Price level (pre vs. post 10% increase)"
+        ],
+        "dependent": [
+          "Weekly quantity purchased per household (units)"
+        ],
+        "control": [
+          "Household income bracket",
+          "Store promotional activity",
+          "Competitor pricing",
+          "Season"
+        ],
+        "confounding": [
+          "Stockpiling before price increase",
+          "Media coverage of food prices"
+        ]
+      }
+    },
+    {
+      "id": "dna_extraction_fruit",
+      "title": "Which fruit yields the most DNA using a household extraction method?",
+      "difficulty": "beginner",
+      "level": 121,
+      "description": "Using a detergent-salt-ethanol protocol, you extract DNA from equal masses of strawberry, banana, and kiwi and compare the visible DNA precipitate volume across fruit types.",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "You apply the same protocol to each fruit type in a controlled lab setting.",
+        "Volume of DNA precipitate (mL) is a continuous numerical measurement.",
+        "Control for: fruit mass used, detergent volume, salt concentration, ethanol volume and temperature."
+      ],
+      "tags": [
+        "experiment",
+        "quantitative",
+        "biology",
+        "genetics",
+        "dna"
+      ],
+      "pillar": "science",
+      "subtopic": "biology_molecular",
+      "suggested_variables": {
+        "independent": [
+          "Fruit type (strawberry, banana, kiwi)"
+        ],
+        "dependent": [
+          "Volume of visible DNA precipitate (mL)"
+        ],
+        "control": [
+          "Fruit mass (50g per sample)",
+          "Detergent and salt solution volume",
+          "Cold ethanol volume",
+          "Extraction time",
+          "Homogenization technique"
+        ],
+        "confounding": [
+          "Ripeness of fruit affecting cell wall integrity",
+          "Variation in homogenization force"
+        ]
+      }
+    },
+    {
+      "id": "social_norms_recycling",
+      "title": "Do descriptive social norm signs increase recycling compliance?",
+      "difficulty": "intermediate",
+      "level": 122,
+      "description": "In a university cafeteria, you post two sign types above recycling bins on alternate weeks: descriptive norm signs ('80% of students recycle here') vs. neutral reminder signs. You count correct sorting actions per 100 users.",
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "You assign specific sign types to bins across different time periods — what method applies?",
+        "Correct recycling actions per 100 cafeteria users is a rate (count) measure.",
+        "Control for: bin location, observation time window, day of week, and cafeteria traffic volume."
+      ],
+      "tags": [
+        "experiment",
+        "quantitative",
+        "sociology",
+        "social-norms",
+        "behaviour"
+      ],
+      "pillar": "human_social",
+      "subtopic": "sociology",
+      "suggested_variables": {
+        "independent": [
+          "Sign type (descriptive social norm vs. neutral reminder)"
+        ],
+        "dependent": [
+          "Correct recycling rate (actions per 100 users)"
+        ],
+        "control": [
+          "Bin location",
+          "Observation time window",
+          "Day of week",
+          "Cafeteria traffic volume"
+        ],
+        "confounding": [
+          "Pre-existing recycling attitudes",
+          "Observer presence affecting behaviour (Hawthorne effect)"
+        ]
+      }
     }
   ]
 }

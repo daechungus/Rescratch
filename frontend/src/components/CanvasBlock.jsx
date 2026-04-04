@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useRef, useLayoutEffect } from 'react'
 import { motion } from 'framer-motion'
 import { useStore } from '../store.js'
 import { useCanvas } from '../hooks/useCanvas.js'
@@ -9,6 +9,15 @@ const BLOCK_WIDTH = 200
 export function CanvasBlock({ block, liveErrors, liveWarnings }) {
   const connectingFrom = useStore((s) => s.connectingFrom)
   const rejectTarget = useStore((s) => s.rejectTarget)
+  const updateBlockHeight = useStore((s) => s.updateBlockHeight)
+
+  const blockRef = useRef(null)
+
+  useLayoutEffect(() => {
+    if (blockRef.current) {
+      updateBlockHeight(block.instanceId, blockRef.current.offsetHeight)
+    }
+  })
 
   const {
     onBlockPointerDown,
@@ -36,6 +45,7 @@ export function CanvasBlock({ block, liveErrors, liveWarnings }) {
 
   return (
     <motion.div
+      ref={blockRef}
       key={block.instanceId}
       initial={{ scale: 0.85, opacity: 0 }}
       animate={

@@ -1,9 +1,7 @@
 import { useEffect, useState } from 'react'
 
 const BLOCK_WIDTH = 200
-const BLOCK_HEADER_HEIGHT = 32
-const BLOCK_BODY_HEIGHT = 56
-const HALF_BLOCK_H = (BLOCK_HEADER_HEIGHT + BLOCK_BODY_HEIGHT) / 2
+const FALLBACK_HALF_H = 44
 
 /**
  * A bezier line that follows the mouse cursor while the user is in
@@ -27,8 +25,8 @@ export function LiveConnectionLine({ fromBlock, canvasRef }) {
 
   if (!fromBlock) return null
 
-  const x1 = fromBlock.x + BLOCK_WIDTH + 8
-  const y1 = fromBlock.y + HALF_BLOCK_H
+  const x1 = fromBlock.x + BLOCK_WIDTH + 8   // right edge of output port circle
+  const y1 = fromBlock.y + (fromBlock.height != null ? fromBlock.height / 2 : FALLBACK_HALF_H)
   const x2 = mousePos.x
   const y2 = mousePos.y
 

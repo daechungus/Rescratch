@@ -2,13 +2,11 @@ import { motion } from 'framer-motion'
 import { useCanvas } from '../hooks/useCanvas.js'
 
 const BLOCK_WIDTH = 200
-const BLOCK_HEADER_HEIGHT = 32
-const BLOCK_BODY_HEIGHT = 56
-const HALF_BLOCK_H = (BLOCK_HEADER_HEIGHT + BLOCK_BODY_HEIGHT) / 2
+const FALLBACK_HALF_H = 44
 
 /**
  * An SVG bezier connection between two canvas blocks.
- * fromBlock / toBlock: canvas block objects with x, y.
+ * fromBlock / toBlock: canvas block objects with x, y, height (measured).
  * conn: { id, fromInstanceId, toInstanceId }
  */
 export function ConnectionLine({ conn, fromBlock, toBlock, isInvalid = false }) {
@@ -16,10 +14,13 @@ export function ConnectionLine({ conn, fromBlock, toBlock, isInvalid = false }) 
 
   if (!fromBlock || !toBlock) return null
 
-  const x1 = fromBlock.x + BLOCK_WIDTH + 8  // output port (right edge + port radius)
-  const y1 = fromBlock.y + HALF_BLOCK_H
-  const x2 = toBlock.x - 8                   // input port (left edge - port radius)
-  const y2 = toBlock.y + HALF_BLOCK_H
+  // Port circles are w-4 (16px), output at right:-8, input at left:-8
+  // Output port right edge  = block.x + BLOCK_WIDTH + 8  (start line here)
+  // Input  port left edge   = block.x - 8                (arrowhead tip here)
+  const x1 = fromBlock.x + BLOCK_WIDTH + 8   // right edge of output port circle
+  const y1 = fromBlock.y + (fromBlock.height != null ? fromBlock.height / 2 : FALLBACK_HALF_H)
+  const x2 = toBlock.x - 8                    // left edge of input port circle
+  const y2 = toBlock.y + (toBlock.height != null ? toBlock.height / 2 : FALLBACK_HALF_H)
 
   const cx1 = x1 + Math.max(60, Math.abs(x2 - x1) * 0.4)
   const cx2 = x2 - Math.max(60, Math.abs(x2 - x1) * 0.4)
@@ -47,7 +48,7 @@ export function ConnectionLine({ conn, fromBlock, toBlock, isInvalid = false }) 
         className="group-hover:stroke-red-400 transition-colors"
       />
 
-      {/* Arrowhead */}
+      {/* Arrowhead pointing right, tip at input port left edge */}
       <polygon
         points={`${x2},${y2} ${x2 - 8},${y2 - 5} ${x2 - 8},${y2 + 5}`}
         fill={strokeColor}

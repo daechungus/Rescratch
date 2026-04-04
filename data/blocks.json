@@ -349,6 +349,329 @@
       "description": "Findings suggest new questions — recommend future studies",
       "color": "teal",
       "tags": ["future-research", "open-question"]
+    },
+
+    {
+      "id": "method_wet_lab",
+      "category": "METHOD",
+      "label": "Wet Lab Experiment",
+      "description": "Controlled bench-top experiment using biological or chemical reagents in a lab",
+      "color": "orange",
+      "tags": ["wet-lab", "biology", "chemistry", "quantitative"],
+      "data_type": "quantitative",
+      "requires_control": true
+    },
+    {
+      "id": "method_in_vitro",
+      "category": "METHOD",
+      "label": "In Vitro Cell Assay",
+      "description": "Test effects on cultured cells or tissues outside a living organism",
+      "color": "orange",
+      "tags": ["in-vitro", "biology", "cell-culture", "quantitative"],
+      "data_type": "quantitative",
+      "requires_control": true
+    },
+    {
+      "id": "method_in_vivo",
+      "category": "METHOD",
+      "label": "In Vivo Animal Study",
+      "description": "Test effects on living organisms under controlled conditions",
+      "color": "orange",
+      "tags": ["in-vivo", "biology", "animal-model", "quantitative"],
+      "data_type": "quantitative",
+      "requires_control": true
+    },
+    {
+      "id": "data_spectroscopy",
+      "category": "DATA_COLLECTION",
+      "label": "Spectroscopy / Absorbance Reading",
+      "description": "Measure light absorption or emission to quantify substance concentration",
+      "color": "yellow",
+      "tags": ["spectroscopy", "chemistry", "quantitative", "absorbance"],
+      "data_type": "quantitative"
+    },
+    {
+      "id": "data_microscopy",
+      "category": "DATA_COLLECTION",
+      "label": "Microscopy Image Data",
+      "description": "Capture cell or tissue images at microscopic resolution for morphological analysis",
+      "color": "yellow",
+      "tags": ["microscopy", "biology", "imaging", "qualitative"],
+      "data_type": "mixed"
+    },
+    {
+      "id": "data_sequencing",
+      "category": "DATA_COLLECTION",
+      "label": "Sequencing Read Data",
+      "description": "DNA/RNA sequence outputs from NGS, PCR, or Sanger sequencing",
+      "color": "yellow",
+      "tags": ["sequencing", "genomics", "bioinformatics", "quantitative"],
+      "data_type": "quantitative"
+    },
+    {
+      "id": "analysis_survival",
+      "category": "ANALYSIS",
+      "label": "Survival Curve Analysis",
+      "description": "Kaplan-Meier or Cox regression analysis of time-to-event data",
+      "color": "red",
+      "tags": ["survival", "biology", "quantitative", "time-to-event"],
+      "required_data_type": "quantitative",
+      "min_groups": 2
+    },
+    {
+      "id": "analysis_bioinformatics",
+      "category": "ANALYSIS",
+      "label": "Bioinformatics Pipeline",
+      "description": "Automated computational analysis of genomic, proteomic, or metabolomic data",
+      "color": "red",
+      "tags": ["bioinformatics", "genomics", "computational", "quantitative"],
+      "required_data_type": "quantitative",
+      "min_groups": 1
+    },
+
+    {
+      "id": "method_ablation",
+      "category": "METHOD",
+      "label": "Ablation Study",
+      "description": "Systematically remove model components to measure each one's contribution to performance",
+      "color": "orange",
+      "tags": ["ablation", "ml", "deep-learning", "quantitative"],
+      "data_type": "quantitative",
+      "requires_control": true
+    },
+    {
+      "id": "method_cross_validation",
+      "category": "METHOD",
+      "label": "k-Fold Cross-Validation",
+      "description": "Split dataset into k folds and rotate training/test splits to evaluate generalization",
+      "color": "orange",
+      "tags": ["cross-validation", "ml", "quantitative", "evaluation"],
+      "data_type": "quantitative",
+      "requires_control": false
+    },
+    {
+      "id": "method_benchmark",
+      "category": "METHOD",
+      "label": "Benchmark Evaluation",
+      "description": "Evaluate model on established standard datasets and compare against published baselines",
+      "color": "orange",
+      "tags": ["benchmark", "ml", "nlp", "quantitative"],
+      "data_type": "quantitative",
+      "requires_control": true
+    },
+    {
+      "id": "data_loss_curves",
+      "category": "DATA_COLLECTION",
+      "label": "Training / Validation Loss Curves",
+      "description": "Track model loss and accuracy over training epochs to detect overfitting",
+      "color": "yellow",
+      "tags": ["loss-curves", "ml", "quantitative", "training"],
+      "data_type": "quantitative"
+    },
+    {
+      "id": "data_confusion_matrix",
+      "category": "DATA_COLLECTION",
+      "label": "Confusion Matrix / Classification Report",
+      "description": "Count true/false positives and negatives per class; compute precision, recall, F1",
+      "color": "yellow",
+      "tags": ["confusion-matrix", "ml", "quantitative", "classification"],
+      "data_type": "quantitative"
+    },
+    {
+      "id": "data_latency_metrics",
+      "category": "DATA_COLLECTION",
+      "label": "Latency / Throughput Metrics",
+      "description": "Measure inference speed, memory usage, and throughput at various batch sizes",
+      "color": "yellow",
+      "tags": ["latency", "ml", "systems", "quantitative"],
+      "data_type": "quantitative"
+    },
+
+    {
+      "id": "method_fea",
+      "category": "METHOD",
+      "label": "Finite Element Analysis (FEA)",
+      "description": "Simulate structural stress and deformation using a computational mesh model",
+      "color": "orange",
+      "tags": ["fea", "engineering", "simulation", "quantitative"],
+      "data_type": "quantitative",
+      "requires_control": true
+    },
+    {
+      "id": "method_prototype",
+      "category": "METHOD",
+      "label": "Prototype Build & Test",
+      "description": "Fabricate a physical or digital prototype and measure performance under real conditions",
+      "color": "orange",
+      "tags": ["prototype", "engineering", "quantitative", "hardware"],
+      "data_type": "quantitative",
+      "requires_control": true
+    },
+    {
+      "id": "data_sensor",
+      "category": "DATA_COLLECTION",
+      "label": "Sensor / Telemetry Data",
+      "description": "Time-series readings from physical sensors (force, temperature, pressure, vibration)",
+      "color": "yellow",
+      "tags": ["sensor", "engineering", "quantitative", "telemetry"],
+      "data_type": "quantitative"
+    },
+    {
+      "id": "data_efficiency_metrics",
+      "category": "DATA_COLLECTION",
+      "label": "Power / Efficiency Metrics",
+      "description": "Measure energy consumption, thermal output, throughput, or yield ratio",
+      "color": "yellow",
+      "tags": ["efficiency", "engineering", "quantitative", "power"],
+      "data_type": "quantitative"
+    },
+    {
+      "id": "analysis_monte_carlo",
+      "category": "ANALYSIS",
+      "label": "Monte Carlo Simulation",
+      "description": "Repeated random sampling to estimate probabilistic outcomes and uncertainty ranges",
+      "color": "red",
+      "tags": ["monte-carlo", "simulation", "engineering", "quantitative"],
+      "required_data_type": "quantitative",
+      "min_groups": 1
+    },
+    {
+      "id": "analysis_fmea",
+      "category": "ANALYSIS",
+      "label": "Failure Mode & Effect Analysis",
+      "description": "Systematically identify potential failure modes, their causes, and downstream effects",
+      "color": "red",
+      "tags": ["fmea", "engineering", "qualitative", "risk"],
+      "required_data_type": "qualitative",
+      "min_groups": 1
+    },
+
+    {
+      "id": "method_formal_proof",
+      "category": "METHOD",
+      "label": "Formal Mathematical Proof",
+      "description": "Derive theorems step-by-step using axioms, lemmas, and logical deduction",
+      "color": "orange",
+      "tags": ["proof", "mathematics", "formal", "deductive"],
+      "data_type": "qualitative",
+      "requires_control": false
+    },
+    {
+      "id": "method_numerical_sim",
+      "category": "METHOD",
+      "label": "Numerical Simulation",
+      "description": "Approximate solutions to equations via iterative computational methods",
+      "color": "orange",
+      "tags": ["numerical", "mathematics", "computational", "simulation"],
+      "data_type": "quantitative",
+      "requires_control": true
+    },
+    {
+      "id": "data_theorem_output",
+      "category": "DATA_COLLECTION",
+      "label": "Theorem / Counterexample Output",
+      "description": "Formal mathematical claim with proof sketch, or a counterexample that disproves a conjecture",
+      "color": "yellow",
+      "tags": ["theorem", "mathematics", "formal", "qualitative"],
+      "data_type": "qualitative"
+    },
+    {
+      "id": "data_numerical_output",
+      "category": "DATA_COLLECTION",
+      "label": "Numerical Approximation Output",
+      "description": "Computed values from iterative algorithms with error bounds and convergence rate",
+      "color": "yellow",
+      "tags": ["numerical", "mathematics", "quantitative", "convergence"],
+      "data_type": "quantitative"
+    },
+    {
+      "id": "analysis_convergence",
+      "category": "ANALYSIS",
+      "label": "Convergence Analysis",
+      "description": "Prove or empirically measure whether an algorithm or series approaches a limit",
+      "color": "red",
+      "tags": ["convergence", "mathematics", "quantitative", "analysis"],
+      "required_data_type": "quantitative",
+      "min_groups": 1
+    },
+    {
+      "id": "analysis_complexity",
+      "category": "ANALYSIS",
+      "label": "Complexity / Big-O Analysis",
+      "description": "Characterize the time or space complexity of an algorithm as input size grows",
+      "color": "red",
+      "tags": ["complexity", "big-o", "mathematics", "algorithms"],
+      "required_data_type": "qualitative",
+      "min_groups": 1
+    },
+
+    {
+      "id": "method_rct",
+      "category": "METHOD",
+      "label": "Randomized Controlled Trial (RCT)",
+      "description": "Randomly assign participants to treatment and control arms for unbiased causal inference",
+      "color": "orange",
+      "tags": ["rct", "psychology", "economics", "quantitative"],
+      "data_type": "quantitative",
+      "requires_control": true
+    },
+    {
+      "id": "method_longitudinal",
+      "category": "METHOD",
+      "label": "Longitudinal Cohort Study",
+      "description": "Follow the same participants over an extended time period to track changes",
+      "color": "orange",
+      "tags": ["longitudinal", "cohort", "psychology", "quantitative"],
+      "data_type": "mixed",
+      "requires_control": false
+    },
+    {
+      "id": "method_focus_group",
+      "category": "METHOD",
+      "label": "Focus Group",
+      "description": "Moderated group discussion (6–10 participants) to explore shared attitudes and perceptions",
+      "color": "orange",
+      "tags": ["focus-group", "sociology", "qualitative", "group"],
+      "data_type": "qualitative",
+      "requires_control": false
+    },
+    {
+      "id": "data_behavioral_coding",
+      "category": "DATA_COLLECTION",
+      "label": "Behavioral Coding Sheet",
+      "description": "Trained coders categorize observed behaviors using a standardized coding scheme",
+      "color": "yellow",
+      "tags": ["behavioral-coding", "psychology", "qualitative", "inter-rater"],
+      "data_type": "mixed"
+    },
+    {
+      "id": "data_physiological",
+      "category": "DATA_COLLECTION",
+      "label": "Physiological Measure (EEG/fMRI/GSR)",
+      "description": "Record brain activity, galvanic skin response, or heart rate during a controlled task",
+      "color": "yellow",
+      "tags": ["physiological", "neuroscience", "quantitative", "eeg"],
+      "data_type": "quantitative"
+    },
+    {
+      "id": "analysis_sem",
+      "category": "ANALYSIS",
+      "label": "Structural Equation Modeling (SEM)",
+      "description": "Model complex causal relationships among latent and observed variables simultaneously",
+      "color": "red",
+      "tags": ["sem", "sociology", "psychology", "quantitative"],
+      "required_data_type": "quantitative",
+      "min_groups": 1
+    },
+    {
+      "id": "analysis_effect_size",
+      "category": "ANALYSIS",
+      "label": "Effect Size (Cohen's d / η²)",
+      "description": "Quantify the practical magnitude of an observed difference beyond statistical significance",
+      "color": "red",
+      "tags": ["effect-size", "cohen-d", "psychology", "quantitative"],
+      "required_data_type": "quantitative",
+      "min_groups": 2
     }
   ]
 }

@@ -15,6 +15,7 @@ export function ResearchQuestion() {
   const backToMenu = useStore((s) => s.backToMenu)
   const submitPipeline = useStore((s) => s.submitPipeline)
   const resetCanvas = useStore((s) => s.resetCanvas)
+  const retrySubmit = useStore((s) => s.retrySubmit)
   const canvasBlocks = useStore((s) => s.canvasBlocks)
   const { gamePhase, isLoading } = useGameState()
 
@@ -78,7 +79,7 @@ export function ResearchQuestion() {
         {gamePhase === 'submitted' && (
           <div className="flex items-center gap-2 flex-shrink-0">
             <button
-              onClick={resetCanvas}
+              onClick={retrySubmit}
               className="px-4 py-2 text-sm rounded-lg border border-[#E5E3DE] text-[#6B6B6B] hover:bg-[#F7F7F5] transition-colors"
             >
               Try Again
