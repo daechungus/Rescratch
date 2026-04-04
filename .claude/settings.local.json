@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 -c \"import json; d=json.load\\(open\\(''data/challenges.json''\\)\\); print\\([c[''id''] for c in d[''challenges'']]\\)\")",
+      "Bash(python -c \"import json; d=json.load\\(open\\(''data/challenges.json''\\)\\); print\\([c[''id''] for c in d[''challenges'']]\\)\")",
+      "Bash(python scripts/test_scorer.py)",
+      "Bash(python -c \"import json; d=json.load\\(open\\(''data/challenges.json''\\)\\); [print\\(f\"\"L{c[''level'']} [{c[''difficulty'']:12}] {c[''title'']}\"\"\\) for c in d[''challenges'']]\")"
+    ]
+  }
+}

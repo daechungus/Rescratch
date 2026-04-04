@@ -1,0 +1,116 @@
+{
+  "challenges": [
+    {
+      "id": "data_augmentation_accuracy",
+      "title": "Does data augmentation improve image classifier accuracy?",
+      "difficulty": "beginner",
+      "level": 1,
+      "description": "You want to test whether applying standard data augmentation (random flips, crops, colour jitter) during training increases the test accuracy of a CNN image classifier on a fixed dataset.",
+      "available_categories": ["HYPOTHESIS", "VARIABLE", "METHOD", "SAMPLE", "DATA_COLLECTION", "ANALYSIS", "CONCLUSION"],
+      "hints": [
+        "You are turning augmentation on vs off — you control that directly. What method does that imply?",
+        "Test accuracy (%) is a number you measure. What data collection tool fits a numerical measurement?",
+        "Control for: model architecture, optimizer, learning rate, number of epochs, and random seed."
+      ],
+      "tags": ["experiment", "quantitative", "deep-learning", "CV"]
+    },
+    {
+      "id": "learning_rate_convergence",
+      "title": "Does learning rate affect neural network training convergence speed?",
+      "difficulty": "beginner",
+      "level": 2,
+      "description": "You hypothesise that a higher learning rate causes a neural network to converge faster but with lower final accuracy. Design a study to test this across a range of learning rate values.",
+      "available_categories": ["HYPOTHESIS", "VARIABLE", "METHOD", "SAMPLE", "DATA_COLLECTION", "ANALYSIS", "CONCLUSION"],
+      "hints": [
+        "You set the learning rate — you are directly manipulating it. Lab experiment.",
+        "Epochs-to-convergence and final validation loss are numerical measurements.",
+        "Control for: network architecture, dataset, batch size, weight initialisation, and random seed."
+      ],
+      "tags": ["experiment", "quantitative", "deep-learning", "optimisation"]
+    },
+    {
+      "id": "batch_size_generalisation",
+      "title": "Does batch size affect model generalisation in deep learning?",
+      "difficulty": "intermediate",
+      "level": 3,
+      "description": "There is evidence that large-batch training produces models that generalise worse than small-batch training (the 'sharp minima' hypothesis). Design a study to rigorously test this across multiple architectures.",
+      "available_categories": ["HYPOTHESIS", "VARIABLE", "METHOD", "SAMPLE", "DATA_COLLECTION", "ANALYSIS", "CONCLUSION"],
+      "hints": [
+        "You manipulate batch size across multiple controlled runs — what method is this?",
+        "Measure both train/test accuracy gap and sharpness metrics — all quantitative.",
+        "Control for: total compute budget (not epochs), learning rate scaling rule, architecture, and dataset."
+      ],
+      "tags": ["experiment", "quantitative", "deep-learning", "generalisation"]
+    },
+    {
+      "id": "quantization_accuracy_tradeoff",
+      "title": "Does post-training quantization degrade LLM benchmark accuracy?",
+      "difficulty": "intermediate",
+      "level": 4,
+      "description": "You want to measure how different quantization schemes (INT8, INT4, GPTQ, AWQ) affect the downstream task accuracy of a large language model relative to its full-precision baseline.",
+      "available_categories": ["HYPOTHESIS", "VARIABLE", "METHOD", "SAMPLE", "DATA_COLLECTION", "ANALYSIS", "CONCLUSION"],
+      "hints": [
+        "You apply different quantization schemes to the same base model — lab experiment with multiple conditions.",
+        "Benchmark scores (MMLU %, HellaSwag %, etc.) are quantitative measurements.",
+        "Control for: base model weights, evaluation prompts, temperature (set to 0), and hardware."
+      ],
+      "tags": ["experiment", "quantitative", "LLM", "quantization", "efficiency"]
+    },
+    {
+      "id": "feature_selection_data_mining",
+      "title": "Which feature selection method maximises anomaly detection F1 in network traffic data?",
+      "difficulty": "intermediate",
+      "level": 5,
+      "description": "You are comparing three feature selection approaches (mutual information, LASSO regularisation, and PCA) on their ability to improve the F1 score of an anomaly detector trained on high-dimensional network traffic logs.",
+      "available_categories": ["HYPOTHESIS", "VARIABLE", "METHOD", "SAMPLE", "DATA_COLLECTION", "ANALYSIS", "CONCLUSION"],
+      "hints": [
+        "You are comparing THREE feature selection methods — which statistical test compares more than two group means?",
+        "F1 score per method is a numerical measurement. Run each method on identical train/test splits.",
+        "Control for: base classifier, dataset, train/test split seed, and class imbalance handling."
+      ],
+      "tags": ["experiment", "quantitative", "data-mining", "anomaly-detection", "anova"]
+    },
+    {
+      "id": "rl_reward_shaping",
+      "title": "How does reward shaping strategy affect RL agent sample efficiency?",
+      "difficulty": "advanced",
+      "level": 6,
+      "description": "You want to understand how different reward shaping strategies (sparse, dense, potential-based) affect how quickly a reinforcement learning agent reaches a target performance threshold in a continuous control task.",
+      "available_categories": ["HYPOTHESIS", "VARIABLE", "METHOD", "SAMPLE", "DATA_COLLECTION", "ANALYSIS", "CONCLUSION"],
+      "hints": [
+        "You control the reward function — manipulating it across conditions is a lab experiment.",
+        "Steps-to-threshold and final episodic return are quantitative. Average over many seeds.",
+        "Control for: policy architecture, optimiser, environment dynamics, episode length, and entropy coefficient."
+      ],
+      "tags": ["experiment", "quantitative", "reinforcement-learning", "sample-efficiency"]
+    },
+    {
+      "id": "finetuning_catastrophic_forgetting",
+      "title": "Does LoRA rank affect catastrophic forgetting during LLM fine-tuning?",
+      "difficulty": "advanced",
+      "level": 7,
+      "description": "You want to model the relationship between LoRA adapter rank and the degree of forgetting on general-purpose benchmarks after fine-tuning a foundation model on a domain-specific task.",
+      "available_categories": ["HYPOTHESIS", "VARIABLE", "METHOD", "SAMPLE", "DATA_COLLECTION", "ANALYSIS", "CONCLUSION"],
+      "hints": [
+        "You want to PREDICT forgetting from LoRA rank — which analysis method models a continuous predictor and outcome?",
+        "Measure forgetting as the delta in benchmark score (pre minus post fine-tuning) — quantitative.",
+        "Control for: base model, fine-tuning dataset, number of training steps, learning rate, and target modules."
+      ],
+      "tags": ["experiment", "quantitative", "fine-tuning", "LLM", "regression", "LoRA"]
+    },
+    {
+      "id": "rlhf_alignment_quality",
+      "title": "What factors predict alignment quality in RLHF-trained language models?",
+      "difficulty": "expert",
+      "level": 8,
+      "description": "You want to identify which preference data properties (annotator agreement rate, dataset size, domain diversity) and training design choices (KL penalty coefficient, reward model capacity) predict alignment quality — measured via both automated benchmarks and human preference studies. This requires quantitative modelling and qualitative error analysis of failure modes.",
+      "available_categories": ["HYPOTHESIS", "VARIABLE", "METHOD", "SAMPLE", "DATA_COLLECTION", "ANALYSIS", "CONCLUSION"],
+      "hints": [
+        "This complex question needs mixed methods: automated benchmark scores for scale, human annotation for understanding failure modes.",
+        "Use stratified sampling across model scales, annotation sources, and preference dataset sizes.",
+        "Regression can model alignment score predictors; content analysis can systematically categorise reward hacking and sycophancy failure types."
+      ],
+      "tags": ["mixed", "quantitative", "qualitative", "RLHF", "alignment", "LLM"]
+    }
+  ]
+}

@@ -1,0 +1,354 @@
+{
+  "blocks": [
+    {
+      "id": "hypothesis_directional",
+      "category": "HYPOTHESIS",
+      "label": "Directional Hypothesis",
+      "description": "Predicts X increases or decreases Y (e.g., 'caffeine will improve test scores')",
+      "color": "blue",
+      "tags": ["directional", "experimental"]
+    },
+    {
+      "id": "hypothesis_nondirectional",
+      "category": "HYPOTHESIS",
+      "label": "Non-Directional Hypothesis",
+      "description": "Predicts a relationship between X and Y without specifying direction",
+      "color": "blue",
+      "tags": ["nondirectional", "correlational"]
+    },
+    {
+      "id": "hypothesis_null",
+      "category": "HYPOTHESIS",
+      "label": "Null Hypothesis",
+      "description": "Predicts no significant relationship or effect between variables",
+      "color": "blue",
+      "tags": ["null", "statistical"]
+    },
+
+    {
+      "id": "independent_variable",
+      "category": "VARIABLE",
+      "label": "Independent Variable",
+      "description": "The variable you manipulate or control (the 'cause')",
+      "color": "green",
+      "tags": ["iv", "experimental"]
+    },
+    {
+      "id": "dependent_variable",
+      "category": "VARIABLE",
+      "label": "Dependent Variable",
+      "description": "The variable you measure — what changes as a result (the 'effect')",
+      "color": "green",
+      "tags": ["dv", "outcome"]
+    },
+    {
+      "id": "control_variable",
+      "category": "VARIABLE",
+      "label": "Control Variable",
+      "description": "Variables held constant to isolate the effect of the IV",
+      "color": "green",
+      "tags": ["control", "experimental"]
+    },
+    {
+      "id": "confounding_variable",
+      "category": "VARIABLE",
+      "label": "Confounding Variable",
+      "description": "An uncontrolled variable that may influence the results",
+      "color": "green",
+      "tags": ["confound", "rigor"]
+    },
+
+    {
+      "id": "method_survey",
+      "category": "METHOD",
+      "label": "Survey / Questionnaire",
+      "description": "Collect self-reported data from a large group using standardised questions",
+      "color": "orange",
+      "tags": ["survey", "self-report"],
+      "data_type": "mixed",
+      "requires_control": false
+    },
+    {
+      "id": "method_experiment_lab",
+      "category": "METHOD",
+      "label": "Laboratory Experiment",
+      "description": "Controlled experiment in a lab setting — high internal validity",
+      "color": "orange",
+      "tags": ["experiment", "quantitative", "causal"],
+      "data_type": "quantitative",
+      "requires_control": true
+    },
+    {
+      "id": "method_experiment_field",
+      "category": "METHOD",
+      "label": "Field Experiment",
+      "description": "Experiment conducted in a natural environment — higher ecological validity",
+      "color": "orange",
+      "tags": ["experiment", "field", "causal"],
+      "data_type": "mixed",
+      "requires_control": true
+    },
+    {
+      "id": "method_observational",
+      "category": "METHOD",
+      "label": "Observational Study",
+      "description": "Observe and record behaviour without intervention",
+      "color": "orange",
+      "tags": ["observational", "naturalistic"],
+      "data_type": "qualitative",
+      "requires_control": false
+    },
+    {
+      "id": "method_case_study",
+      "category": "METHOD",
+      "label": "Case Study",
+      "description": "In-depth investigation of a single individual, group, or event",
+      "color": "orange",
+      "tags": ["case_study", "qualitative", "in-depth"],
+      "data_type": "qualitative",
+      "requires_control": false
+    },
+    {
+      "id": "method_meta_analysis",
+      "category": "METHOD",
+      "label": "Meta-Analysis",
+      "description": "Statistical synthesis of results from multiple studies on the same topic",
+      "color": "orange",
+      "tags": ["meta", "quantitative", "synthesis"],
+      "data_type": "quantitative",
+      "requires_control": false
+    },
+
+    {
+      "id": "sample_small",
+      "category": "SAMPLE",
+      "label": "Small Sample (n < 30)",
+      "description": "Fewer than 30 participants — limited statistical power",
+      "color": "purple",
+      "tags": ["small", "n<30"],
+      "size": "small"
+    },
+    {
+      "id": "sample_medium",
+      "category": "SAMPLE",
+      "label": "Medium Sample (n = 30–200)",
+      "description": "30 to 200 participants — adequate for most inferential tests",
+      "color": "purple",
+      "tags": ["medium", "n30-200"],
+      "size": "medium"
+    },
+    {
+      "id": "sample_large",
+      "category": "SAMPLE",
+      "label": "Large Sample (n > 200)",
+      "description": "More than 200 participants — high statistical power, better generalisability",
+      "color": "purple",
+      "tags": ["large", "n>200"],
+      "size": "large"
+    },
+    {
+      "id": "sampling_random",
+      "category": "SAMPLE",
+      "label": "Random Sampling",
+      "description": "Every member of the population has an equal chance of being selected",
+      "color": "purple",
+      "tags": ["random", "probability", "gold-standard"],
+      "sampling_type": "random"
+    },
+    {
+      "id": "sampling_stratified",
+      "category": "SAMPLE",
+      "label": "Stratified Sampling",
+      "description": "Population divided into subgroups; samples drawn proportionally from each",
+      "color": "purple",
+      "tags": ["stratified", "probability", "representative"],
+      "sampling_type": "stratified"
+    },
+    {
+      "id": "sampling_convenience",
+      "category": "SAMPLE",
+      "label": "Convenience Sampling",
+      "description": "Participants selected because they are easily accessible — introduces bias",
+      "color": "purple",
+      "tags": ["convenience", "non-probability", "bias"],
+      "sampling_type": "convenience"
+    },
+    {
+      "id": "sampling_snowball",
+      "category": "SAMPLE",
+      "label": "Snowball Sampling",
+      "description": "Existing participants recruit future participants — useful for hard-to-reach groups",
+      "color": "purple",
+      "tags": ["snowball", "non-probability", "chain"],
+      "sampling_type": "snowball"
+    },
+
+    {
+      "id": "data_likert",
+      "category": "DATA_COLLECTION",
+      "label": "Likert Scale",
+      "description": "Participants rate agreement on a numbered scale (e.g., 1–5 strongly agree)",
+      "color": "yellow",
+      "tags": ["likert", "quantitative", "rating"],
+      "data_type": "quantitative"
+    },
+    {
+      "id": "data_measurement",
+      "category": "DATA_COLLECTION",
+      "label": "Physical Measurement",
+      "description": "Direct measurement of physical quantities (e.g., reaction time, weight, score)",
+      "color": "yellow",
+      "tags": ["measurement", "quantitative", "objective"],
+      "data_type": "quantitative"
+    },
+    {
+      "id": "data_count",
+      "category": "DATA_COLLECTION",
+      "label": "Frequency / Count",
+      "description": "Count occurrences of a behaviour or event (e.g., number of errors)",
+      "color": "yellow",
+      "tags": ["count", "frequency", "quantitative"],
+      "data_type": "quantitative"
+    },
+    {
+      "id": "data_interview",
+      "category": "DATA_COLLECTION",
+      "label": "Interview",
+      "description": "Structured or semi-structured verbal responses from participants",
+      "color": "yellow",
+      "tags": ["interview", "qualitative", "verbal"],
+      "data_type": "qualitative"
+    },
+    {
+      "id": "data_open_ended",
+      "category": "DATA_COLLECTION",
+      "label": "Open-Ended Questionnaire",
+      "description": "Free-text responses that capture rich qualitative data",
+      "color": "yellow",
+      "tags": ["open-ended", "qualitative", "text"],
+      "data_type": "qualitative"
+    },
+    {
+      "id": "data_observation_notes",
+      "category": "DATA_COLLECTION",
+      "label": "Observation Notes",
+      "description": "Researcher records detailed field notes on observed behaviour",
+      "color": "yellow",
+      "tags": ["observation", "qualitative", "field-notes"],
+      "data_type": "qualitative"
+    },
+    {
+      "id": "data_mixed",
+      "category": "DATA_COLLECTION",
+      "label": "Mixed Methods Data",
+      "description": "Combination of quantitative measurements and qualitative responses",
+      "color": "yellow",
+      "tags": ["mixed", "triangulation"],
+      "data_type": "mixed"
+    },
+
+    {
+      "id": "analysis_t_test",
+      "category": "ANALYSIS",
+      "label": "t-Test",
+      "description": "Compare means between two groups (e.g., experimental vs. control)",
+      "color": "red",
+      "tags": ["t-test", "quantitative", "comparison"],
+      "required_data_type": "quantitative",
+      "min_groups": 2
+    },
+    {
+      "id": "analysis_anova",
+      "category": "ANALYSIS",
+      "label": "ANOVA",
+      "description": "Compare means across three or more groups simultaneously",
+      "color": "red",
+      "tags": ["anova", "quantitative", "multi-group"],
+      "required_data_type": "quantitative",
+      "min_groups": 3
+    },
+    {
+      "id": "analysis_chi_square",
+      "category": "ANALYSIS",
+      "label": "Chi-Square Test",
+      "description": "Test relationships between categorical variables using frequency data",
+      "color": "red",
+      "tags": ["chi-square", "quantitative", "categorical"],
+      "required_data_type": "quantitative",
+      "min_groups": 2
+    },
+    {
+      "id": "analysis_regression",
+      "category": "ANALYSIS",
+      "label": "Regression Analysis",
+      "description": "Model the relationship between a predictor and an outcome variable",
+      "color": "red",
+      "tags": ["regression", "quantitative", "prediction"],
+      "required_data_type": "quantitative",
+      "min_groups": 1
+    },
+    {
+      "id": "analysis_correlation",
+      "category": "ANALYSIS",
+      "label": "Correlation Analysis",
+      "description": "Measure the strength and direction of a linear relationship between two variables",
+      "color": "red",
+      "tags": ["correlation", "quantitative", "relationship"],
+      "required_data_type": "quantitative",
+      "min_groups": 1
+    },
+    {
+      "id": "analysis_thematic",
+      "category": "ANALYSIS",
+      "label": "Thematic Analysis",
+      "description": "Identify patterns and themes across qualitative data (interviews, notes)",
+      "color": "red",
+      "tags": ["thematic", "qualitative", "coding"],
+      "required_data_type": "qualitative",
+      "min_groups": 1
+    },
+    {
+      "id": "analysis_content",
+      "category": "ANALYSIS",
+      "label": "Content Analysis",
+      "description": "Systematically categorise and quantify content in qualitative or mixed data",
+      "color": "red",
+      "tags": ["content", "qualitative", "mixed", "coding"],
+      "required_data_type": "mixed",
+      "min_groups": 1
+    },
+
+    {
+      "id": "conclusion_supports",
+      "category": "CONCLUSION",
+      "label": "Hypothesis Supported",
+      "description": "Results are consistent with the research hypothesis",
+      "color": "teal",
+      "tags": ["supported", "confirmed"]
+    },
+    {
+      "id": "conclusion_rejects",
+      "category": "CONCLUSION",
+      "label": "Hypothesis Rejected",
+      "description": "Results contradict the hypothesis — the null hypothesis is retained",
+      "color": "teal",
+      "tags": ["rejected", "null-retained"]
+    },
+    {
+      "id": "conclusion_inconclusive",
+      "category": "CONCLUSION",
+      "label": "Inconclusive Results",
+      "description": "Results are mixed or insufficient to make a definitive claim",
+      "color": "teal",
+      "tags": ["inconclusive", "mixed-results"]
+    },
+    {
+      "id": "conclusion_further_research",
+      "category": "CONCLUSION",
+      "label": "Further Research Needed",
+      "description": "Findings suggest new questions — recommend future studies",
+      "color": "teal",
+      "tags": ["future-research", "open-question"]
+    }
+  ]
+}

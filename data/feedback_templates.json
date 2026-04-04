@@ -1,0 +1,38 @@
+{
+  "score_tiers": {
+    "excellent": [
+      "Outstanding methodology! Your pipeline is logically sound and scientifically rigorous.",
+      "Excellent work — this design would hold up to peer review."
+    ],
+    "good": [
+      "Solid methodology with minor issues. You're thinking like a researcher!",
+      "Good design — a few tweaks would make this publication-ready."
+    ],
+    "needs_work": [
+      "You're on the right track, but there are some logical gaps to fix.",
+      "This methodology has potential — review the error messages and try again."
+    ],
+    "restart": [
+      "Let's rethink this from scratch. Start with your hypothesis and work forward.",
+      "The pipeline has some fundamental issues. Read the hints carefully and rebuild."
+    ]
+  },
+  "errors": {
+    "analysis_data_mismatch": "You can't run {analysis} on {data_type} data. {analysis} requires {required_type} data.",
+    "method_data_mismatch": "A {method} study typically collects {expected_type} data, but you've chosen {actual_type} collection tools.",
+    "missing_control_variable": "Experiments require a control variable to isolate the effect of your independent variable.",
+    "missing_iv": "Your hypothesis needs an Independent Variable — what are you manipulating?",
+    "missing_dv": "Your hypothesis needs a Dependent Variable — what are you measuring?",
+    "missing_category": "You haven't placed a {category} block yet. Every methodology needs one."
+  },
+  "warnings": {
+    "small_sample": "A small sample (<30) limits statistical power and generalizability.",
+    "convenience_sampling": "Convenience sampling introduces selection bias — consider random sampling for stronger results.",
+    "no_confounding": "Consider identifying potential confounding variables to strengthen your design."
+  },
+  "suggestions": {
+    "add_control": "Add a Control Variable to isolate the effect of your independent variable.",
+    "increase_sample": "Consider a larger sample size for more reliable results.",
+    "better_sampling": "Random or stratified sampling would improve the validity of your findings."
+  }
+}
