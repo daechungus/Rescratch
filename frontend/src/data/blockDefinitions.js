@@ -103,3 +103,25 @@ export const CATEGORY_ICONS = {
   ANALYSIS: '📈',
   CONCLUSION: '✅',
 }
+
+// Which categories a block's output port can connect TO
+export const VALID_CONNECTIONS = {
+  HYPOTHESIS:      ['VARIABLE'],
+  VARIABLE:        ['METHOD', 'VARIABLE'],
+  METHOD:          ['SAMPLE'],
+  SAMPLE:          ['DATA_COLLECTION', 'SAMPLE'],
+  DATA_COLLECTION: ['ANALYSIS'],
+  ANALYSIS:        ['CONCLUSION'],
+  CONCLUSION:      [],
+}
+
+// Port colors (output port dot color per category)
+export const PORT_COLORS = {
+  HYPOTHESIS:      'bg-blue-500',
+  VARIABLE:        'bg-green-500',
+  METHOD:          'bg-orange-500',
+  SAMPLE:          'bg-purple-500',
+  DATA_COLLECTION: 'bg-yellow-500',
+  ANALYSIS:        'bg-red-500',
+  CONCLUSION:      'bg-teal-500',
+}

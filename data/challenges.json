@@ -112,5 +112,78 @@
       ],
       "tags": ["mixed", "quantitative", "qualitative", "RLHF", "alignment", "LLM"]
     }
+  ,
+    {
+      "id": "broken_lab_ttest_qualitative",
+      "type": "broken_lab",
+      "title": "🔴 Broken Lab: Fix the RLHF Evaluation Study",
+      "difficulty": "advanced",
+      "level": 9,
+      "description": "A grad student designed a study to evaluate RLHF fine-tuning quality using open-ended interviews — but then tried to run a t-test on the responses. Find and fix every methodological error.",
+      "available_categories": ["HYPOTHESIS", "VARIABLE", "METHOD", "SAMPLE", "DATA_COLLECTION", "ANALYSIS", "CONCLUSION"],
+      "hints": [
+        "Look at the analysis block. What data type does a t-test require?",
+        "The method is a survey — does the data collection match?",
+        "Is there a control variable? Does the method require one?"
+      ],
+      "tags": ["broken-lab", "qualitative", "NLP", "fix-the-bug"],
+      "broken_canvas": {
+        "blocks": [
+          { "instanceId": "bl_h1", "blockDefId": "hypothesis_directional", "x": 60, "y": 80 },
+          { "instanceId": "bl_v1", "blockDefId": "independent_variable", "x": 340, "y": 60 },
+          { "instanceId": "bl_v2", "blockDefId": "dependent_variable", "x": 340, "y": 160 },
+          { "instanceId": "bl_m1", "blockDefId": "method_survey", "x": 620, "y": 80 },
+          { "instanceId": "bl_s1", "blockDefId": "sample_small", "x": 620, "y": 220 },
+          { "instanceId": "bl_s2", "blockDefId": "sampling_convenience", "x": 620, "y": 320 },
+          { "instanceId": "bl_d1", "blockDefId": "data_interview", "x": 900, "y": 80 },
+          { "instanceId": "bl_a1", "blockDefId": "analysis_t_test", "x": 1180, "y": 80 },
+          { "instanceId": "bl_c1", "blockDefId": "conclusion_supports", "x": 1460, "y": 80 }
+        ],
+        "connections": [
+          { "id": "bc1", "fromInstanceId": "bl_h1", "toInstanceId": "bl_v1" },
+          { "id": "bc2", "fromInstanceId": "bl_h1", "toInstanceId": "bl_v2" },
+          { "id": "bc3", "fromInstanceId": "bl_v1", "toInstanceId": "bl_m1" },
+          { "id": "bc4", "fromInstanceId": "bl_m1", "toInstanceId": "bl_s1" },
+          { "id": "bc5", "fromInstanceId": "bl_d1", "toInstanceId": "bl_a1" },
+          { "id": "bc6", "fromInstanceId": "bl_a1", "toInstanceId": "bl_c1" }
+        ]
+      }
+    },
+    {
+      "id": "broken_lab_experiment_no_control",
+      "type": "broken_lab",
+      "title": "🔴 Broken Lab: Fix the Quantization Benchmark",
+      "difficulty": "expert",
+      "level": 10,
+      "description": "A researcher benchmarked INT4 quantization on LLM accuracy using a lab experiment — but forgot the control variable, picked a tiny convenience sample, and drew an unsupported conclusion. Debug the pipeline.",
+      "available_categories": ["HYPOTHESIS", "VARIABLE", "METHOD", "SAMPLE", "DATA_COLLECTION", "ANALYSIS", "CONCLUSION"],
+      "hints": [
+        "Lab experiments always need a control variable. What's missing?",
+        "The sample size is n<30 and convenience-sampled. Are those appropriate for a rigorous benchmark?",
+        "The conclusion 'supports' the hypothesis — but is that warranted with these methodological flaws?"
+      ],
+      "tags": ["broken-lab", "experiment", "LLM", "quantization", "fix-the-bug"],
+      "broken_canvas": {
+        "blocks": [
+          { "instanceId": "bl2_h1", "blockDefId": "hypothesis_directional", "x": 60, "y": 120 },
+          { "instanceId": "bl2_v1", "blockDefId": "independent_variable", "x": 340, "y": 80 },
+          { "instanceId": "bl2_v2", "blockDefId": "dependent_variable", "x": 340, "y": 200 },
+          { "instanceId": "bl2_m1", "blockDefId": "method_experiment_lab", "x": 620, "y": 120 },
+          { "instanceId": "bl2_s1", "blockDefId": "sample_small", "x": 620, "y": 260 },
+          { "instanceId": "bl2_s2", "blockDefId": "sampling_convenience", "x": 620, "y": 360 },
+          { "instanceId": "bl2_d1", "blockDefId": "data_measurement", "x": 900, "y": 120 },
+          { "instanceId": "bl2_a1", "blockDefId": "analysis_t_test", "x": 1180, "y": 120 },
+          { "instanceId": "bl2_c1", "blockDefId": "conclusion_supports", "x": 1460, "y": 120 }
+        ],
+        "connections": [
+          { "id": "bc2_1", "fromInstanceId": "bl2_h1", "toInstanceId": "bl2_v1" },
+          { "id": "bc2_2", "fromInstanceId": "bl2_h1", "toInstanceId": "bl2_v2" },
+          { "id": "bc2_3", "fromInstanceId": "bl2_v1", "toInstanceId": "bl2_m1" },
+          { "id": "bc2_4", "fromInstanceId": "bl2_m1", "toInstanceId": "bl2_s1" },
+          { "id": "bc2_5", "fromInstanceId": "bl2_d1", "toInstanceId": "bl2_a1" },
+          { "id": "bc2_6", "fromInstanceId": "bl2_a1", "toInstanceId": "bl2_c1" }
+        ]
+      }
+    }
   ]
 }

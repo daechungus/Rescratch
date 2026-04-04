@@ -1,12 +1,28 @@
 /**
- * Converts the pipeline store shape (category -> block objects)
- * into the API shape (category -> block id strings).
+ * Converts the free-canvas canvasBlocks array into the flat category
+ * array shape the backend API expects:
+ *   { HYPOTHESIS: ["blockDefId",...], VARIABLE: [...], ... }
+ *
+ * All blocks on the canvas are included regardless of whether they are
+ * connected — the backend handles completeness scoring.
  */
-export function serializePipeline(pipeline) {
-  return Object.fromEntries(
-    Object.entries(pipeline).map(([category, blocks]) => [
-      category,
-      blocks.map((b) => b.id),
-    ])
-  )
+export function serializePipeline(canvasBlocks) {
+  const result = {
+    HYPOTHESIS: [],
+    VARIABLE: [],
+    METHOD: [],
+    SAMPLE: [],
+    DATA_COLLECTION: [],
+    ANALYSIS: [],
+    CONCLUSION: [],
+  }
+
+  for (const block of canvasBlocks) {
+    const cat = block.category
+    if (result[cat] !== undefined && !result[cat].includes(block.blockDefId)) {
+      result[cat].push(block.blockDefId)
+    }
+  }
+
+  return result
 }

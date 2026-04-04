@@ -6,7 +6,7 @@ import { useGameState } from '../hooks/useGameState.js'
 export function Toolbar() {
   const { gamePhase, currentChallenge, hintIndex, isLoading } = useGameState()
   const submitPipeline = useStore((s) => s.submitPipeline)
-  const resetPipeline = useStore((s) => s.resetPipeline)
+  const resetPipeline = useStore((s) => s.resetCanvas)
   const backToMenu = useStore((s) => s.backToMenu)
   const advanceHint = useStore((s) => s.advanceHint)
 
@@ -65,7 +65,7 @@ export function Toolbar() {
                 disabled={isLoading}
                 className="px-6 py-2 text-sm font-bold rounded-lg bg-indigo-600 text-white hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors shadow-sm"
               >
-                {isLoading ? 'Evaluating…' : '▶ Submit Methodology'}
+                {isLoading ? 'Running…' : '▶ Run Experiment'}
               </button>
             </>
           )}

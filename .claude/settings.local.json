@@ -4,7 +4,10 @@
       "Bash(python3 -c \"import json; d=json.load\\(open\\(''data/challenges.json''\\)\\); print\\([c[''id''] for c in d[''challenges'']]\\)\")",
       "Bash(python -c \"import json; d=json.load\\(open\\(''data/challenges.json''\\)\\); print\\([c[''id''] for c in d[''challenges'']]\\)\")",
       "Bash(python scripts/test_scorer.py)",
-      "Bash(python -c \"import json; d=json.load\\(open\\(''data/challenges.json''\\)\\); [print\\(f\"\"L{c[''level'']} [{c[''difficulty'']:12}] {c[''title'']}\"\"\\) for c in d[''challenges'']]\")"
+      "Bash(python -c \"import json; d=json.load\\(open\\(''data/challenges.json''\\)\\); [print\\(f\"\"L{c[''level'']} [{c[''difficulty'']:12}] {c[''title'']}\"\"\\) for c in d[''challenges'']]\")",
+      "Bash(python scripts/fetch_arxiv.py --max 3)",
+      "Bash(python -c \"import json; d=json.load\\(open\\(''data/challenges.json''\\)\\); print\\(f''{len\\(d[\"\"challenges\"\"]\\)} challenges''\\); [print\\(f''  L{c[\"\"level\"\"]} [{c[\"\"difficulty\"\"]:12}] {c[\"\"title\"\"][:60]}''\\) for c in d[''challenges'']]\")",
+      "Bash(grep -r \"resetPipeline\\\\|addBlockToZone\\\\|removeBlockFromZone\\\\|from ''./Canvas\\\\|from ''./BlockPalette\\\\|from ''./Block.jsx''\\\\|useDragAndDrop\\\\|DndContext\\\\|DragOverlay\" c:/Users/daeho/daehoonchung/Rescratch/frontend/src/)"
     ]
   }
 }

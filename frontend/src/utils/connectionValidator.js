@@ -1,9 +1,26 @@
-/**
- * Client-side pipeline validation — mirrors backend compatibility rules.
- * Used for instant feedback before API submission.
- */
+import { VALID_CONNECTIONS } from '../data/blockDefinitions.js'
 
-const ANALYSIS_DATA_COMPATIBILITY = {
+/**
+ * Validate whether two canvas block instances can be port-connected.
+ * fromBlock / toBlock are canvas block objects (with .category, .instanceId).
+ * Returns { valid: bool, reason: string }
+ */
+export function validatePortConnection(fromBlock, toBlock) {
+  if (!fromBlock || !toBlock) return { valid: false, reason: 'Invalid blocks.' }
+  if (fromBlock.instanceId === toBlock.instanceId) return { valid: false, reason: 'Cannot connect a block to itself.' }
+  const allowed = VALID_CONNECTIONS[fromBlock.category] || []
+  if (!allowed.includes(toBlock.category)) {
+    return {
+      valid: false,
+      reason: `${fromBlock.category} → ${toBlock.category} is not a valid connection. Expected: ${allowed.join(' or ') || 'nothing'}.`,
+    }
+  }
+  return { valid: true, reason: '' }
+}
+
+// ─── Live pipeline validator ─────────────────────────────────────────────────
+
+const ANALYSIS_DATA_COMPAT = {
   analysis_t_test: ['quantitative'],
   analysis_anova: ['quantitative'],
   analysis_chi_square: ['quantitative'],
@@ -13,7 +30,7 @@ const ANALYSIS_DATA_COMPATIBILITY = {
   analysis_content: ['qualitative', 'mixed'],
 }
 
-const METHOD_DATA_COMPATIBILITY = {
+const METHOD_DATA_COMPAT = {
   method_survey: ['quantitative', 'qualitative', 'mixed'],
   method_experiment_lab: ['quantitative'],
   method_experiment_field: ['quantitative', 'mixed'],
@@ -22,88 +39,65 @@ const METHOD_DATA_COMPATIBILITY = {
   method_meta_analysis: ['quantitative', 'mixed'],
 }
 
-const METHOD_REQUIRES_CONTROL = new Set(['method_experiment_lab', 'method_experiment_field'])
+const METHOD_NEEDS_CONTROL = new Set(['method_experiment_lab', 'method_experiment_field'])
 
+function inferDataType(blockDefId) {
+  if (['data_likert', 'data_measurement', 'data_count'].includes(blockDefId)) return 'quantitative'
+  if (['data_interview', 'data_open_ended', 'data_observation_notes'].includes(blockDefId)) return 'qualitative'
+  return 'mixed'
+}
+
+/**
+ * Runs on the serialized pipeline: { CATEGORY: [blockDefId,...] }
+ * Returns { errors: [{category, message}], warnings: [{category, message}], isValid }
+ * Used to show live badges on canvas blocks before the user submits.
+ */
 export function validatePipelineClient(pipeline) {
   const errors = []
   const warnings = []
 
-  const hypothesisBlocks = pipeline.HYPOTHESIS || []
-  const variableBlocks = pipeline.VARIABLE || []
-  const methodBlocks = pipeline.METHOD || []
-  const sampleBlocks = pipeline.SAMPLE || []
-  const dataBlocks = pipeline.DATA_COLLECTION || []
-  const analysisBlocks = pipeline.ANALYSIS || []
-  const conclusionBlocks = pipeline.CONCLUSION || []
+  const H = pipeline.HYPOTHESIS || []
+  const V = pipeline.VARIABLE || []
+  const M = pipeline.METHOD || []
+  const S = pipeline.SAMPLE || []
+  const D = pipeline.DATA_COLLECTION || []
+  const A = pipeline.ANALYSIS || []
+  const C = pipeline.CONCLUSION || []
 
-  // Completeness checks
-  if (hypothesisBlocks.length === 0) errors.push({ category: 'HYPOTHESIS', message: 'Missing hypothesis block' })
-  if (variableBlocks.length === 0) errors.push({ category: 'VARIABLE', message: 'Missing variable blocks' })
-  if (methodBlocks.length === 0) errors.push({ category: 'METHOD', message: 'Missing method block' })
-  if (sampleBlocks.length === 0) errors.push({ category: 'SAMPLE', message: 'Missing sample blocks' })
-  if (dataBlocks.length === 0) errors.push({ category: 'DATA_COLLECTION', message: 'Missing data collection block' })
-  if (analysisBlocks.length === 0) errors.push({ category: 'ANALYSIS', message: 'Missing analysis block' })
-  if (conclusionBlocks.length === 0) errors.push({ category: 'CONCLUSION', message: 'Missing conclusion block' })
+  if (H.length === 0) errors.push({ category: 'HYPOTHESIS', message: 'No hypothesis placed' })
+  if (V.length === 0) errors.push({ category: 'VARIABLE', message: 'No variables placed' })
+  if (M.length === 0) errors.push({ category: 'METHOD', message: 'No method placed' })
+  if (S.length === 0) errors.push({ category: 'SAMPLE', message: 'No sample placed' })
+  if (D.length === 0) errors.push({ category: 'DATA_COLLECTION', message: 'No data collection placed' })
+  if (A.length === 0) errors.push({ category: 'ANALYSIS', message: 'No analysis placed' })
+  if (C.length === 0) errors.push({ category: 'CONCLUSION', message: 'No conclusion placed' })
 
-  // Variable checks
-  const hasIV = variableBlocks.some((b) => b.id === 'independent_variable')
-  const hasDV = variableBlocks.some((b) => b.id === 'dependent_variable')
-  const hasControl = variableBlocks.some((b) => b.id === 'control_variable')
-  if (!hasIV) errors.push({ category: 'VARIABLE', message: 'Missing Independent Variable' })
-  if (!hasDV) errors.push({ category: 'VARIABLE', message: 'Missing Dependent Variable' })
+  if (!V.includes('independent_variable')) errors.push({ category: 'VARIABLE', message: 'Missing Independent Variable' })
+  if (!V.includes('dependent_variable')) errors.push({ category: 'VARIABLE', message: 'Missing Dependent Variable' })
 
-  // Method requires control
-  if (methodBlocks.length > 0) {
-    const method = methodBlocks[0]
-    if (METHOD_REQUIRES_CONTROL.has(method.id) && !hasControl) {
-      errors.push({ category: 'METHOD', message: `${method.label} requires a Control Variable` })
+  if (M.length > 0 && METHOD_NEEDS_CONTROL.has(M[0]) && !V.includes('control_variable')) {
+    errors.push({ category: 'METHOD', message: 'Experiment requires a Control Variable' })
+  }
+
+  if (A.length > 0 && D.length > 0) {
+    const dataType = inferDataType(D[0])
+    const compat = ANALYSIS_DATA_COMPAT[A[0]]
+    if (compat && !compat.includes(dataType)) {
+      errors.push({ category: 'ANALYSIS', message: `Incompatible with ${dataType} data` })
+      errors.push({ category: 'DATA_COLLECTION', message: `Incompatible with chosen analysis` })
     }
   }
 
-  // Analysis / data compatibility
-  if (analysisBlocks.length > 0 && dataBlocks.length > 0) {
-    const analysis = analysisBlocks[0]
-    const data = dataBlocks[0]
-    const dataType = data.data_type
-    const compatibleTypes = ANALYSIS_DATA_COMPATIBILITY[analysis.id]
-    if (compatibleTypes && dataType && !compatibleTypes.includes(dataType)) {
-      errors.push({
-        category: 'ANALYSIS',
-        message: `${analysis.label} requires ${compatibleTypes.join(' or ')} data, but you selected ${dataType} collection`,
-      })
+  if (M.length > 0 && D.length > 0) {
+    const dataType = inferDataType(D[0])
+    const compat = METHOD_DATA_COMPAT[M[0]]
+    if (compat && !compat.includes(dataType)) {
+      warnings.push({ category: 'DATA_COLLECTION', message: `Usually paired with ${compat.join('/')} data` })
     }
   }
 
-  // Method / data compatibility
-  if (methodBlocks.length > 0 && dataBlocks.length > 0) {
-    const method = methodBlocks[0]
-    const data = dataBlocks[0]
-    const dataType = data.data_type
-    const compatibleTypes = METHOD_DATA_COMPATIBILITY[method.id]
-    if (compatibleTypes && dataType && !compatibleTypes.includes(dataType)) {
-      warnings.push({
-        category: 'DATA_COLLECTION',
-        message: `${method.label} usually uses ${compatibleTypes.join(' or ')} data`,
-      })
-    }
-  }
-
-  // Warnings
-  const hasSampleSize = sampleBlocks.some((b) => ['sample_small', 'sample_medium', 'sample_large'].includes(b.id))
-  const sampleSize = sampleBlocks.find((b) => b.size)
-  if (sampleSize?.size === 'small') {
-    warnings.push({ category: 'SAMPLE', message: 'Small sample limits statistical power' })
-  }
-
-  const samplingMethod = sampleBlocks.find((b) => b.sampling_type)
-  if (samplingMethod && ['convenience', 'snowball'].includes(samplingMethod.sampling_type)) {
-    warnings.push({ category: 'SAMPLE', message: 'Convenience/snowball sampling introduces selection bias' })
-  }
-
-  const hasConfounding = variableBlocks.some((b) => b.id === 'confounding_variable')
-  if (!hasConfounding) {
-    warnings.push({ category: 'VARIABLE', message: 'Consider identifying confounding variables' })
-  }
+  if (S.includes('sample_small')) warnings.push({ category: 'SAMPLE', message: 'Small sample limits power' })
+  if (!V.includes('confounding_variable')) warnings.push({ category: 'VARIABLE', message: 'Consider adding confounders' })
 
   return { errors, warnings, isValid: errors.length === 0 }
 }
