@@ -5,6 +5,7 @@ import { NavHeader } from './components/NavHeader.jsx'
 import { HeroPage } from './components/HeroPage.jsx'
 import { ExplorePage } from './components/ExplorePage.jsx'
 import { LabRoute } from './components/LabRoute.jsx'
+import { UploadPage } from './components/UploadPage.jsx'
 
 function AppInner() {
   const loadChallenges = useStore((s) => s.loadChallenges)
@@ -22,6 +23,7 @@ function AppInner() {
         <Route path="/" element={<HeroPage />} />
         <Route path="/explore" element={<ExplorePage />} />
         <Route path="/lab/:challengeId" element={<LabRoute />} />
+        <Route path="/upload" element={<UploadPage />} />
         <Route path="*" element={<HeroPage />} />
       </Routes>
     </div>

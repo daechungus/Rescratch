@@ -15,6 +15,7 @@ export function NavHeader() {
   const isHero = location.pathname === '/'
   const isExplore = location.pathname === '/explore'
   const isLab = location.pathname.startsWith('/lab/')
+  const isUpload = location.pathname === '/upload'
 
   // Transparent → opaque scroll effect on hero
   useEffect(() => {
@@ -72,14 +73,26 @@ export function NavHeader() {
           Explore
         </Link>
 
+        {/* Generate Lab tab */}
+        <Link
+          to="/upload"
+          className={`text-base font-medium transition-colors flex-shrink-0 ${
+            isUpload
+              ? 'text-[#1A1A1A] border-b-2 border-[#2EC4B6] pb-0.5'
+              : 'text-[#6B6B6B] hover:text-[#1A1A1A]'
+          }`}
+        >
+          Generate Lab
+        </Link>
+
         {/* Lab breadcrumb */}
         {isLab && <LabBreadcrumb />}
 
         {/* Spacer */}
         <div className="flex-1" />
 
-        {/* Search — hidden on lab */}
-        {!isLab && (
+        {/* Search — hidden on lab and upload */}
+        {!isLab && !isUpload && (
           <form onSubmit={handleSearchSubmit} className="relative hidden md:block">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-[#9A9A9A] w-4 h-4 pointer-events-none" />
             <input

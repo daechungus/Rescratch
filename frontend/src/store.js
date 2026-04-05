@@ -29,6 +29,7 @@ export const useStore = create((set, get) => ({
   currentChallenge: null,
   blocks: [],
   customBlocks: loadCustomBlocks(),
+  generatedChallenge: null,
 
   // ── Canvas ────────────────────────────────────────────────────────────────
   // canvasBlocks: [{ instanceId, blockDefId, category, label, description, x, y, ...blockDefFields }]
@@ -185,6 +186,7 @@ export const useStore = create((set, get) => ({
   },
 
   // ── UI ────────────────────────────────────────────────────────────────────
+  setGeneratedChallenge: (challenge) => set({ generatedChallenge: challenge }),
   dismissTutorial: () => set({ showTutorial: false }),
   advanceHint: () => set((state) => ({ hintIndex: state.hintIndex + 1 })),
 

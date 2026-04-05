@@ -14,12 +14,7 @@ export function PillarCard({ pillar, delay = 0 }) {
   }, {})
   const groupEntries = Object.entries(groups)
 
-  // First group open by default
-  const [openGroups, setOpenGroups] = useState(() => {
-    const init = {}
-    if (groupEntries.length > 0) init[groupEntries[0][0]] = true
-    return init
-  })
+  const [openGroups, setOpenGroups] = useState({})
 
   function toggleGroup(parent) {
     setOpenGroups((prev) => ({ ...prev, [parent]: !prev[parent] }))
@@ -32,7 +27,7 @@ export function PillarCard({ pillar, delay = 0 }) {
       viewport={{ once: true }}
       transition={{ duration: 0.4, delay }}
       whileHover={{ y: -4, transition: { duration: 0.2 } }}
-      className="rounded-xl bg-white border border-[#E5E3DE] p-6 flex flex-col gap-4 cursor-default w-full h-auto md:h-[350px] md:w-[370px]"
+      className="bg-[#F8F8F8] border border-[#E5E3DE] p-6 flex flex-col gap-4 cursor-default w-full h-auto md:h-[350px] md:w-[370px]"
       style={{
         '--pillar-color': pillar.color,
         transition: 'border-color 0.2s, box-shadow 0.2s',
@@ -48,14 +43,8 @@ export function PillarCard({ pillar, delay = 0 }) {
     >
       {/* Header */}
       <div>
-        <div className="flex items-center gap-3 mb-1">
-          <span className="text-3xl">{pillar.emoji}</span>
-          <div>
-            <div className="font-bold text-[#1A1A1A] text-lg leading-tight">{pillar.title}</div>
-            <div className="text-[#6B6B6B] text-xs">{pillar.subtitle}</div>
-          </div>
-        </div>
-        <p className="text-[#6B6B6B] text-sm italic mt-2">{pillar.focus}</p>
+        <div className="font-bold text-[#1A1A1A] text-lg leading-tight mb-1">{pillar.title}</div>
+        <p className="text-[#6B6B6B] text-sm italic">{pillar.focus}</p>
       </div>
 
       <div className="border-t border-[#E5E3DE]" />
@@ -120,11 +109,11 @@ export function PillarCard({ pillar, delay = 0 }) {
       <button
         onClick={() => navigate(`/explore?pillar=${pillar.id}`)}
         className="text-sm font-semibold transition-colors mt-auto text-left"
-        style={{ color: pillar.color }}
+        style={{ color: '#080808'}}
         onMouseEnter={(e) => { e.currentTarget.style.opacity = '0.8' }}
         onMouseLeave={(e) => { e.currentTarget.style.opacity = '1' }}
       >
-        Explore All →
+        Explore Labs →
       </button>
     </motion.div>
   )

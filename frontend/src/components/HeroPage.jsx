@@ -1,10 +1,11 @@
 import { useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { ChevronDown, FlaskConical, Bug, BookOpen, ArrowRight, Layers, BarChart3 } from 'lucide-react'
+import { ChevronDown } from 'lucide-react'
 import PILLARS from '../data/pillars.js'
 import { PillarCard } from './PillarCard.jsx'
 import { ParticleHero } from './ParticleHero.jsx'
+import { PaperBackground } from './PaperBackground.jsx'
 
 // Font applied to the features/mission sections.
 // Swap the value to 'Ubuntu, sans-serif' or 'Overpass, sans-serif' to change.
@@ -18,26 +19,14 @@ const fadeUp = (delay = 0) => ({
 
 const FEATURES = [
   {
-    icon: Layers,
-    color: '#2EC4B6',
-    bg: '#EEF9F8',
-    label: 'Learn the process',
     title: 'Design research by snapping blocks together',
     body: `Drag Hypothesis, Variable, Method, Sample, Data Collection, Analysis, and Conclusion blocks onto a free canvas. Wire them up in order and get direct feedback on what went wrong.`,
   },
   {
-    icon: Bug,
-    color: '#FFB941',
-    bg: '#FFF8EC',
-    label: 'Open Lab',
     title: 'Debug a flawed study, then fix it',
     body: 'Some challenges drop you inside a pre-built pipeline riddled with logical errors: wrong block order, missing controls, invalid connections. Your job is to find and repair every flaw.',
   },
   {
-    icon: BookOpen,
-    color: '#A78BFA',
-    bg: '#F5F3FF',
-    label: 'The Brief',
     title: 'Every challenge starts with a real scenario',
     body: 'Before you build anything you read a concise research brief: the question, the context, the constraints. Each puzzle is grounded in an actual study design problem so the methodology choices feel meaningful.',
   },
@@ -57,7 +46,7 @@ export function HeroPage() {
       <section
         className="relative min-h-screen flex flex-col items-center justify-center px-6 text-center overflow-hidden"
         style={{
-          background: 'linear-gradient(180deg, #FFF9F0 0%, #FFFFFF 60%)',
+          background: '#f9f7f2',
         }}
       >
         {/* Particle canvas — behind everything */}
@@ -111,13 +100,13 @@ export function HeroPage() {
             animate={{ opacity: 1 }}
             transition={{ delay: 1.4, duration: 1.6 }}
           >
-            Research from scratch
+            Research from Scratch
           </motion.p>
 
           {/* CTA */}
           <motion.button
             onClick={scrollToPillars}
-            className="mt-2 px-8 py-3 rounded-full bg-[#2EC4B6] text-white font-bold text-base hover:bg-[#239E93] transition-colors shadow-lg shadow-[0_4px_20px_rgba(255,185,65,0.25)]"
+            className="mt-2 px-8 py-3 bg-[#2EC4B6] rounded-full text-white font-bold text-base hover:bg-[#239E93] transition-colors shadow-lg shadow-[0_4px_20px_rgba(255,185,65,0.25)]"
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 1.6, duration: 0.3 }}
@@ -138,9 +127,13 @@ export function HeroPage() {
         </motion.div>
       </section>
 
+      {/* ── Paper background wraps Mission + Features + Pillars ── */}
+      <div className="relative overflow-hidden">
+        <PaperBackground />
+
       {/* ── Mission Section ───────────────────────────── */}
-      <section className="py-28 px-6" style={{ background: 'linear-gradient(180deg, #FFFFFF 0%, #FFF9F0 100%)' }}>
-        <div className="max-w-3xl mx-auto text-center">
+      <section className="relative z-10 py-28 px-6">
+        <div className="max-w-6xl mx-auto text-center px-10 py-14">
           <motion.p
             className="text-xs font-bold tracking-widest uppercase text-[#2EC4B6] mb-4"
             {...fadeUp(0)}
@@ -154,32 +147,32 @@ export function HeroPage() {
             Research should be available to everyone.
           </motion.h2>
           <motion.p
-            className="text-lg text-[#5A5A5A] leading-relaxed max-w-2xl mx-auto mb-10"
+            className="text-lg text-[#5A5A5A] leading-relaxed max-w-4xl mx-auto mb-10"
             {...fadeUp(0.16)}
           >
             Most students encounter research methodology through textbooks and lectures — passive, disconnected from practice. By the time they face a real study design problem, the concepts feel slippery.
           </motion.p>
           <motion.p
-            className="text-lg text-[#5A5A5A] leading-relaxed max-w-2xl mx-auto"
+            className="text-lg text-[#5A5A5A] leading-relaxed max-w-4xl mx-auto"
             {...fadeUp(0.22)}
           >
             Rescratch flips that. It's a visual puzzle game where you construct research pipelines, debug broken studies, and receive instant rule-based feedback — building the muscle memory that reading alone never could.
           </motion.p>
-        </div>
 
-        {/* Divider accent */}
-        <motion.div
-          className="mx-auto mt-16 flex items-center gap-3 justify-center"
-          {...fadeUp(0.28)}
-        >
-          <div className="h-px w-16 bg-[#E5E3DE]" />
-          <div className="w-2 h-2 rounded-full bg-[#2EC4B6]" />
-          <div className="h-px w-16 bg-[#E5E3DE]" />
-        </motion.div>
+          {/* Divider accent */}
+          <motion.div
+            className="mx-auto mt-12 flex items-center gap-3 justify-center"
+            {...fadeUp(0.28)}
+          >
+            <div className="h-px w-16 bg-[#E5E3DE]" />
+            <div className="w-2 h-2 rounded-full bg-[#2EC4B6]" />
+            <div className="h-px w-16 bg-[#E5E3DE]" />
+          </motion.div>
+        </div>
       </section>
 
       {/* ── Features Section ──────────────────────────── */}
-      <section className="py-24 px-6 bg-white">
+      <section className="relative z-10 py-24 px-6">
         <div className="max-w-6xl mx-auto">
           <motion.div className="text-center mb-16" {...fadeUp(0)}>
             <p className="text-xs font-bold tracking-widest uppercase text-[#FFB941] mb-3">
@@ -191,53 +184,28 @@ export function HeroPage() {
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {FEATURES.map((f, i) => {
-              const Icon = f.icon
-              return (
+            {FEATURES.map((f, i) => (
                 <motion.div
-                  key={f.label}
-                  className="rounded-2xl border border-[#EBEBEB] overflow-hidden flex flex-col"
-                  style={{ background: '#FAFAFA' }}
+                  key={f.title}
+                  className="border border-[#EBEBEB] flex flex-col"
+                  style={{ background: '#F8F8F8', boxShadow: '0 2px 20px rgba(0,0,0,0.07)' }}
                   {...fadeUp(i * 0.1)}
                   whileHover={{ y: -4, boxShadow: '0 12px 40px rgba(0,0,0,0.07)' }}
                   transition={{ duration: 0.25 }}
                 >
-                  {/* Color bar */}
-                  <div className="h-1.5 w-full" style={{ background: f.color }} />
-
                   <div className="p-7 flex flex-col gap-4 flex-1">
-                    {/* Icon badge */}
-                    <div
-                      className="w-10 h-10 rounded-xl flex items-center justify-center"
-                      style={{ background: f.bg }}
-                    >
-                      <Icon className="w-5 h-5" style={{ color: f.color }} />
-                    </div>
-
-                    {/* Label */}
-                    <p
-                      className="text-xs font-bold tracking-widest uppercase"
-                      style={{ color: f.color }}
-                    >
-                      {f.label}
-                    </p>
-
-                    {/* Title */}
                     <h3 className="text-xl font-black leading-snug tracking-tight text-[#1A1A1A]">
                       {f.title}
                     </h3>
-
-                    {/* Body */}
                     <p className="text-sm text-[#6B6B6B] leading-relaxed flex-1">
                       {f.body}
                     </p>
                   </div>
                 </motion.div>
-              )
-            })}
+            ))}
           </div>
 
-          {/* Score callout strip */}
+          {/* Score callout strip
           <motion.div
             className="mt-10 rounded-2xl p-8 flex flex-col md:flex-row items-start md:items-center gap-6"
             style={{ background: '#F0FAFA', border: '1px solid #C8EFEC' }}
@@ -264,16 +232,17 @@ export function HeroPage() {
             >
               Try a challenge <ArrowRight className="w-4 h-4" />
             </motion.button>
-          </motion.div>
+          </motion.div> */}
         </div>
       </section>
 
       {/* ── Pillars Section ───────────────────────────── */}
-      <section ref={pillarsRef} className="py-24 px-6 bg-white">
-        <div className="max-w-6xl mx-auto">
+      <section ref={pillarsRef} className="relative z-10 py-24 px-6">
+        <div className="relative z-10 max-w-6xl mx-auto">
           <div className="text-center mb-14">
-            <h2 className="text-4xl font-bold text-[#1A1A1A] mb-3">Learn how to conduct research from scratch</h2>
-            {/* <p className="text-[#6B6B6B] text-lg">Learn how to conduct research from scratch.</p> */}
+            <h2 className="text-4xl font-bold text-[#1A1A1A] mb-3">
+              Learn how to conduct research from scratch
+            </h2>
           </div>
 
           {/* Grid: 3-col desktop, 2-col tablet, 1-col mobile. 2nd row centered. */}
@@ -282,7 +251,6 @@ export function HeroPage() {
               <div
                 key={pillar.id}
                 className={
-                  // On lg screens, center the last 2 cards (row 2) by offsetting
                   i === 3 ? 'lg:col-start-1 lg:col-span-1' :
                   i === 4 ? 'lg:col-start-2 lg:col-span-1' :
                   ''
@@ -304,6 +272,8 @@ export function HeroPage() {
           </div>
         </div>
       </section>
+
+      </div>{/* end paper background wrapper */}
     </div>
   )
 }

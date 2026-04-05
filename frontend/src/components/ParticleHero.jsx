@@ -378,12 +378,12 @@ const cloudVert = `
     pos = mix(pos, aSpherePosition, scEase);
 
     vColor = aColor;
-    vAlpha = ease * (1.0 - scEase * 0.85);
+    vAlpha = ease * (1.0 - scEase * 0.85) * 0.3;
 
     vec4 mv = modelViewMatrix * vec4(pos, 1.0);
     gl_Position  = projectionMatrix * mv;
     //size for "Rescratch"
-    gl_PointSize = clamp(400.0 / -mv.z, 1.5, 10.5);
+    gl_PointSize = clamp(400.0 / -mv.z, 5.5, 10.5);
   }
 `
 
@@ -396,10 +396,10 @@ const cloudFrag = `
     float d  = length(uv);
     if (d > 0.5) discard;
     float a = (1.0 - smoothstep(0.18, 0.5, d)) * vAlpha;
-    gl_FragColor = vec4(vColor, a);
-
+    gl_FragColor = vec4(0.0, 0.0, 0.0, a);    
   }
-      // gl_FragColor = vec4(0.0, 0.0, 0.0, a);
+      // gl_FragColor = vec4(0.0, 0.0, 0.0, a);    gl_FragColor = vec4(vColor, a);
+
 
 `
 
@@ -408,7 +408,7 @@ function ResearchCloud({ count = 3500 }) {
   const scatterDir    = useRef(0)
   const reformTimer   = useRef(null)
 
-  const basePositions = useMemo(() => sampleLetterPositions('Rescratch', count), [count])
+  const basePositions = useMemo(() => sampleLetterPositions('ReScratch', count), [count])
 
   const { geo, uni } = useMemo(() => {
     const spherePos   = new Float32Array(count * 3)

@@ -2,7 +2,7 @@
 
 **A visual node-editor game for learning research methodology.**
 
-Players design research pipelines by snapping blocks together on a free canvas — forming chains from Hypothesis through Variable, Method, Sample, Data Collection, Analysis, and Conclusion. A deterministic rule engine scores each submission across three dimensions and explains exactly why points were lost. No AI, no database, 100% rule-based.
+Players design research pipelines by snapping blocks together on a free canvas — forming chains from Hypothesis through Variable, Method, Sample, Data Collection, Analysis, and Conclusion. A deterministic rule engine scores each submission across three dimensions and explains exactly why points were lost. 
 
 ---
 

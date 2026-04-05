@@ -102,26 +102,30 @@ export function CanvasBlock({ block, liveErrors, liveWarnings }) {
         style={{ position: 'absolute', left: -8, top: '50%', transform: 'translateY(-50%)' }}
         onPointerDown={(e) => e.stopPropagation()}
         onClick={(e) => onInputPortClick(e, block.instanceId)}
-        className={`w-4 h-4 rounded-full border-2 border-white shadow transition-all cursor-crosshair
+        className={`w-4 h-4 rounded-full border-2 border-white shadow transition-all cursor-crosshair relative overflow-hidden
           ${isConnectingMode && !isSource
             ? 'bg-green-400 scale-125 ring-2 ring-green-300 animate-pulse'
             : 'bg-gray-300 hover:bg-gray-400'
           }`}
         title="Input port"
-      />
+      >
+        <div className="absolute inset-0 rounded-full" style={{ background: 'radial-gradient(circle, transparent 35%, rgba(255,255,255,0.45) 100%)' }} />
+      </div>
 
       {/* Output port — right side */}
       <div
         style={{ position: 'absolute', right: -8, top: '50%', transform: 'translateY(-50%)' }}
         onPointerDown={(e) => e.stopPropagation()}
         onClick={(e) => onOutputPortClick(e, block.instanceId)}
-        className={`w-4 h-4 rounded-full border-2 border-white shadow transition-all cursor-crosshair
+        className={`w-4 h-4 rounded-full border-2 border-white shadow transition-all cursor-crosshair relative overflow-hidden
           ${isSource
             ? 'scale-125 ring-2 ring-indigo-400 ' + portColor
             : portColor + ' hover:scale-110'
           }`}
         title="Output port — click to start connection"
-      />
+      >
+        <div className="absolute inset-0 rounded-full" style={{ background: 'radial-gradient(circle, transparent 95%, rgba(255,255,255,0.45) 100%)' }} />
+      </div>
     </motion.div>
   )
 }
