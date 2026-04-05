@@ -76,26 +76,31 @@ def score_pipeline(pipeline: dict, validation_results: list, blocks_by_id: dict)
     method_blocks = pipeline.get("METHOD", [])
     method_ids = [b if isinstance(b, str) else b.get("id", "") for b in method_blocks]
 
+    # Custom-block flags — if ANY block in a category is custom, that category's rigor check passes
+    has_custom_variable = any(vid.startswith("custom_") for vid in variable_ids)
+    has_custom_sample   = any(sid.startswith("custom_") for sid in sample_ids)
+    has_custom_analysis = any(aid.startswith("custom_") for aid in analysis_ids)
+
     # +6 for control variable
-    has_control = "control_variable" in variable_ids
+    has_control = "control_variable" in variable_ids or has_custom_variable
     rigor_detail["control_variable"] = has_control
     if has_control:
         rigor += 6
 
     # +6 for medium or large sample
-    has_adequate_sample = "sample_medium" in sample_ids or "sample_large" in sample_ids
+    has_adequate_sample = "sample_medium" in sample_ids or "sample_large" in sample_ids or has_custom_sample
     rigor_detail["adequate_sample"] = has_adequate_sample
     if has_adequate_sample:
         rigor += 6
 
     # +6 for random or stratified sampling
-    has_rigorous_sampling = "sampling_random" in sample_ids or "sampling_stratified" in sample_ids
+    has_rigorous_sampling = "sampling_random" in sample_ids or "sampling_stratified" in sample_ids or has_custom_sample
     rigor_detail["rigorous_sampling"] = has_rigorous_sampling
     if has_rigorous_sampling:
         rigor += 6
 
     # +6 for identifying confounding variable
-    has_confounding = "confounding_variable" in variable_ids
+    has_confounding = "confounding_variable" in variable_ids or has_custom_variable
     rigor_detail["confounding_identified"] = has_confounding
     if has_confounding:
         rigor += 6
@@ -103,7 +108,7 @@ def score_pipeline(pipeline: dict, validation_results: list, blocks_by_id: dict)
     # +6 for using a complex analysis method (regression or anova)
     uses_complex_analysis = any(
         aid in ("analysis_regression", "analysis_anova") for aid in analysis_ids
-    )
+    ) or has_custom_analysis
     rigor_detail["complex_analysis"] = uses_complex_analysis
     if uses_complex_analysis:
         rigor += 6

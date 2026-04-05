@@ -63,7 +63,7 @@ export function NavHeader() {
         {/* Explore tab */}
         <Link
           to="/explore"
-          className={`text-sm font-medium transition-colors flex-shrink-0 ${
+          className={`text-base font-medium transition-colors flex-shrink-0 gap-4 ${
             isExplore
               ? 'text-[#1A1A1A] border-b-2 border-[#2EC4B6] pb-0.5'
               : 'text-[#6B6B6B] hover:text-[#1A1A1A]'

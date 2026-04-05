@@ -51,6 +51,7 @@ def list_challenges():
         "id", "title", "difficulty", "level", "description", "tags",
         "pillar", "subtopic", "type", "arxiv_id",
         "available_categories", "hints", "brief", "broken_canvas",
+        "background",
     ]
     result = []
     for c in challenges_by_id.values():
@@ -117,6 +118,9 @@ def evaluate(payload: PipelinePayload):
         "errors": feedback["errors"],
         "warnings": feedback["warnings"],
         "suggestions": feedback["suggestions"],
+        "rubric_results": feedback.get("rubric_results"),
+        "ideal_comparison": feedback.get("ideal_comparison"),
+        "common_mistakes_triggered": feedback.get("common_mistakes_triggered", []),
         "validation_results": validation_results,
         "is_valid": is_valid,
     }

@@ -163,7 +163,10 @@ def validate_pipeline(pipeline: dict, blocks_by_id: dict) -> list:
         })
 
     # Check hypothesis has IV and DV
-    if hypothesis_blocks and variable_blocks:
+    # Skip if any custom variable blocks are present — custom blocks may cover these roles
+    has_custom_variable = any(str(b if isinstance(b, str) else b.get("id","")).startswith("custom_") for b in variable_blocks)
+
+    if hypothesis_blocks and variable_blocks and not has_custom_variable:
         variable_ids = [b if isinstance(b, str) else b.get("id", "") for b in variable_blocks]
         passed, msg = check_hypothesis_has_variables(hypothesis_blocks[0], variable_ids)
         results.append({
@@ -174,7 +177,7 @@ def validate_pipeline(pipeline: dict, blocks_by_id: dict) -> list:
         })
 
     # Check method requires control variable
-    if method_blocks:
+    if method_blocks and not has_custom_variable:
         method_id = method_blocks[0] if isinstance(method_blocks[0], str) else method_blocks[0].get("id", "")
         variable_ids = [b if isinstance(b, str) else b.get("id", "") for b in variable_blocks]
         passed, msg = check_method_requires_control(method_id, variable_ids)
@@ -231,17 +234,25 @@ def validate_pipeline(pipeline: dict, blocks_by_id: dict) -> list:
             "severity": "warning",
         })
 
-    # Check for confounding variable
+    # Check for confounding variable (skip if custom variables present)
     variable_ids = [b if isinstance(b, str) else b.get("id", "") for b in variable_blocks]
     has_confounding = "confounding_variable" in variable_ids
-    if not has_confounding:
-        results.append({
-            "rule": "has_confounding_variable",
-            "passed": False,
-            "message": "Consider identifying potential confounding variables to strengthen your design.",
-            "severity": "warning",
-        })
-    else:
+    if not has_custom_variable:
+        if not has_confounding:
+            results.append({
+                "rule": "has_confounding_variable",
+                "passed": False,
+                "message": "Consider identifying potential confounding variables to strengthen your design.",
+                "severity": "warning",
+            })
+        else:
+            results.append({
+                "rule": "has_confounding_variable",
+                "passed": True,
+                "message": "Confounding variable identified — rigorous design.",
+                "severity": "info",
+            })
+    elif has_confounding:
         results.append({
             "rule": "has_confounding_variable",
             "passed": True,

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { BookOpen, Layers } from 'lucide-react'
-import { ChallengeBrief } from './ChallengeBrief.jsx'
+import { ContextPanel } from './ContextPanel.jsx'
 import { BlockLibrary } from './BlockLibrary.jsx'
 
 const TABS = [
@@ -35,7 +35,7 @@ export function LeftPanel() {
       {/* Panel content */}
       <div className="flex-1 overflow-hidden flex flex-col">
         {active === 'brief'
-          ? <ChallengeBrief />
+          ? <ContextPanel />
           : <BlockLibrary />}
       </div>
     </aside>

@@ -72,11 +72,17 @@ export function validatePipelineClient(pipeline) {
   if (A.length === 0) errors.push({ category: 'ANALYSIS', message: 'No analysis placed' })
   if (C.length === 0) errors.push({ category: 'CONCLUSION', message: 'No conclusion placed' })
 
-  if (!V.includes('independent_variable')) errors.push({ category: 'VARIABLE', message: 'Missing Independent Variable' })
-  if (!V.includes('dependent_variable')) errors.push({ category: 'VARIABLE', message: 'Missing Dependent Variable' })
+  // Skip IV/DV/control/confounding checks if the user has placed any custom variable blocks —
+  // custom blocks represent user-defined concepts that may cover these roles.
+  const hasCustomVariable = V.some((id) => id.startsWith('custom_'))
 
-  if (M.length > 0 && METHOD_NEEDS_CONTROL.has(M[0]) && !V.includes('control_variable')) {
-    errors.push({ category: 'METHOD', message: 'Experiment requires a Control Variable' })
+  if (!hasCustomVariable) {
+    if (!V.includes('independent_variable')) errors.push({ category: 'VARIABLE', message: 'Missing Independent Variable' })
+    if (!V.includes('dependent_variable')) errors.push({ category: 'VARIABLE', message: 'Missing Dependent Variable' })
+
+    if (M.length > 0 && METHOD_NEEDS_CONTROL.has(M[0]) && !V.includes('control_variable')) {
+      errors.push({ category: 'METHOD', message: 'Experiment requires a Control Variable' })
+    }
   }
 
   if (A.length > 0 && D.length > 0) {
@@ -97,7 +103,7 @@ export function validatePipelineClient(pipeline) {
   }
 
   if (S.includes('sample_small')) warnings.push({ category: 'SAMPLE', message: 'Small sample limits power' })
-  if (!V.includes('confounding_variable')) warnings.push({ category: 'VARIABLE', message: 'Consider adding confounders' })
+  if (!hasCustomVariable && !V.includes('confounding_variable')) warnings.push({ category: 'VARIABLE', message: 'Consider adding confounders' })
 
   return { errors, warnings, isValid: errors.length === 0 }
 }
