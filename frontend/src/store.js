@@ -6,6 +6,16 @@ import { validatePipelineClient } from './utils/connectionValidator.js'
 let instanceCounter = 0
 function makeInstanceId() { return `block_${++instanceCounter}_${Date.now()}` }
 function makeConnectionId() { return `conn_${++instanceCounter}_${Date.now()}` }
+function makeCustomId() { return `custom_${Date.now()}_${Math.random().toString(36).slice(2, 7)}` }
+
+function loadCustomBlocks() {
+  try { return JSON.parse(localStorage.getItem('rescratch_custom_blocks') || '[]') }
+  catch { return [] }
+}
+function saveCustomBlocks(blocks) {
+  try { localStorage.setItem('rescratch_custom_blocks', JSON.stringify(blocks)) }
+  catch {}
+}
 
 let spawnOffset = 0
 function nextSpawnPos() {
@@ -18,6 +28,7 @@ export const useStore = create((set, get) => ({
   challenges: [],
   currentChallenge: null,
   blocks: [],
+  customBlocks: loadCustomBlocks(),
 
   // ── Canvas ────────────────────────────────────────────────────────────────
   // canvasBlocks: [{ instanceId, blockDefId, category, label, description, x, y, ...blockDefFields }]
@@ -176,4 +187,40 @@ export const useStore = create((set, get) => ({
   // ── UI ────────────────────────────────────────────────────────────────────
   dismissTutorial: () => set({ showTutorial: false }),
   advanceHint: () => set((state) => ({ hintIndex: state.hintIndex + 1 })),
+
+  // ── Custom blocks ─────────────────────────────────────────────────────────
+  addCustomBlock: ({ category, label, description }) => {
+    const block = {
+      id: makeCustomId(),
+      category,
+      label: label.trim(),
+      description: description.trim(),
+      isCustom: true,
+      tags: ['custom'],
+    }
+    set((state) => {
+      const customBlocks = [...state.customBlocks, block]
+      saveCustomBlocks(customBlocks)
+      return { customBlocks }
+    })
+    return block
+  },
+
+  removeCustomBlock: (id) => {
+    set((state) => {
+      const customBlocks = state.customBlocks.filter((b) => b.id !== id)
+      saveCustomBlocks(customBlocks)
+      return { customBlocks }
+    })
+  },
+
+  updateCustomBlock: (id, { label, description }) => {
+    set((state) => {
+      const customBlocks = state.customBlocks.map((b) =>
+        b.id === id ? { ...b, label: label.trim(), description: description.trim() } : b
+      )
+      saveCustomBlocks(customBlocks)
+      return { customBlocks }
+    })
+  },
 }))

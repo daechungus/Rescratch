@@ -37,7 +37,10 @@
       "Read(//c/Users/daeho/.claude/projects/c--Users-daeho-daehoonchung-Rescratch/memory/**)",
       "Bash(node -e \"const p = require\\(''./package.json''\\); console.log\\(''react:'', p.dependencies.react\\); console.log\\(''r3f:'', p.dependencies[''@react-three/fiber'']\\); console.log\\(''three:'', p.dependencies.three\\)\")",
       "Bash(python -c \"import sys,json; p=json.load\\(sys.stdin\\); print\\(''''main:'''', p.get\\(''''main''''\\)\\); print\\(''''module:'''', p.get\\(''''module''''\\)\\); print\\(''''exports:'''', list\\(p.get\\(''''exports'''', {}\\).keys\\(\\)\\)[:5]\\)\")",
-      "Bash(node -e \"const p = require\\(''./package.json''\\); console.log\\(''r3f:'', p.dependencies[''@react-three/fiber'']\\); console.log\\(''drei:'', p.dependencies[''@react-three/drei'']\\)\")"
+      "Bash(node -e \"const p = require\\(''./package.json''\\); console.log\\(''r3f:'', p.dependencies[''@react-three/fiber'']\\); console.log\\(''drei:'', p.dependencies[''@react-three/drei'']\\)\")",
+      "Bash(python -c \"import json; data=json.load\\(open\\(''data/challenges.json''\\)\\); c=data[''challenges''][0]; print\\(list\\(c.keys\\(\\)\\)\\)\")",
+      "Bash(python -c \"import json; data=json.load\\(open\\(''data/challenges.json''\\)\\); challenges=[c for c in data[''challenges''] if ''arxiv'' in str\\(c\\).lower\\(\\) or ''http'' in str\\(c\\).lower\\(\\)]; print\\(len\\(challenges\\)\\); print\\(list\\(challenges[0].keys\\(\\)\\) if challenges else ''none''\\)\")",
+      "Bash(python -c \"import json; data=json.load\\(open\\(''data/challenges.json''\\)\\); c=[x for x in data[''challenges''] if x.get\\(''type''\\)==''broken_lab''][0]; print\\(list\\(c.keys\\(\\)\\)\\)\")"
     ],
     "additionalDirectories": [
       "C:\\Users\\daeho\\.claude\\projects\\c--Users-daeho-daehoonchung-Rescratch"

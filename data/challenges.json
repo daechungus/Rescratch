@@ -6,6 +6,20 @@
       "difficulty": "beginner",
       "level": 1,
       "description": "You want to test whether applying standard data augmentation (random flips, crops, colour jitter) during training increases the test accuracy of a CNN image classifier on a fixed dataset.",
+      "brief": {
+        "background": "Data augmentation is one of the most widely used regularization techniques in computer vision. Rather than collecting more labeled images — which is expensive and time-consuming — researchers synthetically expand the training set by applying random transformations: horizontal flips, random crops, colour jitter, rotation, and more.\n\nThe intuition is that a photo of a cat is still a cat when mirrored or slightly darker. By exposing the model to these transformed variants, we hope to train a classifier that is more robust to real-world variation and less likely to overfit the specific pixel patterns in the training set.\n\nDespite widespread adoption, the actual magnitude of the accuracy gain from augmentation varies considerably depending on dataset size, model architecture, and the types of transforms applied. A rigorous experimental design lets you isolate augmentation as the causal factor — ruling out confounds like training time, optimizer choice, or architecture depth.",
+        "scenario": "You are a first-year ML researcher at a university computer vision lab. Your supervisor has asked you to produce a clean, reproducible result showing whether standard augmentation (random horizontal flip + random crop + colour jitter) improves test accuracy on CIFAR-10 when training a ResNet-18 from scratch.\n\nYou have full control over the training pipeline. You can run the exact same model with augmentation enabled or disabled and measure test accuracy after a fixed number of epochs. Your goal is to produce a result that could be included in the related-work section of a future paper.",
+        "task": "Design a research methodology pipeline that isolates data augmentation as the independent variable and measures its causal effect on test accuracy. Your pipeline must specify a hypothesis, define what you are measuring and controlling, choose the right study method, describe how you collect the outcome data, select an appropriate analysis technique, and draw a valid conclusion.",
+        "constraints": [
+          "You are directly manipulating a training parameter — choose a study method that reflects active experimental control.",
+          "Test accuracy (%) is a single numeric score per run — your data collection block must suit numerical, quantitative output.",
+          "You must control for all confounds: model architecture, optimizer, learning rate, batch size, number of epochs, random seed, and dataset splits.",
+          "With two conditions (augmentation on vs off) and a single numeric outcome, choose an analysis method appropriate for comparing two groups.",
+          "Your conclusion block must logically follow from your analysis — avoid claiming causation if your design doesn't support it."
+        ],
+        "input_format": "You are given a fixed dataset (CIFAR-10), a fixed architecture (ResNet-18), and a fixed training budget (50 epochs). You manipulate one binary variable: augmentation enabled vs disabled.",
+        "expected_output": "A fully connected pipeline from Hypothesis → Variable → Method → Sample → Data Collection → Analysis → Conclusion, with no broken or missing links, using blocks consistent with a controlled lab experiment measuring a quantitative outcome."
+      },
       "available_categories": [
         "HYPOTHESIS",
         "VARIABLE",
@@ -35,6 +49,20 @@
       "difficulty": "beginner",
       "level": 2,
       "description": "You hypothesise that a higher learning rate causes a neural network to converge faster but with lower final accuracy. Design a study to test this across a range of learning rate values.",
+      "brief": {
+        "background": "The learning rate is the most consequential hyperparameter in gradient-based optimization. It controls how large a step the optimizer takes in the direction of the gradient at each update. Set it too low and the model crawls toward a minimum, potentially never converging in a reasonable time. Set it too high and the loss oscillates or diverges entirely — a phenomenon practitioners call 'exploding gradients' or 'loss spiking.'\n\nThe relationship between learning rate and convergence behavior is a core topic in deep learning research. Classic results like the linear scaling rule (Goyal et al., 2017) and cyclical learning rates (Smith, 2017) have emerged directly from systematic experiments that manipulate learning rate while holding all other factors constant.\n\nUnderstanding this relationship is not just academic — in production, teams run learning rate sweeps before every major training run. Designing a study that correctly attributes changes in convergence speed to the learning rate (rather than some confound) is a fundamental research skill.",
+        "scenario": "You are exploring the effects of learning rate on a simple 4-layer MLP trained on MNIST. You want to run multiple training conditions — each with a different learning rate value (e.g., 1e-4, 1e-3, 1e-2, 1e-1) — and record both how many epochs it takes to reach 95% training accuracy (convergence speed) and the final validation accuracy after 30 epochs.\n\nAll other training settings — batch size, architecture, weight initialization, optimizer type, and dataset splits — must remain identical across conditions. Your institution's internal guideline also requires that for any paper submission, hyperparameter studies must use at least 3 distinct seeds to account for initialization variance.",
+        "task": "Design a complete research methodology that establishes learning rate as the manipulated variable and measures both convergence speed and final accuracy as outcomes. Your pipeline must clearly define the independent and dependent variables, select the appropriate study method, specify how you sample your experimental runs, describe how you record the data, choose the right statistical analysis for comparing multiple conditions, and draw a methodologically sound conclusion.",
+        "constraints": [
+          "You directly set the learning rate in code — this is active manipulation, not observation. Choose your study method accordingly.",
+          "Epochs-to-convergence and final validation accuracy are both quantitative numeric measurements.",
+          "You have more than two conditions (multiple LR values) — your analysis block must be appropriate for comparing multiple groups, not just two.",
+          "Control for: architecture, dataset, batch size, weight initialization method, optimizer type, and random seed.",
+          "Your conclusion must reflect what the data can and cannot prove — a study across 4 LR values on one dataset cannot generalize to all neural networks."
+        ],
+        "input_format": "You have 4 learning rate conditions: {1e-4, 1e-3, 1e-2, 1e-1}. For each, you run 3 random seeds × 30 epochs = 12 total runs. You record loss curves and final validation accuracy for each run.",
+        "expected_output": "A pipeline that treats this as a controlled lab experiment with multiple conditions, uses appropriate quantitative data collection, applies a multi-group statistical comparison, and draws a conclusion proportional to the evidence gathered."
+      },
       "available_categories": [
         "HYPOTHESIS",
         "VARIABLE",
@@ -113,6 +141,54 @@
         "LLM",
         "quantization",
         "efficiency"
+      ],
+      "pillar": "technology",
+      "subtopic": "machine_learning"
+    },
+    {
+      "id": "armor_semi_structured_pruning",
+      "arxiv_id": "2510.05528",
+      "title": "Can adaptive matrix factorization recover accuracy lost by semi-structured pruning in LLMs?",
+      "difficulty": "advanced",
+      "level": 5,
+      "description": "ARMOR introduces a one-shot post-training pruning algorithm that wraps a 2:4 sparse core with block diagonal error-correcting matrices. Design a study to evaluate whether ARMOR's adaptive matrix factorization approach preserves downstream task accuracy better than conventional 2:4 pruning methods on the Llama and Qwen model families.",
+      "brief": {
+        "background": "Deploying large language models at scale requires dramatic reductions in memory and compute. Two complementary techniques have emerged: quantization (reducing numerical precision of weights) and pruning (zeroing out individual weights entirely). Semi-structured pruning — specifically NVIDIA's 2:4 sparsity pattern, where exactly 2 of every 4 weights in a row are set to zero — is particularly attractive because it maps directly to hardware acceleration on Ampere and later GPUs, yielding roughly 2× inference speedup with minimal software overhead.\n\nThe core challenge is accuracy. Conventional 2:4 pruning methods (SparseGPT, Wanda) apply the sparsity constraint directly to the weight matrices. Because the constraint is rigid, the pruned weights deviate significantly from the dense originals, and this error compounds through the network — particularly in later transformer layers. On benchmarks like MMLU and HellaSwag, state-of-the-art 2:4 pruning can drop accuracy by several percentage points relative to the dense baseline.\n\nARMOR (Adaptive Representation with Matrix-factORization) proposes a fundamentally different approach. Instead of directly constraining the weight matrix W to be 2:4 sparse, ARMOR factorizes W into three components: a 2:4 sparse core S sandwiched by two low-overhead block diagonal matrices L and R (i.e., W ≈ L · S · R). The block diagonal wrappers act as learned error correctors — they can compensate for the approximation error introduced by the 2:4 sparsity constraint. This gives the optimizer far more degrees of freedom to minimize the layer-wise reconstruction loss than conventional pruning.",
+        "scenario": "You are a systems ML researcher at a hardware company. Your team is evaluating whether to adopt ARMOR as the default LLM compression technique for your next inference accelerator product. You need to reproduce the paper's core claim: that ARMOR achieves meaningfully better downstream task accuracy than SparseGPT and Wanda at 2:4 sparsity, while retaining identical hardware inference speedups.\n\nYou have access to Llama-3-8B, Llama-3-70B, and Qwen-2.5-7B model weights, a calibration dataset (C4), and standard evaluation harnesses (lm-evaluation-harness). You will run each pruning method and measure the resulting accuracy across a suite of downstream benchmarks. All experiments run on the same hardware to isolate the algorithmic variable.",
+        "task": "Design a complete research methodology that evaluates ARMOR against baseline 2:4 pruning methods (SparseGPT, Wanda) on downstream task accuracy. Your pipeline must identify the variables, select the appropriate study method, define the evaluation sample, specify how you collect accuracy measurements, choose the right statistical analysis for comparing multiple methods across multiple benchmarks, and draw a conclusion about whether ARMOR's approach is superior.",
+        "constraints": [
+          "You are directly applying and switching between pruning algorithms on fixed model weights — this is active experimental manipulation, not passive observation. Choose your study method accordingly.",
+          "Downstream benchmark scores (MMLU %, HellaSwag %, ARC %, Winogrande %) are continuous numerical measurements. Perplexity (WikiText-2) is also numerical.",
+          "You are comparing more than two conditions (ARMOR, SparseGPT, Wanda, and the dense baseline) — choose a statistical analysis method appropriate for more than two groups.",
+          "Control for: base model weights (identical checkpoint), calibration dataset (same C4 samples, same seed), evaluation prompt formatting, temperature (greedy decoding), and hardware (same GPU model and driver version).",
+          "The inference speedup claim is a secondary measurement — your pipeline should capture both accuracy (primary) and latency (secondary) as dependent variables.",
+          "A conclusion claiming ARMOR is categorically superior must be supported by statistically significant results across multiple benchmarks and model sizes, not just one data point."
+        ],
+        "input_format": "Three pruning methods: {ARMOR, SparseGPT, Wanda} × three model families: {Llama-3-8B, Llama-3-70B, Qwen-2.5-7B} × five benchmarks: {MMLU, HellaSwag, ARC-c, Winogrande, WikiText-2 perplexity} = 45 experimental cells, plus dense baseline rows per model.",
+        "expected_output": "A pipeline treating this as a controlled lab experiment with multiple conditions, collecting quantitative benchmark measurements, applying a multi-group statistical comparison across methods and models, and drawing a conclusion scoped to what the comparative data supports — e.g., 'ARMOR achieves statistically significantly lower perplexity and higher downstream accuracy than SparseGPT and Wanda under identical 2:4 sparsity constraints across the evaluated model families.'"
+      },
+      "available_categories": [
+        "HYPOTHESIS",
+        "VARIABLE",
+        "METHOD",
+        "SAMPLE",
+        "DATA_COLLECTION",
+        "ANALYSIS",
+        "CONCLUSION"
+      ],
+      "hints": [
+        "You are switching between pruning algorithms on the same fixed model weights — you control which algorithm is applied. What study method does direct manipulation imply?",
+        "MMLU %, HellaSwag %, perplexity — all continuous numeric scores. What data collection block fits quantitative measurement?",
+        "You have four conditions (ARMOR, SparseGPT, Wanda, dense). A t-test only compares two groups — which analysis block handles more than two?"
+      ],
+      "tags": [
+        "experiment",
+        "quantitative",
+        "LLM",
+        "pruning",
+        "compression",
+        "efficiency",
+        "arxiv"
       ],
       "pillar": "technology",
       "subtopic": "machine_learning"
@@ -245,6 +321,20 @@
       "difficulty": "advanced",
       "level": 9,
       "description": "A grad student designed a study to evaluate RLHF fine-tuning quality using open-ended interviews — but then tried to run a t-test on the responses. Find and fix every methodological error.",
+      "brief": {
+        "background": "Reinforcement Learning from Human Feedback (RLHF) has become the dominant technique for aligning large language models with human preferences. In RLHF, a reward model is trained on human preference rankings — 'which of these two responses is better?' — and this reward signal is then used to fine-tune the base LLM via PPO or a similar RL algorithm.\n\nThe result is a model that is markedly more helpful, harmless, and honest than the raw pre-trained version. OpenAI used RLHF to produce InstructGPT; Anthropic used it to develop Claude; DeepMind applied it to Sparrow. As RLHF becomes standard practice, a key research problem emerges: how do you rigorously evaluate whether the fine-tuning actually improved the model's quality in a meaningful and generalizable way?\n\nThis is harder than it sounds. Automated benchmarks (perplexity, ROUGE, BLEU) often fail to capture the nuanced qualities that RLHF targets — helpfulness, truthfulness, harmlessness. Human evaluation is expensive and subjective. Different evaluation methodologies produce different answers, and the choice of evaluation design has a large effect on the conclusions you can draw.",
+        "scenario": "A second-year PhD student in NLP designed a study to compare the response quality of a base GPT-2 model against an RLHF fine-tuned version. Their research question: 'Does RLHF fine-tuning improve the perceived quality of model responses?'\n\nThey recruited 20 participants who each read 10 pairs of model outputs — one from the base model, one from the RLHF model — and wrote open-ended qualitative feedback about which they preferred and why. These responses were collected via a survey instrument.\n\nAfter data collection, the student attempted to run a t-test on the qualitative interview responses to determine statistical significance. They also had no explicit control variable defined in the pipeline — the two model versions were compared without controlling for factors like prompt wording, response length, or topic domain. Their conclusion block claimed strong support for the hypothesis.",
+        "task": "This pipeline has been pre-filled with methodological errors. Your job is to identify every error, remove the incorrect blocks, replace them with appropriate alternatives, and rewire the connections to produce a valid research methodology.",
+        "constraints": [
+          "A t-test requires numerical (continuous) data as input — applying it to qualitative interview text is a type mismatch. You must fix the analysis method or the data collection method so they are compatible.",
+          "The data collection block (interviews) doesn't match the stated method (survey) — these should be consistent. A survey collects structured responses; an interview collects open-ended verbal data.",
+          "There is no control variable in the pipeline. Any comparison study requires controlling for confounds (e.g., prompt wording, response length, topic). Add the missing variable block.",
+          "The conclusion 'strongly supports' the hypothesis — but given the methodological flaws, a weaker or more conditional conclusion is more appropriate.",
+          "You may fix errors by: (a) replacing the analysis with one appropriate for qualitative data, or (b) replacing the data collection with a quantitative instrument and keeping the t-test — both are valid paths."
+        ],
+        "input_format": "The canvas has been pre-filled with a flawed pipeline: Hypothesis → Independent Variable → Dependent Variable → Survey Method → Small Sample → Convenience Sampling → Interview Data Collection → T-Test Analysis → Supports Conclusion.",
+        "expected_output": "A corrected pipeline where: (1) the analysis method matches the data type, (2) the method and data collection are consistent, (3) a control variable is present, and (4) the conclusion is appropriately scoped. All blocks must be connected with no broken links."
+      },
       "available_categories": [
         "HYPOTHESIS",
         "VARIABLE",
@@ -365,6 +455,20 @@
       "difficulty": "expert",
       "level": 10,
       "description": "A researcher benchmarked INT4 quantization on LLM accuracy using a lab experiment — but forgot the control variable, picked a tiny convenience sample, and drew an unsupported conclusion. Debug the pipeline.",
+      "brief": {
+        "background": "Post-training quantization is one of the most actively researched techniques for deploying large language models on consumer hardware. Full-precision LLMs store weights as 32-bit floats (FP32) or 16-bit floats (FP16). INT4 quantization reduces each weight to a 4-bit integer, cutting memory footprint by roughly 8× and enabling models like LLaMA-70B to run on a single consumer GPU.\n\nThe cost is accuracy degradation. Quantized weights are approximations of the original values, and this approximation error accumulates through the network's forward pass. The key research question is: how much accuracy do you lose, and is the loss acceptable for a given use case?\n\nBenchmarks like MMLU (measuring world knowledge), HellaSwag (measuring commonsense reasoning), and ARC (measuring science question answering) have become standard tools for quantifying this tradeoff. But producing a trustworthy benchmark result requires careful experimental design — choosing the right sample size, controlling for confounds, and drawing conclusions proportional to the evidence.",
+        "scenario": "A senior researcher at an ML startup was asked to quickly validate whether INT4-quantized LLaMA-3-8B was 'good enough' to deploy in their product. They set up a lab experiment measuring perplexity on 15 prompts pulled from the team's internal test suite (convenience sample). They ran no baseline comparison with a full-precision model, defined no control variable for the study, and concluded that the results 'support the hypothesis' that INT4 quantization significantly degrades accuracy — a strong causal claim drawn from a tiny, non-representative sample.\n\nThe results were circulated internally and nearly led the team to reject INT4 quantization entirely. A more rigorous researcher on the team flagged the methodology as flawed and asked you to fix it.",
+        "task": "This pipeline has been pre-filled with three distinct methodological errors. Identify each one, fix it with the correct block, and rewire the pipeline so every connection is valid. All three errors must be resolved to achieve a high score.",
+        "constraints": [
+          "Missing control variable: a lab experiment comparing quantized vs full-precision models must explicitly define the full-precision model as a control condition. Add the missing variable block.",
+          "Sample size is inadequate: n=15 convenience-sampled prompts is not sufficient for a rigorous benchmark. Standard quantization papers use hundreds to thousands of evaluation examples across diverse topics. The sample block and sampling method must reflect this.",
+          "The conclusion 'strongly supports' a causal claim — but with a flawed sample and missing controls, the data cannot support that conclusion. Downgrade the conclusion to something appropriate.",
+          "The analysis method (t-test) may be acceptable for a two-condition numeric comparison — evaluate whether this is the right tool given your fixed data.",
+          "For a benchmark to be credible, the evaluation sample must be drawn from a standardized, representative benchmark dataset (e.g., MMLU, HellaSwag) — not an internal convenience set."
+        ],
+        "input_format": "The canvas has been pre-filled with a flawed pipeline: Hypothesis → Independent Variable → Dependent Variable (no control) → Lab Experiment Method → Small Sample → Convenience Sampling → Measurement Data Collection → T-Test Analysis → Supports Conclusion.",
+        "expected_output": "A corrected pipeline that includes a control variable (full-precision baseline), a sufficiently large and properly sampled benchmark dataset, an analysis method appropriate for the data, and a conclusion scoped to what the evidence actually supports. All blocks must be connected with no broken links."
+      },
       "available_categories": [
         "HYPOTHESIS",
         "VARIABLE",
@@ -1774,9 +1878,10 @@
       "id": "arxiv_2604_01851",
       "arxiv_id": "2604.01851",
       "title": "Can Large Language Models Model Programs Formally?",
+      "arxiv_id": "2604.01851",
       "difficulty": "advanced",
       "level": 56,
-      "description": "In the digital age, ensuring the correctness, safety, and reliability of software through formal verification is paramount, particularly as software increasingly underpins critical infrastructure. Formal verification, split into theorem proving and model checking, provides a f...",
+      "description": "In the digital age, ensuring the correctness, safety, and reliability of software through formal verification is paramount, particularly as software increasingly underpins critical infrastructure. Formal verification, split into theorem proving and model checking, provides a feasible and reliable path. Unlike theorem proving, which yields notable advances, model checking has been less focused due to the difficulty of automatic program modeling. To fill this gap, we introduce Model-Bench, a benchmark and an accompanying pipeline for evaluating and improving LLMs' program modeling capability by modeling Python programs into verification-ready model checking specifications checkable by its accompanying model checker. Model-Bench comprises 400 Python programs derived from three well-known benchmarks (HumanEval, MBPP, and LiveCodeBench). Our extensive experiments reveal significant limitations in LLMs' program modeling and further provide inspiring directions.",
       "available_categories": [
         "HYPOTHESIS",
         "VARIABLE",

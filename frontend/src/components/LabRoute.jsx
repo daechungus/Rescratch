@@ -7,21 +7,24 @@ export function LabRoute() {
   const { challengeId } = useParams()
   const navigate = useNavigate()
   const challenges = useStore((s) => s.challenges)
+  const blocks = useStore((s) => s.blocks)
   const isLoading = useStore((s) => s.isLoading)
   const selectChallenge = useStore((s) => s.selectChallenge)
   const currentChallenge = useStore((s) => s.currentChallenge)
   const selectedRef = useRef(null)
 
   useEffect(() => {
-    if (!challenges.length) return // wait for data
-    if (selectedRef.current === challengeId) return // already loaded
+    // Wait for BOTH challenges and block definitions before selecting.
+    // Broken-lab pre-fill needs block defs to hydrate canvas blocks correctly.
+    if (!challenges.length || !blocks.length) return
+    if (selectedRef.current === challengeId) return
 
     const challenge = challenges.find((c) => c.id === challengeId)
     if (challenge) {
       selectedRef.current = challengeId
       selectChallenge(challenge)
     }
-  }, [challenges, challengeId])
+  }, [challenges, blocks, challengeId])
 
   // Still loading data
   if (isLoading && !challenges.length) {

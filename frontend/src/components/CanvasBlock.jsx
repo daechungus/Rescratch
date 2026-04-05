@@ -59,13 +59,20 @@ export function CanvasBlock({ block, liveErrors, liveWarnings }) {
       onPointerMove={onBlockPointerMove}
       onPointerUp={onBlockPointerUp}
       className={`rounded-xl border-2 shadow-md select-none cursor-grab active:cursor-grabbing
-        ${colors.bg} ${colors.border} ${ringClass}`}
+        ${colors.bg} ${block.isCustom ? 'border-dashed' : ''} ${colors.border} ${ringClass}`}
     >
       {/* Header */}
       <div className={`flex items-center justify-between px-3 py-2 rounded-t-xl ${colors.badge} bg-opacity-90`}>
-        <span className="text-white text-xs font-bold uppercase tracking-wide">
-          {CATEGORY_LABELS[block.category]}
-        </span>
+        <div className="flex items-center gap-1.5 min-w-0">
+          <span className="text-white text-xs font-bold uppercase tracking-wide truncate">
+            {CATEGORY_LABELS[block.category]}
+          </span>
+          {block.isCustom && (
+            <span className="flex-shrink-0 text-[9px] font-black text-white/80 bg-white/20 rounded px-1 py-0.5 leading-none">
+              custom
+            </span>
+          )}
+        </div>
         <button
           onPointerDown={(e) => e.stopPropagation()}
           onClick={(e) => { e.stopPropagation(); removeBlockFromCanvas(block.instanceId) }}
