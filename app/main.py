@@ -228,7 +228,7 @@ Return a JSON object with EXACTLY these keys (no extra keys, no markdown, no exp
     "sample_size": "small|medium|large",
     "sampling_method": "random|stratified|convenience|snowball",
     "data_collection": "best data collection block ID",
-    "analysis": "analysis_ttest|analysis_anova|analysis_regression|analysis_chi_square|analysis_correlation|analysis_descriptive|analysis_thematic|analysis_time_series",
+    "analysis": "analysis_t_test|analysis_anova|analysis_regression|analysis_chi_square|analysis_correlation|analysis_descriptive|analysis_thematic|analysis_time_series",
     "explanation": "2-3 sentences explaining why this is the ideal methodology."
   }},
   "common_mistakes": [
@@ -275,13 +275,16 @@ async def generate_lab(
 
     # Call Gemini
     client = _get_gemini_client()
-    prompt = _GENERATE_PROMPT.format(paper_text=paper_text[:4000])
+    prompt = _GENERATE_PROMPT.format(paper_text=paper_text[:8000])
     try:
         response = client.models.generate_content(model="gemini-2.0-flash", contents=prompt)
         challenge = _parse_json_response(response.text)
     except json.JSONDecodeError as e:
         raise HTTPException(502, f"Gemini returned invalid JSON: {e}")
     except Exception as e:
+        msg = str(e)
+        if "429" in msg or "RESOURCE_EXHAUSTED" in msg:
+            raise HTTPException(429, "Gemini API quota exceeded. Try again tomorrow or upgrade at aistudio.google.com.")
         raise HTTPException(502, f"Gemini API error: {e}")
 
     # Assign ID and register in memory

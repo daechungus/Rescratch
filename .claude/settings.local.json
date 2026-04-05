@@ -66,7 +66,8 @@
       "Bash(python -c \"import json,sys; r=json.load\\(sys.stdin\\); print\\(''''Score:'''', r[''''score'''']\\); print\\(''''Errors:'''', r[''''errors''''][:2]\\)\")",
       "Bash(python -c \"import json,sys; blocks=json.load\\(sys.stdin\\); analysis=[b for b in blocks if b[''''category'''']==''''ANALYSIS'''']; [print\\(b[''''id''''], b.get\\(''''data_type'''',''''''''\\), b.get\\(''''required_data_type'''',''''''''\\)\\) for b in analysis]\")",
       "Bash(curl -s -X POST http://localhost:8000/api/evaluate -H \"Content-Type: application/json\" -d \"{\"\"challenge_id\"\":\"\"broken_lab_ttest_qualitative\"\",\"\"pipeline\"\":{\"\"HYPOTHESIS\"\":[\"\"hypothesis_directional\"\"],\"\"VARIABLE\"\":[\"\"independent_variable\"\",\"\"dependent_variable\"\"],\"\"METHOD\"\":[\"\"method_survey\"\"],\"\"SAMPLE\"\":[\"\"sample_small\"\",\"\"sampling_convenience\"\"],\"\"DATA_COLLECTION\"\":[\"\"data_interview\"\"],\"\"ANALYSIS\"\":[\"\"analysis_t_test\"\"],\"\"CONCLUSION\"\":[\"\"conclusion_supports\"\"]}}\")",
-      "Bash(curl -s http://localhost:8000/api/challenges/data_augmentation_accuracy)"
+      "Bash(curl -s http://localhost:8000/api/challenges/data_augmentation_accuracy)",
+      "Bash(python scripts/enrich_with_gemini.py)"
     ],
     "additionalDirectories": [
       "C:\\Users\\daeho\\.claude\\projects\\c--Users-daeho-daehoonchung-Rescratch"

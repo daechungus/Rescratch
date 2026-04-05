@@ -20,6 +20,15 @@ import sys
 import time
 from pathlib import Path
 
+# Load .env from project root if present
+_env_file = Path(__file__).parent.parent / ".env"
+if _env_file.exists():
+    for _line in _env_file.read_text(encoding="utf-8").splitlines():
+        _line = _line.strip()
+        if _line and not _line.startswith("#") and "=" in _line:
+            _k, _v = _line.split("=", 1)
+            os.environ.setdefault(_k.strip(), _v.strip())
+
 ROOT = Path(__file__).parent.parent
 DATA_FILE = ROOT / "data" / "challenges.json"
 
@@ -99,13 +108,30 @@ def parse_json_response(text: str) -> dict:
     return json.loads(text)
 
 
-def enrich_challenge(challenge: dict, client) -> dict:
+def enrich_challenge(challenge: dict, client, max_retries: int = 5) -> dict:
     prompt = build_prompt(challenge)
-    response = client.models.generate_content(
-        model="gemini-2.0-flash",
-        contents=prompt,
-    )
-    enrichment = parse_json_response(response.text)
+    delay = 60  # seconds to wait on first 429
+    for attempt in range(max_retries):
+        try:
+            response = client.models.generate_content(
+                model="gemini-2.0-flash",
+                contents=prompt,
+            )
+            enrichment = parse_json_response(response.text)
+            break
+        except Exception as e:
+            msg = str(e)
+            if "429" in msg or "RESOURCE_EXHAUSTED" in msg:
+                # Try to read retryDelay from the error message
+                import re
+                m = re.search(r"retryDelay.*?(\d+)s", msg)
+                wait = int(m.group(1)) + 5 if m else delay
+                if attempt < max_retries - 1:
+                    print(f"rate-limited, waiting {wait}s...", end=" ", flush=True)
+                    time.sleep(wait)
+                    delay = min(delay * 2, 300)
+                    continue
+            raise
 
     # Merge top-level enrichment keys into challenge (do not overwrite existing non-enrichment keys)
     ENRICH_KEYS = ("background", "ideal_pipeline", "common_mistakes", "grading_rubric")
@@ -180,15 +206,20 @@ def main():
             challenges_by_id[cid].update(challenge)
             success_count += 1
             print("OK")
+            # Checkpoint: write after every success so progress isn't lost on crash
+            out_path = Path(args.out)
+            output_data = {"challenges": challenges} if wrap else challenges
+            with open(out_path, "w", encoding="utf-8") as f:
+                json.dump(output_data, f, indent=2, ensure_ascii=False)
         except Exception as e:
             fail_count += 1
             failed_ids.append(cid)
             print(f"FAILED — {e}")
 
         if i < len(targets) - 1:
-            time.sleep(0.5)
+            time.sleep(4.5)  # free tier: 15 RPM → need >4s between calls
 
-    # Write output
+    # Final write
     out_path = Path(args.out)
     output_data = {"challenges": challenges} if wrap else challenges
     with open(out_path, "w", encoding="utf-8") as f:

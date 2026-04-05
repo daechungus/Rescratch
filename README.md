@@ -385,9 +385,12 @@ python scripts/test_scorer.py
 
 ---
 
-## Design constraints
+## Challenges
 
 - **No AI at runtime.** `app/evaluator.py` generates all feedback from templates and rule matching only. No external API calls during gameplay.
 - **No database.** All data lives in `data/*.json`. The backend loads everything into memory at startup.
 - **No authentication.** Single-player, stateless. Progress is not persisted between sessions.
 - **React Three Fiber v8 only.** v9 requires React 19. Locked in `package.json`.
+- **Ran out of GEMINI API**. Ran out of the free tier, only generated for 120/159 total challenges, can't upload any more. 
+ 
+ 
