@@ -1,10 +1,47 @@
 import { useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { ChevronDown } from 'lucide-react'
+import { ChevronDown, FlaskConical, Bug, BookOpen, ArrowRight, Layers, BarChart3 } from 'lucide-react'
 import PILLARS from '../data/pillars.js'
 import { PillarCard } from './PillarCard.jsx'
 import { ParticleHero } from './ParticleHero.jsx'
+
+// Font applied to the features/mission sections.
+// Swap the value to 'Ubuntu, sans-serif' or 'Overpass, sans-serif' to change.
+const SECTION_FONT = "'Lora', Georgia, serif"
+const fadeUp = (delay = 0) => ({
+  initial: { opacity: 0, y: 24 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, margin: '-60px' },
+  transition: { duration: 0.55, ease: 'easeOut', delay },
+})
+
+const FEATURES = [
+  {
+    icon: Layers,
+    color: '#2EC4B6',
+    bg: '#EEF9F8',
+    label: 'Learn the process',
+    title: 'Design research by snapping blocks together',
+    body: `Drag Hypothesis, Variable, Method, Sample, Data Collection, Analysis, and Conclusion blocks onto a free canvas. Wire them up in order and get direct feedback on what went wrong.`,
+  },
+  {
+    icon: Bug,
+    color: '#FFB941',
+    bg: '#FFF8EC',
+    label: 'Open Lab',
+    title: 'Debug a flawed study, then fix it',
+    body: 'Some challenges drop you inside a pre-built pipeline riddled with logical errors: wrong block order, missing controls, invalid connections. Your job is to find and repair every flaw.',
+  },
+  {
+    icon: BookOpen,
+    color: '#A78BFA',
+    bg: '#F5F3FF',
+    label: 'The Brief',
+    title: 'Every challenge starts with a real scenario',
+    body: 'Before you build anything you read a concise research brief: the question, the context, the constraints. Each puzzle is grounded in an actual study design problem so the methodology choices feel meaningful.',
+  },
+]
 
 export function HeroPage() {
   const pillarsRef = useRef(null)
@@ -15,7 +52,7 @@ export function HeroPage() {
   }
 
   return (
-    <div className="bg-white text-[#1A1A1A]">
+    <div className="bg-white text-[#1A1A1A]" style={{ fontFamily: SECTION_FONT }}>
       {/* ── Hero Section ──────────────────────────────── */}
       <section
         className="relative min-h-screen flex flex-col items-center justify-center px-6 text-center overflow-hidden"
@@ -69,12 +106,12 @@ export function HeroPage() {
 
           {/* Tagline */}
           <motion.p
-            className="text-lg md:text-xl text-[#6B6B6B] max-w-md"
+            className="text-2xl md:text-3xl text-[#6B6B6B] max-w-md"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.4, duration: 1.6 }}
           >
-            Learn research from scratch.
+            Research from scratch
           </motion.p>
 
           {/* CTA */}
@@ -99,6 +136,136 @@ export function HeroPage() {
         >
           <ChevronDown className="w-6 h-6" />
         </motion.div>
+      </section>
+
+      {/* ── Mission Section ───────────────────────────── */}
+      <section className="py-28 px-6" style={{ background: 'linear-gradient(180deg, #FFFFFF 0%, #FFF9F0 100%)' }}>
+        <div className="max-w-3xl mx-auto text-center">
+          <motion.p
+            className="text-xs font-bold tracking-widest uppercase text-[#2EC4B6] mb-4"
+            {...fadeUp(0)}
+          >
+            Why Rescratch
+          </motion.p>
+          <motion.h2
+            className="text-4xl md:text-5xl font-black leading-tight tracking-tight text-[#1A1A1A] mb-6"
+            {...fadeUp(0.08)}
+          >
+            Research should be available to everyone.
+          </motion.h2>
+          <motion.p
+            className="text-lg text-[#5A5A5A] leading-relaxed max-w-2xl mx-auto mb-10"
+            {...fadeUp(0.16)}
+          >
+            Most students encounter research methodology through textbooks and lectures — passive, disconnected from practice. By the time they face a real study design problem, the concepts feel slippery.
+          </motion.p>
+          <motion.p
+            className="text-lg text-[#5A5A5A] leading-relaxed max-w-2xl mx-auto"
+            {...fadeUp(0.22)}
+          >
+            Rescratch flips that. It's a visual puzzle game where you construct research pipelines, debug broken studies, and receive instant rule-based feedback — building the muscle memory that reading alone never could.
+          </motion.p>
+        </div>
+
+        {/* Divider accent */}
+        <motion.div
+          className="mx-auto mt-16 flex items-center gap-3 justify-center"
+          {...fadeUp(0.28)}
+        >
+          <div className="h-px w-16 bg-[#E5E3DE]" />
+          <div className="w-2 h-2 rounded-full bg-[#2EC4B6]" />
+          <div className="h-px w-16 bg-[#E5E3DE]" />
+        </motion.div>
+      </section>
+
+      {/* ── Features Section ──────────────────────────── */}
+      <section className="py-24 px-6 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <motion.div className="text-center mb-16" {...fadeUp(0)}>
+            <p className="text-xs font-bold tracking-widest uppercase text-[#FFB941] mb-3">
+              How It Works
+            </p>
+            <h2 className="text-3xl md:text-4xl font-black tracking-tight text-[#1A1A1A]">
+              Three ways to build research intuition
+            </h2>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {FEATURES.map((f, i) => {
+              const Icon = f.icon
+              return (
+                <motion.div
+                  key={f.label}
+                  className="rounded-2xl border border-[#EBEBEB] overflow-hidden flex flex-col"
+                  style={{ background: '#FAFAFA' }}
+                  {...fadeUp(i * 0.1)}
+                  whileHover={{ y: -4, boxShadow: '0 12px 40px rgba(0,0,0,0.07)' }}
+                  transition={{ duration: 0.25 }}
+                >
+                  {/* Color bar */}
+                  <div className="h-1.5 w-full" style={{ background: f.color }} />
+
+                  <div className="p-7 flex flex-col gap-4 flex-1">
+                    {/* Icon badge */}
+                    <div
+                      className="w-10 h-10 rounded-xl flex items-center justify-center"
+                      style={{ background: f.bg }}
+                    >
+                      <Icon className="w-5 h-5" style={{ color: f.color }} />
+                    </div>
+
+                    {/* Label */}
+                    <p
+                      className="text-xs font-bold tracking-widest uppercase"
+                      style={{ color: f.color }}
+                    >
+                      {f.label}
+                    </p>
+
+                    {/* Title */}
+                    <h3 className="text-xl font-black leading-snug tracking-tight text-[#1A1A1A]">
+                      {f.title}
+                    </h3>
+
+                    {/* Body */}
+                    <p className="text-sm text-[#6B6B6B] leading-relaxed flex-1">
+                      {f.body}
+                    </p>
+                  </div>
+                </motion.div>
+              )
+            })}
+          </div>
+
+          {/* Score callout strip */}
+          <motion.div
+            className="mt-10 rounded-2xl p-8 flex flex-col md:flex-row items-start md:items-center gap-6"
+            style={{ background: '#F0FAFA', border: '1px solid #C8EFEC' }}
+            {...fadeUp(0.3)}
+          >
+            <div
+              className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0"
+              style={{ background: '#2EC4B6' }}
+            >
+              <BarChart3 className="w-6 h-6 text-white" />
+            </div>
+            <div className="flex-1">
+              <p className="font-black text-lg text-[#1A1A1A] mb-1">Instant, rule-based scoring — no AI black box</p>
+              <p className="text-sm text-[#5A5A5A] leading-relaxed">
+                Every submission is evaluated by a deterministic engine across three dimensions: completeness (are all required stages present?), coherence (do the connections make logical sense?), and rigor (are the right controls and methods in place?). You always know exactly why you lost points.
+              </p>
+            </div>
+            <motion.button
+              onClick={() => navigate('/explore')}
+              className="shrink-0 flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-bold text-white"
+              style={{ background: '#2EC4B6' }}
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.97 }}
+            >
+              Try a challenge <ArrowRight className="w-4 h-4" />
+            </motion.button>
+          </motion.div>
+        </div>
       </section>
 
       {/* ── Pillars Section ───────────────────────────── */}
