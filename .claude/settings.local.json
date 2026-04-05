@@ -56,7 +56,17 @@
       "Bash(python -c \"from google import genai; print\\(''OK''\\)\")",
       "Bash(python -m pip install pypdf python-multipart)",
       "Bash(findstr LISTENING)",
-      "Bash(findstr :5173)"
+      "Bash(findstr :5173)",
+      "Bash(curl -s -X POST http://localhost:8000/api/generate-lab -F \"arxiv_id=1703.04247\")",
+      "Bash(curl -s http://localhost:8000/api/blocks)",
+      "Bash(python -c \"import json,sys; blocks=json.load\\(sys.stdin\\); print\\(f''''Total blocks: {len\\(blocks\\)}''''\\); cats={}; [cats.update\\({b[''''category'''']:cats.get\\(b[''''category''''],0\\)+1}\\) for b in blocks]; print\\(json.dumps\\(cats,indent=2\\)\\)\")",
+      "Bash(curl -s -X POST http://localhost:8000/api/evaluate -H \"Content-Type: application/json\" -d \"{\"\"challenge_id\"\":\"\"data_augmentation_accuracy\"\",\"\"pipeline\"\":{\"\"HYPOTHESIS\"\":[\"\"hypothesis_directional\"\"],\"\"VARIABLE\"\":[\"\"independent_variable\"\",\"\"dependent_variable\"\",\"\"control_variable\"\"],\"\"METHOD\"\":[\"\"method_experiment_lab\"\"],\"\"SAMPLE\"\":[\"\"sample_medium\"\",\"\"sampling_random\"\"],\"\"DATA_COLLECTION\"\":[\"\"data_measurement\"\"],\"\"ANALYSIS\"\":[\"\"analysis_t_test\"\"],\"\"CONCLUSION\"\":[\"\"conclusion_supports\"\"]}}\")",
+      "Bash(python -c \"import json,sys; r=json.load\\(sys.stdin\\); print\\(''''Score:'''', r[''''score'''']\\); print\\(''''Breakdown:'''', r[''''breakdown'''']\\); print\\(''''Is valid:'''', r[''''is_valid'''']\\); print\\(''''Errors:'''', r[''''errors'''']\\); print\\(''''Rubric:'''', json.dumps\\(r.get\\(''''rubric_results''''\\), indent=2\\)\\)\")",
+      "Bash(curl -s -X POST http://localhost:8000/api/evaluate -H \"Content-Type: application/json\" -d \"{\"\"challenge_id\"\":\"\"data_augmentation_accuracy\"\",\"\"pipeline\"\":{}}\")",
+      "Bash(python -c \"import json,sys; r=json.load\\(sys.stdin\\); print\\(''''Score:'''', r[''''score'''']\\); print\\(''''Errors:'''', r[''''errors''''][:2]\\)\")",
+      "Bash(python -c \"import json,sys; blocks=json.load\\(sys.stdin\\); analysis=[b for b in blocks if b[''''category'''']==''''ANALYSIS'''']; [print\\(b[''''id''''], b.get\\(''''data_type'''',''''''''\\), b.get\\(''''required_data_type'''',''''''''\\)\\) for b in analysis]\")",
+      "Bash(curl -s -X POST http://localhost:8000/api/evaluate -H \"Content-Type: application/json\" -d \"{\"\"challenge_id\"\":\"\"broken_lab_ttest_qualitative\"\",\"\"pipeline\"\":{\"\"HYPOTHESIS\"\":[\"\"hypothesis_directional\"\"],\"\"VARIABLE\"\":[\"\"independent_variable\"\",\"\"dependent_variable\"\"],\"\"METHOD\"\":[\"\"method_survey\"\"],\"\"SAMPLE\"\":[\"\"sample_small\"\",\"\"sampling_convenience\"\"],\"\"DATA_COLLECTION\"\":[\"\"data_interview\"\"],\"\"ANALYSIS\"\":[\"\"analysis_t_test\"\"],\"\"CONCLUSION\"\":[\"\"conclusion_supports\"\"]}}\")",
+      "Bash(curl -s http://localhost:8000/api/challenges/data_augmentation_accuracy)"
     ],
     "additionalDirectories": [
       "C:\\Users\\daeho\\.claude\\projects\\c--Users-daeho-daehoonchung-Rescratch"

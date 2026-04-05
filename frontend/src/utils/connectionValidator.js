@@ -41,9 +41,19 @@ const METHOD_DATA_COMPAT = {
 
 const METHOD_NEEDS_CONTROL = new Set(['method_experiment_lab', 'method_experiment_field'])
 
+const QUANTITATIVE_DATA = new Set([
+  'data_likert', 'data_measurement', 'data_count',
+  'data_spectroscopy', 'data_sequencing', 'data_loss_curves',
+  'data_confusion_matrix', 'data_latency_metrics', 'data_sensor',
+  'data_efficiency_metrics', 'data_numerical_output', 'data_physiological',
+])
+const QUALITATIVE_DATA = new Set([
+  'data_interview', 'data_open_ended', 'data_observation_notes', 'data_theorem_output',
+])
+
 function inferDataType(blockDefId) {
-  if (['data_likert', 'data_measurement', 'data_count'].includes(blockDefId)) return 'quantitative'
-  if (['data_interview', 'data_open_ended', 'data_observation_notes'].includes(blockDefId)) return 'qualitative'
+  if (QUANTITATIVE_DATA.has(blockDefId)) return 'quantitative'
+  if (QUALITATIVE_DATA.has(blockDefId)) return 'qualitative'
   return 'mixed'
 }
 

@@ -29,8 +29,10 @@ export function UploadPage() {
     setError(null)
     let payload = {}
     if (activeTab === 'arxiv') {
-      if (!arxivId.trim()) { setError('Please enter an arXiv ID.'); return }
-      payload = { arxivId: arxivId.trim() }
+      if (!arxivId.trim()) { setError('Please enter an arXiv ID or URL.'); return }
+      // Accept full URLs like https://arxiv.org/abs/1703.04247 or https://arxiv.org/pdf/1703.04247
+      const rawId = arxivId.trim().replace(/.*arxiv\.org\/(?:abs|pdf)\//, '').replace(/\.pdf$/, '').trim()
+      payload = { arxivId: rawId }
     } else if (activeTab === 'text') {
       if (!pastedText.trim()) { setError('Please paste some text.'); return }
       payload = { text: pastedText.trim() }
@@ -104,18 +106,17 @@ export function UploadPage() {
 
             {activeTab === 'arxiv' && (
               <div className="space-y-3">
-                <label className="block text-sm font-medium text-[#1A1A1A]">arXiv ID</label>
+                <label className="block text-sm font-medium text-[#1A1A1A]">arXiv ID or URL</label>
                 <input
                   type="text"
                   value={arxivId}
                   onChange={(e) => setArxivId(e.target.value)}
                   onKeyDown={(e) => e.key === 'Enter' && handleGenerate()}
-                  placeholder="e.g. 2310.06825"
+                  placeholder="e.g. 1703.04247 or https://arxiv.org/abs/1703.04247"
                   className="w-full px-4 py-2.5 rounded-lg border border-[#E5E3DE] text-[#1A1A1A] placeholder-[#9A9A9A] text-sm focus:outline-none focus:border-[#2EC4B6] transition-colors bg-[#F7F7F5]"
                 />
                 <p className="text-xs text-[#9A9A9A]">
-                  Paste the ID from the paper URL — e.g.{' '}
-                  <code className="bg-[#F0F0EE] px-1 rounded">arxiv.org/abs/2310.06825</code>
+                  Paste the full arXiv URL or just the ID — both work.
                 </p>
               </div>
             )}

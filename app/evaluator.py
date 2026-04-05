@@ -201,7 +201,7 @@ def _rubric_condition_satisfied(text: str, pipeline: dict, blocks_by_id: dict, f
         return "analysis_anova" in analysis_ids
 
     if "t-test" in t or "t test" in t:
-        return "analysis_ttest" in analysis_ids
+        return "analysis_t_test" in analysis_ids
 
     if "chi-square" in t or "chi square" in t:
         return any("chi" in a for a in analysis_ids)
@@ -263,7 +263,7 @@ def _penalty_triggered(text: str, pipeline: dict, blocks_by_id: dict, failed_rul
 
     # Wrong analysis for multiple groups
     if "multiple group" in t or "more than two" in t:
-        return "analysis_ttest" in analysis_ids  # t-test is wrong for 3+ groups
+        return "analysis_t_test" in analysis_ids  # t-test is wrong for 3+ groups
 
     # Missing confounding variable
     if "ignoring confound" in t or "no confound" in t:
@@ -348,7 +348,7 @@ def _check_common_mistakes(
 
         # Wrong analysis for group count
         if "t-test" in text and ("multiple" in text or "groups" in text or "three" in text):
-            if "analysis_ttest" in pipeline.get("ANALYSIS", []):
+            if "analysis_t_test" in pipeline.get("ANALYSIS", []):
                 triggered.append(mistake)
                 continue
 
